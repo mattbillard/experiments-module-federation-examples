@@ -5,26 +5,27 @@ const path = require("path");
 module.exports = {
   mode: "development",
 
-  // // NOTE: if you wanted to run this app independently on its own port you could uncomment the following and change the start script back to "webpack-cli serve"
-  // devServer: {
-  //   port: 3001,
-  //   static: {
-  //     directory: path.join(__dirname, "dist"),
-  //   },
-  //   devMiddleware: {
-  //     writeToDisk: true,
-  //   },
-  //   proxy: [
-  //     {
-  //       changeOrigin: true,
-  //       context: ['/app2'],
-  //       cookieDomainRewrite: 'localhost',
-  //       secure: false,
-  //       target: 'http://localhost:3002', // NOTE: requests at /app2/ are proxied to localhost:3002
-  //       ws: true,
-  //     }
-  //   ],
-  // },
+  // NOTE: if you wanted to run this app independently on its own port you could uncomment the following and change the start script back to "webpack-cli serve"
+  devServer: {
+    port: 3001,
+    static: {
+      directory: path.join(__dirname, "dist"),
+    },
+    hot: false,
+    // devMiddleware: {
+    //   writeToDisk: true,
+    // },
+    // proxy: [
+    //   {
+    //     changeOrigin: true,
+    //     context: ['/app2'],
+    //     cookieDomainRewrite: 'localhost',
+    //     secure: false,
+    //     target: 'http://localhost:3002', // NOTE: requests at /app2/ are proxied to localhost:3002
+    //     ws: true,
+    //   }
+    // ],
+  },
 
   devtool: 'source-map',
   entry: "./src/index",
