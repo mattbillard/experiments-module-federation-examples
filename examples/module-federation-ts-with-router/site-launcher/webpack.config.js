@@ -9,7 +9,7 @@ const proxiesHashMap = {
 
   // Anything not local will be proxied from dev-mock
   // '/':            'http://localhost:3000',
-  '/':            'http://dev.localhost:3000',
+  // '/':            'http://dev.localhost:3000',
 };
 
 const proxy = Object.entries(proxiesHashMap).map(([key, value]) => {
@@ -27,13 +27,25 @@ module.exports = (env = {}) => {
   return {
     mode: "development",
     devServer: {
-      port: 2000,
+      // contentBase: path.join(__dirname, 'public'),
       host: '0.0.0.0',
       hot: false,
       liveReload: false,
-      proxy,
+      port: 2000,
+      proxy: [
+        ...proxy,
+        {
+          changeOrigin: true,
+          // context: ['/'],
+          context: (pathname, req) => !pathname.match('/public') && pathname.match('/'), // Proxy dev but not public
+          cookieDomainRewrite: 'localhost',
+          secure: false,
+          target: 'http://dev.localhost:3000',
+          ws: true,
+        }
+      ],
       static: {
-        directory: path.join(__dirname, "dist"),
+        directory: path.join(__dirname, "public"),
       },
     },
   };
