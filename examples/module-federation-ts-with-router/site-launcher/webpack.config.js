@@ -28,9 +28,10 @@ module.exports = (env = {}) => {
   return {
     entry: "./src/index",
     mode: "development",
-    // output: {
-    //   publicPath: '/assets/site-launcher',
-    // },
+    output: {
+      path: path.resolve(__dirname, 'dist/assets/site-launcher'),
+      publicPath: '/assets/site-launcher',
+    },
     plugins: [
       new CopyPlugin({
         patterns: [
@@ -48,6 +49,7 @@ module.exports = (env = {}) => {
         // Anything not local will be proxied from dev-mock
         {
           changeOrigin: true,
+          // TODO: figure out a better way to do this
           context: (pathname, req) => !pathname.match('/assets/site-launcher') && pathname.match('/'), // Proxy dev but not /assets/site-launcher
           cookieDomainRewrite: 'localhost',
           secure: false,

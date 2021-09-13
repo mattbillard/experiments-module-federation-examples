@@ -56,6 +56,10 @@ const App = () => {
         <h2>Site</h2>
 
         <LocalButton />
+        <React.Suspense fallback="Loading...">
+          <RemoteButton1 />
+          <RemoteButton2 />
+        </React.Suspense>
         <br />
         <br />
 

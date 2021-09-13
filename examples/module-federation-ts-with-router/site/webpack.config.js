@@ -1,4 +1,4 @@
-const path = require("path");
+const path = require('path');
 const getConfig = require('./node_modules/@module-federation-ts-with-router/shared-tools/src/webpack.config.js');
 
 const webpackConfigMixin = {
@@ -28,6 +28,7 @@ const webpackConfigMixin = {
     // ],
   },
   output: {
+    path: path.resolve(__dirname, 'dist/assets/site'),
     publicPath: '/assets/site/',
   },
 };

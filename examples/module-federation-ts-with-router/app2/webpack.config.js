@@ -1,3 +1,4 @@
+const path = require('path');
 const getConfig = require('./node_modules/@module-federation-ts-with-router/shared-tools/src/webpack.config.js');
 
 const webpackConfigMixin = {
@@ -5,6 +6,7 @@ const webpackConfigMixin = {
     port: 1002,
   },
   output: {
+    path: path.resolve(__dirname, 'dist/assets/app2'),
     publicPath: '/assets/app2/',
   },
 };
