@@ -42,7 +42,7 @@ module.exports = (env = {}) => {
 
         // {
         //   changeOrigin: true,
-        //   context: ['/app2'],
+        //   context: ['/assets/app2'],
         //   cookieDomainRewrite: 'localhost',
         //   secure: false,
         //   target: 'http://localhost:1002',
