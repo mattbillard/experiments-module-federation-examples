@@ -32,8 +32,35 @@ module.exports = (env = {}) => {
       hot: false,
       liveReload: false,
       port: 2000,
+
+
+      // historyApiFallback: {
+      //   rewrites: [
+      //     // { from: '/public/test.json', to: '/test.json' },
+      //     // { from: 'public/test.json', to: 'test.json' },
+      //     { from: /^\/public/, to: 'test.json' },
+      //     // { from: /^\/subpage/, to: '/views/subpage.html' },
+      //     // { from: /./, to: '/views/404.html' },
+      //   ],
+      // },
+
+      // historyApiFallback: {
+      //   rewrites: [
+      //       { from: /foo\/.*/, to: 'public/test.json' },
+      //   ]
+      // },
+
       proxy: [
         ...proxy,
+        // {
+        //   context: ['/public'],
+        //   pathRewrite: { '/public/test.json' : '/test.json' },
+        //   target: '/',
+        // },
+
+        // {
+        //   context: ['/public'],
+        // },
         {
           changeOrigin: true,
           // context: ['/'],
