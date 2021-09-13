@@ -7,7 +7,7 @@ module.exports = {
 
   // NOTE: if you wanted to run this app independently on its own port you could uncomment the following and change the start script back to "webpack-cli serve"
   devServer: {
-    port: 3003,
+    port: 1000,
     static: {
       directory: path.join(__dirname, "dist"),
     },
@@ -26,7 +26,7 @@ module.exports = {
     //     context: ['/assets/app1'],
     //     cookieDomainRewrite: 'localhost',
     //     secure: false,
-    //     target: 'http://localhost:3001',
+    //     target: 'http://localhost:1001',
     //     ws: true,
     //   },
     //   {
@@ -34,7 +34,7 @@ module.exports = {
     //     context: ['/assets/app2'],
     //     cookieDomainRewrite: 'localhost',
     //     secure: false,
-    //     target: 'http://localhost:3002',
+    //     target: 'http://localhost:1002',
     //     ws: true,
     //   },
     // ],

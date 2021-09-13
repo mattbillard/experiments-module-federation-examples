@@ -7,7 +7,7 @@ module.exports = {
 
   // // NOTE: if you wanted to run this app independently on its own port you could uncomment the following and change the start script back to "webpack-cli serve"
   devServer: {
-    port: 3002,
+    port: 1002,
     static: {
       directory: path.join(__dirname, "dist"),
     },
