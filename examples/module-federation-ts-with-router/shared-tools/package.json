@@ -2,7 +2,12 @@
   "name": "@module-federation-ts-with-router/shared-tools",
   "version": "0.0.0",
   "private": true,
-  "scripts": {},
+  "bin": {
+    "foo": "./foo.js"
+  },
+  "scripts": {
+    "foo": "node foo.js"
+  },
   "dependencies": {},
   "devDependencies": {}
 }

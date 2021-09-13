@@ -6,7 +6,8 @@
     "start": "webpack-cli serve",
     "build": "webpack --mode production",
     "serve": "serve dist -p 1001",
-    "clean": "rm -rf dist"
+    "clean": "rm -rf dist",
+    "foo": "foo"
   },
   "dependencies": {
     "@module-federation-ts-with-router/shared-tools": "file:../shared-tools",
