@@ -11,6 +11,9 @@ module.exports = {
     static: {
       directory: path.join(__dirname, "dist"),
     },
+    historyApiFallback: {
+      index: '/assets/app1/index.html'  // NOTE: router needs a fallback if app1 hasn't been built. TODO
+    },
     hot: false,
     // devMiddleware: {
     //   writeToDisk: true,
