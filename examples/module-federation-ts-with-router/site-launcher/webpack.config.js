@@ -27,43 +27,15 @@ module.exports = (env = {}) => {
   return {
     mode: "development",
     devServer: {
-      // contentBase: path.join(__dirname, 'public'),
       host: '0.0.0.0',
       hot: false,
       liveReload: false,
       port: 2000,
-
-
-      // historyApiFallback: {
-      //   rewrites: [
-      //     // { from: '/public/test.json', to: '/test.json' },
-      //     // { from: 'public/test.json', to: 'test.json' },
-      //     { from: /^\/public/, to: 'test.json' },
-      //     // { from: /^\/subpage/, to: '/views/subpage.html' },
-      //     // { from: /./, to: '/views/404.html' },
-      //   ],
-      // },
-
-      // historyApiFallback: {
-      //   rewrites: [
-      //       { from: /foo\/.*/, to: 'public/test.json' },
-      //   ]
-      // },
-
       proxy: [
         ...proxy,
-        // {
-        //   context: ['/public'],
-        //   pathRewrite: { '/public/test.json' : '/test.json' },
-        //   target: '/',
-        // },
-
-        // {
-        //   context: ['/public'],
-        // },
+        // Anything not local will be proxied from dev-mock
         {
           changeOrigin: true,
-          // context: ['/'],
           context: (pathname, req) => !pathname.match('/public') && pathname.match('/'), // Proxy dev but not public
           cookieDomainRewrite: 'localhost',
           secure: false,
