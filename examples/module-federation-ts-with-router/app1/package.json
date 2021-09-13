@@ -9,6 +9,7 @@
     "clean": "rm -rf dist"
   },
   "dependencies": {
+    "@module-federation-ts-with-router/shared-tools": "file:../shared-tools",
     "react": "^16.13.0",
     "react-dom": "^16.13.0"
   },

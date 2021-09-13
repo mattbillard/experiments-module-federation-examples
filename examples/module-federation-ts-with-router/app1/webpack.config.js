@@ -1,59 +1,16 @@
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const { ModuleFederationPlugin } = require("webpack").container;
-const path = require("path");
+const getConfig = require('./node_modules/@module-federation-ts-with-router/shared-tools/src/webpack.config.js');
 
-module.exports = {
-  mode: "development",
-
-  // // NOTE: if you wanted to run this app independently on its own port you could uncomment the following and change the start script back to "webpack-cli serve"
-  devServer: {
-    port: 1001,
-    static: {
-      directory: path.join(__dirname, "dist"),
-    },
-    hot: false,
-    liveReload: false,
-    // TODO: get rid of liveReload too?
-    // devMiddleware: {
-    //   writeToDisk: true,
-    // },
+const port = 1001;
+const publicPath = '/assets/app1/';
+const moduleFederationConfig = {
+  name: "app1",
+  filename: "remoteEntry.js",
+  exposes: {
+    "./button": "./src/components/button/button",
   },
-
-  devtool: 'source-map',
-  entry: "./src/index",
-  output: {
-    publicPath: "/assets/app1/",
-  },
-  resolve: {
-    extensions: [".ts", ".tsx", ".js"],
-  },
-  module: {
-    rules: [
-      {
-        test: /\.css$/,
-        use: [
-          'style-loader',
-          'css-loader'
-        ]
-      },
-      {
-        test: /\.tsx?$/,
-        loader: "ts-loader",
-        exclude: /node_modules/,
-      },
-    ],
-  },
-  plugins: [
-    new ModuleFederationPlugin({
-      name: "app1",
-      filename: "remoteEntry.js",
-      exposes: {
-        "./button": "./src/components/button/button",
-      },
-      shared: ["react", "react-dom"],
-    }),
-    new HtmlWebpackPlugin({
-      template: "./public/index.html",
-    }),
-  ],
+  shared: ["react", "react-dom"],
 };
+
+const config = getConfig(port, publicPath, moduleFederationConfig);
+
+module.exports = config;

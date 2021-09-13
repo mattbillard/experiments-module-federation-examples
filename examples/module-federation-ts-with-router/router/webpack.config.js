@@ -14,17 +14,7 @@ module.exports = (env = {}) => {
       proxy: [
         // {
         //   changeOrigin: true,
-        //   context: ['/assets/site'],
-        //   cookieDomainRewrite: 'localhost',
-        //   secure: false,
-        //   target: 'http://localhost:1000',
-        //   ws: true,
-        // },
-
-        // // TODO: think through this. Should be dev?
-        // {
-        //   changeOrigin: true,
-        //   context: ['/site'],
+        //   context: ['/assets/site', '/site'],
         //   cookieDomainRewrite: 'localhost',
         //   secure: false,
         //   target: 'http://localhost:1000',
@@ -40,14 +30,14 @@ module.exports = (env = {}) => {
           ws: true,
         },
 
-        // {
-        //   changeOrigin: true,
-        //   context: ['/assets/app2'],
-        //   cookieDomainRewrite: 'localhost',
-        //   secure: false,
-        //   target: 'http://localhost:1002',
-        //   ws: true,
-        // },
+        {
+          changeOrigin: true,
+          context: ['/assets/app2'],
+          cookieDomainRewrite: 'localhost',
+          secure: false,
+          target: 'http://localhost:1002',
+          ws: true,
+        },
 
         {
           changeOrigin: true,
