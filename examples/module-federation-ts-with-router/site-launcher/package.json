@@ -1,5 +1,5 @@
 {
-  "name": "@module-federation-ts-with-router/router",
+  "name": "@module-federation-ts-with-router/site-launcher",
   "version": "0.0.0",
   "private": true,
   "scripts": {
