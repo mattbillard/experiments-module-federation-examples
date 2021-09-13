@@ -1,11 +1,11 @@
 const path = require("path");
 
 const proxiesHashMap = {
-  '/assets/site': 'http://localhost:1000',
+  '/assets/site/': 'http://localhost:1000',
   '/site':        'http://localhost:1000',
 
-  // '/assets/app1': 'http://localhost:1001',
-  // '/assets/app2': 'http://localhost:1002',
+  // '/assets/app1/': 'http://localhost:1001',
+  // '/assets/app2/': 'http://localhost:1002',
 
   // Anything not local will be proxied from dev-mock
   // '/':            'http://localhost:3000',
@@ -36,7 +36,7 @@ module.exports = (env = {}) => {
         // Anything not local will be proxied from dev-mock
         {
           changeOrigin: true,
-          context: (pathname, req) => !pathname.match('/public') && pathname.match('/'), // Proxy dev but not public
+          context: (pathname, req) => !pathname.match('/assets/site-launcher') && pathname.match('/'), // Proxy dev but not /assets/site-launcher
           cookieDomainRewrite: 'localhost',
           secure: false,
           target: 'http://dev.localhost:3000',

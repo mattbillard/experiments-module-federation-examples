@@ -1,0 +1,13 @@
+{
+  "teamId": "team1",
+  "nav":  [
+    { 
+      "text": "App1",
+      "url": "/site/app1"
+    },
+    { 
+      "text": "App2",
+      "url": "/site/app2"
+    }
+  ]
+}

@@ -10,7 +10,7 @@ import {
 } from "react-router-dom";
 import LocalButton from "../button/button";
 
-const defaultDefitions = require("./micro-app-definitions.json");
+const teamDefinitions = require("./team-definitions.json");
 
 // TODO: fix types
 const RemoteButton1 = React.lazy(() => import("app1/button"));
@@ -18,23 +18,32 @@ const RemoteButton2 = React.lazy(() => import("app2/button"));
 
 const App = () => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
-  const [definitions, setDefinitions] = useState(defaultDefitions);
+  const [definitions, setDefinitions] = useState<any>({ nav: []});
 
   useEffect(() => {
-    (async () => {
-      // Allow overwrite of defaultDefitions with local definitions
+    // Allow overwrite of defaultDefitions with local definitions
+    teamDefinitions.teams.forEach((teamDefinition: any) => {
+      const { teamId, teamDefinitionUrl } = teamDefinition;
+
       try {
-        const res = await fetch('/public/test.json');
-        const data = await res.json();
-        const newDefinitions = _.merge({}, defaultDefitions, data);
-        setDefinitions(newDefinitions);
+        const res = fetch(teamDefinitionUrl).then(res => {
+          return res.json();
+        }).then(data => {
+          const newDefinitions = {
+            nav: [
+              ...definitions.nav,
+              ...data.nav
+            ]
+          };
+          setDefinitions(newDefinitions);
+
+          setIsLoading(false); // TODO: use Promise.all() instead
+        })
       } catch (error) {
         // noop
       }
-
-      setIsLoading(false);
-    })();
-  });
+    });
+  }, []);
 
   if (isLoading) {
     return null;
@@ -50,11 +59,24 @@ const App = () => {
         <br />
         <br />
 
+        <pre>
+          {JSON.stringify(definitions, null, 2)}
+        </pre>
+
         <div>
-          <Link to={definitions.nav.App1}>App1</Link> |
-          <Link to={definitions.nav.App2}>App2</Link>
+          {definitions.nav.map((definition: any) => {
+            const { text, url } = definition;
+            console.log('....definition', definition);
+
+            return ( 
+              <React.Fragment key={url}>
+                <Link to={url}>{text}</Link> |
+              </React.Fragment>
+            );
+          })}
         </div>
 
+        {/* 
         <React.Suspense fallback="Loading...">
           <Switch>
             <Route
@@ -66,7 +88,8 @@ const App = () => {
               render={(routeProps: RouteProps) => <RemoteButton2 />}
             />
           </Switch>
-        </React.Suspense>
+        </React.Suspense> 
+        */}
       </div>
     </BrowserRouter>
   );

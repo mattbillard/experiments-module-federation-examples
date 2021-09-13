@@ -1,0 +1,8 @@
+{
+  "teams": [
+    {
+      "teamId": "team1",
+      "teamDefinitionUrl": "/assets/site-launcher/definitions.json"
+    }
+  ]
+}
