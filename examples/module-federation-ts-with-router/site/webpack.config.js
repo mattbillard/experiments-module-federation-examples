@@ -12,32 +12,32 @@ module.exports = {
       directory: path.join(__dirname, "dist"),
     },
     historyApiFallback: {
-      index: '/assets/site/index.html'  // TODO
+      index: '/assets/site/index.html'  // TODO. I think site is the only one that should have a fallback 
     },
     hot: false,
-    // devMiddleware: {
-    //   writeToDisk: true,
-    // },
+    devMiddleware: {
+      writeToDisk: true,
+    },
 
-    // TODO: probably comment out
-    proxy: [
-      {
-        changeOrigin: true,
-        context: ['/assets/app1'],
-        cookieDomainRewrite: 'localhost',
-        secure: false,
-        target: 'http://localhost:3001',
-        ws: true,
-      },
-      {
-        changeOrigin: true,
-        context: ['/assets/app2'],
-        cookieDomainRewrite: 'localhost',
-        secure: false,
-        target: 'http://localhost:3002',
-        ws: true,
-      },
-    ],
+    // // TODO: probably comment out
+    // proxy: [
+    //   {
+    //     changeOrigin: true,
+    //     context: ['/assets/app1'],
+    //     cookieDomainRewrite: 'localhost',
+    //     secure: false,
+    //     target: 'http://localhost:3001',
+    //     ws: true,
+    //   },
+    //   {
+    //     changeOrigin: true,
+    //     context: ['/assets/app2'],
+    //     cookieDomainRewrite: 'localhost',
+    //     secure: false,
+    //     target: 'http://localhost:3002',
+    //     ws: true,
+    //   },
+    // ],
   },
 
   devtool: 'source-map',

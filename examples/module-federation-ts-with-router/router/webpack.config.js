@@ -8,8 +8,7 @@ module.exports = (env = {}) => {
       host: '0.0.0.0',
       hot: false,
       // historyApiFallback: {
-      //   index: '/assets/app1/index.html'  // Requires an actual file so you need to run build on app1
-      //   // index: 'http://localhost:3000/assets/app1/index.html'  // Did NOT work
+      //   index: '/assets/site/index.html'  // Requires an actual file so you need to run build on app1
       // },
       proxy: [
         {
@@ -20,14 +19,25 @@ module.exports = (env = {}) => {
           target: 'http://localhost:3001',
           ws: true,
         },
-        {
-          changeOrigin: true,
-          context: ['/assets/site'],
-          cookieDomainRewrite: 'localhost',
-          secure: false,
-          target: 'http://localhost:3003',
-          ws: true,
-        },
+
+        // {
+        //   changeOrigin: true,
+        //   context: ['/app2'],
+        //   cookieDomainRewrite: 'localhost',
+        //   secure: false,
+        //   target: 'http://localhost:3002',
+        //   ws: true,
+        // },
+
+        // {
+        //   changeOrigin: true,
+        //   context: ['/assets/site'],
+        //   cookieDomainRewrite: 'localhost',
+        //   secure: false,
+        //   target: 'http://localhost:3003',
+        //   ws: true,
+        // },
+
         {
           changeOrigin: true,
           context: ['/site/'],
@@ -36,12 +46,13 @@ module.exports = (env = {}) => {
           target: 'http://localhost:3003',
           ws: true,
         },
+
         // {
         //   changeOrigin: true,
-        //   context: ['/app2'],
+        //   context: ['/'],
         //   cookieDomainRewrite: 'localhost',
         //   secure: false,
-        //   target: 'http://localhost:3002',
+        //   target: 'http://localhost:3003',   // TODO: proxy to dev
         //   ws: true,
         // },
       ],
