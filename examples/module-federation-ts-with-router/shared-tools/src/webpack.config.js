@@ -1,14 +1,14 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const { ModuleFederationPlugin } = require("webpack").container;
+// const { ModuleFederationPlugin } = require("webpack").container;
 const path = require("path");
 
-module.exports = (port, publicPath, moduleFederationConfig) => {
+module.exports = () => {
   return {
     devServer: {
       // devMiddleware: {
       //   writeToDisk: true,
       // },
-      port,
+      // port,
       hot: false,
       liveReload: false,
       static: {
@@ -31,14 +31,16 @@ module.exports = (port, publicPath, moduleFederationConfig) => {
         },
       ],
     },
-    output: {
-      publicPath,
-    },
+    // output: {
+    //   publicPath,
+    // },
     plugins: [
-      new ModuleFederationPlugin(moduleFederationConfig),
-      new HtmlWebpackPlugin({
-        template: "./public/index.html",
-      }),
+      // new ModuleFederationPlugin(
+      //   moduleFederationConfig
+      // ),
+      // new HtmlWebpackPlugin({
+      //   template: "./public/index.html",
+      // }),
     ],
     resolve: {
       extensions: [".ts", ".tsx", ".js"],

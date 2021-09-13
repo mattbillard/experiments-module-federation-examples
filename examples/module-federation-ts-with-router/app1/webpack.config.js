@@ -1,3 +1,6 @@
+const _ = require('lodash');
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const { ModuleFederationPlugin } = require("webpack").container;
 const getConfig = require('./node_modules/@module-federation-ts-with-router/shared-tools/src/webpack.config.js');
 
 const port = 1001;
@@ -11,6 +14,23 @@ const moduleFederationConfig = {
   shared: ["react", "react-dom"],
 };
 
-const config = getConfig(port, publicPath, moduleFederationConfig);
+const config = _.merge({}, getConfig(), {
+  devServer: {
+    port,
+  },
+  output: {
+    publicPath,
+  },
+  plugins: [
+    new ModuleFederationPlugin(
+      moduleFederationConfig
+    ),
+    new HtmlWebpackPlugin({
+      template: "./public/index.html",
+    }),
+  ],
+});
+
+// console.log(JSON.stringify(config, null, 2));
 
 module.exports = config;
