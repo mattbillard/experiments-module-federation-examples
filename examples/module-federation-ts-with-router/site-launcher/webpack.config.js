@@ -7,7 +7,8 @@ const proxiesHashMap = {
   // '/assets/app2': 'http://localhost:1002',
 
   // Anything not local will be proxied from dev-mock
-  '/':            'http://localhost:3000',
+  // '/':            'http://localhost:3000',
+  '/':            'http://dev.localhost:3000',
 };
 
 const proxy = Object.entries(proxiesHashMap).map(([key, value]) => {
