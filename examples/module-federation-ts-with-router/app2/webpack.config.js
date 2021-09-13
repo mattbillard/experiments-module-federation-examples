@@ -12,6 +12,7 @@ module.exports = {
       directory: path.join(__dirname, "dist"),
     },
     hot: false,
+    liveReload: false,
     // devMiddleware: {
     //   writeToDisk: true,
     // },

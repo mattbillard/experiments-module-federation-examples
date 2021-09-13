@@ -12,6 +12,7 @@ module.exports = {
       directory: path.join(__dirname, "dist"),
     },
     hot: false,
+    liveReload: false,
     // TODO: get rid of liveReload too?
     // devMiddleware: {
     //   writeToDisk: true,

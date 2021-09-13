@@ -15,6 +15,8 @@ module.exports = {
       index: '/assets/site/index.html'  // TODO. I think site is the only one that should have a fallback 
     },
     hot: false,
+    liveReload: false,
+    // TODO: is this necessary?
     devMiddleware: {
       writeToDisk: true,
     },
