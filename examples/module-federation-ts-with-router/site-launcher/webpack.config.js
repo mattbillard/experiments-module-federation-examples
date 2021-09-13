@@ -1,9 +1,10 @@
 const path = require("path");
 
 const proxiesHashMap = {
-  // '/assets/site': 'http://localhost:1000',
-  // '/site':        'http://localhost:1000',
-  '/assets/app1': 'http://localhost:1001',
+  '/assets/site': 'http://localhost:1000',
+  '/site':        'http://localhost:1000',
+
+  // '/assets/app1': 'http://localhost:1001',
   // '/assets/app2': 'http://localhost:1002',
 
   // Anything not local will be proxied from dev-mock
