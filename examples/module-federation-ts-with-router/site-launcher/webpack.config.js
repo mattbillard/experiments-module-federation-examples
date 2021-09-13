@@ -1,3 +1,4 @@
+const CopyPlugin = require("copy-webpack-plugin");
 const path = require("path");
 
 const proxiesHashMap = {
@@ -25,7 +26,18 @@ const proxy = Object.entries(proxiesHashMap).map(([key, value]) => {
 
 module.exports = (env = {}) => {
   return {
+    entry: "./src/index",
     mode: "development",
+    // output: {
+    //   publicPath: '/assets/site-launcher',
+    // },
+    plugins: [
+      new CopyPlugin({
+        patterns: [
+          { from: "public", to: "" },
+        ],
+      }),
+    ],
     devServer: {
       host: '0.0.0.0',
       hot: false,

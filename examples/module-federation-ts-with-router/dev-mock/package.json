@@ -8,7 +8,8 @@
     "deploy": "npm run clean && mkdir -p dist/assets && run-p _deploy:*",
     "_deploy:app1": "mv ../app1/dist dist/assets/app1",
     "_deploy:app2": "mv ../app2/dist dist/assets/app2",
-    "_deploy:site": "mv ../site/dist dist/assets/site"
+    "_deploy:site": "mv ../site/dist dist/assets/site",
+    "_deploy:site-launcher": "mv ../site-launcher/dist dist/assets/site-launcher"
   },
   "dependencies": {},
   "devDependencies": {
