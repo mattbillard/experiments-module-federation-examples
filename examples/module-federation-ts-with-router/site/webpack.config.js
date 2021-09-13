@@ -17,9 +17,9 @@ module.exports = {
     hot: false,
     liveReload: false,
     // TODO: is this necessary?
-    devMiddleware: {
-      writeToDisk: true,
-    },
+    // devMiddleware: {
+    //   writeToDisk: true,
+    // },
 
     // // TODO: probably comment out
     // proxy: [

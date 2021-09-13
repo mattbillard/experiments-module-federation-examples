@@ -31,14 +31,14 @@ module.exports = (env = {}) => {
         //   ws: true,
         // },
 
-        // {
-        //   changeOrigin: true,
-        //   context: ['/assets/app1'],
-        //   cookieDomainRewrite: 'localhost',
-        //   secure: false,
-        //   target: 'http://localhost:1001',
-        //   ws: true,
-        // },
+        {
+          changeOrigin: true,
+          context: ['/assets/app1'],
+          cookieDomainRewrite: 'localhost',
+          secure: false,
+          target: 'http://localhost:1001',
+          ws: true,
+        },
 
         // {
         //   changeOrigin: true,
