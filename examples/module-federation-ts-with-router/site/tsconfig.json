@@ -1,12 +1,4 @@
 {
-  "compilerOptions": {
-    "declaration": true,
-    "jsx": "react",
-    "module": "esnext",
-    "outDir": "./dist/",
-    "skipLibCheck": true,
-    "sourceMap": true,
-    "strict": true,
-  },
+  "extends": "./node_modules/@module-federation-ts-with-router/shared-tools/src/tsconfig.json",
   "include": ["src/**/*", "types/**/*"]
 }
