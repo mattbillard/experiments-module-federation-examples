@@ -1,36 +1,56 @@
-const _ = require('lodash');
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { ModuleFederationPlugin } = require("webpack").container;
-const getConfig = require('./node_modules/@module-federation-ts-with-router/shared-tools/src/webpack.config.js');
+const path = require("path");
 
-const port = 1002;
-const publicPath = '/assets/app2/';
-const moduleFederationConfig = {
-  name: "app2",
-  filename: "remoteEntry.js",
-  exposes: {
-    "./button": "./src/components/button/button",
-  },
-  shared: ["react", "react-dom"],
-};
-
-const config = _.merge({}, getConfig(), {
+module.exports = {
+  mode: "development",
   devServer: {
-    port,
+    port: 1002,
+    static: {
+      directory: path.join(__dirname, "dist"),
+    },
+    // historyApiFallback: {
+    //   index: '/assets/app2/index.html',
+    // },
+    hot: false,
+    liveReload: false,
   },
+
+  devtool: 'source-map',
+  entry: "./src/index",
   output: {
-    publicPath,
+    publicPath: "/assets/app2/",
+  },
+  resolve: {
+    extensions: [".ts", ".tsx", ".js"],
+  },
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: [
+          'style-loader',
+          'css-loader'
+        ]
+      },
+      {
+        test: /\.tsx?$/,
+        loader: "ts-loader",
+        exclude: /node_modules/,
+      },
+    ],
   },
   plugins: [
-    new ModuleFederationPlugin(
-      moduleFederationConfig
-    ),
+    new ModuleFederationPlugin({
+      name: "app2",
+      filename: "remoteEntry.js",
+      exposes: {
+        "./button": "./src/components/button/button",
+      },
+      shared: ["react", "react-dom"],
+    }),
     new HtmlWebpackPlugin({
       template: "./public/index.html",
     }),
   ],
-});
-
-// console.log(JSON.stringify(config, null, 2));
-
-module.exports = config;
+};
