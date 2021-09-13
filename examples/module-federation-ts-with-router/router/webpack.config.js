@@ -12,14 +12,14 @@ module.exports = (env = {}) => {
       // },
       liveReload: false,
       proxy: [
-        // {
-        //   changeOrigin: true,
-        //   context: ['/assets/site', '/site'],
-        //   cookieDomainRewrite: 'localhost',
-        //   secure: false,
-        //   target: 'http://localhost:1000',
-        //   ws: true,
-        // },
+        {
+          changeOrigin: true,
+          context: ['/assets/site', '/site'],
+          cookieDomainRewrite: 'localhost',
+          secure: false,
+          target: 'http://localhost:1000',
+          ws: true,
+        },
 
         {
           changeOrigin: true,

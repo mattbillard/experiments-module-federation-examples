@@ -1,26 +1,12 @@
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const { ModuleFederationPlugin } = require("webpack").container;
 const path = require("path");
+const getConfig = require('./node_modules/@module-federation-ts-with-router/shared-tools/src/webpack.config.js');
 
-module.exports = {
-  mode: "development",
-
-  // NOTE: if you wanted to run this app independently on its own port you could uncomment the following and change the start script back to "webpack-cli serve"
+const webpackConfigMixin = {
   devServer: {
-    port: 1000,
-    static: {
-      directory: path.join(__dirname, "dist"),
-    },
     historyApiFallback: {
       index: '/assets/site/index.html'  // TODO. I think site is the only one that should have a fallback 
     },
-    hot: false,
-    liveReload: false,
-    // TODO: is this necessary?
-    // devMiddleware: {
-    //   writeToDisk: true,
-    // },
-
+    port: 1000,
     // // TODO: probably comment out
     // proxy: [
     //   {
@@ -41,42 +27,20 @@ module.exports = {
     //   },
     // ],
   },
-
-  devtool: 'source-map',
-  entry: "./src/index",
   output: {
-    publicPath: "/assets/site/",
+    publicPath: '/assets/site/',
   },
-  resolve: {
-    extensions: [".ts", ".tsx", ".js"],
-  },
-  module: {
-    rules: [
-      {
-        test: /\.css$/,
-        use: [
-          'style-loader',
-          'css-loader'
-        ]
-      },
-      {
-        test: /\.tsx?$/,
-        loader: "ts-loader",
-        exclude: /node_modules/,
-      },
-    ],
-  },
-  plugins: [
-    new ModuleFederationPlugin({
-      name: "site",
-      remotes: {
-        app1: "app1@/assets/app1/remoteEntry.js", // NOTE: find app1 at /assets/app1/ instead of localhost:3001
-        app2: "app2@/assets/app2/remoteEntry.js", // NOTE: find app2 at /assets/app2/ instead of localhost:3002
-      },
-      shared: ["react", "react-dom"],
-    }),
-    new HtmlWebpackPlugin({
-      template: "./public/index.html",
-    }),
-  ],
 };
+
+const moduleFederationConfig = {
+  name: "site",
+  remotes: {
+    app1: "app1@/assets/app1/remoteEntry.js",
+    app2: "app2@/assets/app2/remoteEntry.js",
+  },
+  shared: ["react", "react-dom"],
+};
+
+const config = getConfig(webpackConfigMixin, moduleFederationConfig);
+
+module.exports = config;

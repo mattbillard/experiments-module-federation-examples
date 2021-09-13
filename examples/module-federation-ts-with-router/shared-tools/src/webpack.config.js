@@ -1,9 +1,10 @@
+const _ = require('lodash');
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-// const { ModuleFederationPlugin } = require("webpack").container;
+const { ModuleFederationPlugin } = require("webpack").container;
 const path = require("path");
 
-module.exports = () => {
-  return {
+module.exports = (configMixin, moduleFederationConfig) => {
+  const defaultConfig = {
     devServer: {
       // devMiddleware: {
       //   writeToDisk: true,
@@ -35,15 +36,17 @@ module.exports = () => {
     //   publicPath,
     // },
     plugins: [
-      // new ModuleFederationPlugin(
-      //   moduleFederationConfig
-      // ),
-      // new HtmlWebpackPlugin({
-      //   template: "./public/index.html",
-      // }),
+      new HtmlWebpackPlugin({
+        template: "./public/index.html",
+      }),
+      new ModuleFederationPlugin(
+        moduleFederationConfig
+      ),
     ],
     resolve: {
       extensions: [".ts", ".tsx", ".js"],
     },
   };
+
+  return _.merge({}, defaultConfig, configMixin);
 };
