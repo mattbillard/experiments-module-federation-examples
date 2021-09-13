@@ -22,10 +22,18 @@ module.exports = (env = {}) => {
         },
         {
           changeOrigin: true,
+          context: ['/assets/site'],
+          cookieDomainRewrite: 'localhost',
+          secure: false,
+          target: 'http://localhost:3003',
+          ws: true,
+        },
+        {
+          changeOrigin: true,
           context: ['/site/'],
           cookieDomainRewrite: 'localhost',
           secure: false,
-          target: 'http://localhost:3001',
+          target: 'http://localhost:3003',
           ws: true,
         },
         // {

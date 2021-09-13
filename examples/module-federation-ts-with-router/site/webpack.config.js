@@ -7,33 +7,43 @@ module.exports = {
 
   // NOTE: if you wanted to run this app independently on its own port you could uncomment the following and change the start script back to "webpack-cli serve"
   devServer: {
-    port: 3001,
+    port: 3003,
     static: {
       directory: path.join(__dirname, "dist"),
     },
     historyApiFallback: {
-      index: '/assets/app1/index.html'  // NOTE: router needs a fallback if app1 hasn't been built. TODO
+      index: '/assets/site/index.html'  // TODO
     },
     hot: false,
     // devMiddleware: {
     //   writeToDisk: true,
     // },
+
+    // TODO: probably comment out
     proxy: [
+      {
+        changeOrigin: true,
+        context: ['/assets/app1'],
+        cookieDomainRewrite: 'localhost',
+        secure: false,
+        target: 'http://localhost:3001',
+        ws: true,
+      },
       {
         changeOrigin: true,
         context: ['/assets/app2'],
         cookieDomainRewrite: 'localhost',
         secure: false,
-        target: 'http://localhost:3002', // NOTE: requests at /app2/ are proxied to localhost:3002
+        target: 'http://localhost:3002',
         ws: true,
-      }
+      },
     ],
   },
 
   devtool: 'source-map',
   entry: "./src/index",
   output: {
-    publicPath: "/assets/app1/",
+    publicPath: "/assets/site/",
   },
   resolve: {
     extensions: [".ts", ".tsx", ".js"],
@@ -56,8 +66,9 @@ module.exports = {
   },
   plugins: [
     new ModuleFederationPlugin({
-      name: "app1",
+      name: "site",
       remotes: {
+        app1: "app1@/assets/app1/remoteEntry.js", // NOTE: find app1 at /assets/app1/ instead of localhost:3001
         app2: "app2@/assets/app2/remoteEntry.js", // NOTE: find app2 at /assets/app2/ instead of localhost:3002
       },
       shared: ["react", "react-dom"],

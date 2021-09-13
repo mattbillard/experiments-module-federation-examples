@@ -12,9 +12,9 @@ module.exports = {
       directory: path.join(__dirname, "dist"),
     },
     hot: false,
-    devMiddleware: {
-      writeToDisk: true,
-    },
+    // devMiddleware: {
+    //   writeToDisk: true,
+    // },
   },
 
   devtool: 'source-map',

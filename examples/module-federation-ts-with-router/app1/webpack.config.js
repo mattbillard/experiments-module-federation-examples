@@ -7,20 +7,21 @@ module.exports = {
 
   // // NOTE: if you wanted to run this app independently on its own port you could uncomment the following and change the start script back to "webpack-cli serve"
   devServer: {
-    port: 3002,
+    port: 3001,
     static: {
       directory: path.join(__dirname, "dist"),
     },
     hot: false,
-    devMiddleware: {
-      writeToDisk: true,
-    },
+    // TODO: get rid of liveReload too?
+    // devMiddleware: {
+    //   writeToDisk: true,
+    // },
   },
 
   devtool: 'source-map',
   entry: "./src/index",
   output: {
-    publicPath: "/assets/app2/",
+    publicPath: "/assets/app1/",
   },
   resolve: {
     extensions: [".ts", ".tsx", ".js"],
@@ -43,7 +44,7 @@ module.exports = {
   },
   plugins: [
     new ModuleFederationPlugin({
-      name: "app2",
+      name: "app1",
       filename: "remoteEntry.js",
       exposes: {
         "./button": "./src/components/button/button",

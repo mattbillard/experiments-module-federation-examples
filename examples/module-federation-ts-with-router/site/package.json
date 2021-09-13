@@ -1,11 +1,11 @@
 {
-  "name": "@module-federation-ts-with-router/app1",
+  "name": "@module-federation-ts-with-router/site",
   "version": "0.0.0",
   "private": true,
   "scripts": {
     "start": "webpack-cli serve",
     "build": "webpack --mode production",
-    "serve": "serve dist -p 3001",
+    "serve": "serve dist -p 3003",
     "clean": "rm -rf dist"
   },
   "dependencies": {
