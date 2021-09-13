@@ -8,12 +8,12 @@ module.exports = (env = {}) => {
       host: '0.0.0.0',
       hot: false,
       historyApiFallback: {
-        index: '/app1/index.html'
+        index: '/assets/app1/index.html'  // Requires an actual file so you need to run build on app1
       },
       proxy: [
         {
           changeOrigin: true,
-          context: ['/app1'],
+          context: ['/assets/app1'],
           cookieDomainRewrite: 'localhost',
           secure: false,
           target: 'http://localhost:3001',

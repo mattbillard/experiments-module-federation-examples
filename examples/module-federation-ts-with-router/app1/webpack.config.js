@@ -15,22 +15,22 @@ module.exports = {
     // devMiddleware: {
     //   writeToDisk: true,
     // },
-    // proxy: [
-    //   {
-    //     changeOrigin: true,
-    //     context: ['/app2'],
-    //     cookieDomainRewrite: 'localhost',
-    //     secure: false,
-    //     target: 'http://localhost:3002', // NOTE: requests at /app2/ are proxied to localhost:3002
-    //     ws: true,
-    //   }
-    // ],
+    proxy: [
+      {
+        changeOrigin: true,
+        context: ['/assets/app2'],
+        cookieDomainRewrite: 'localhost',
+        secure: false,
+        target: 'http://localhost:3002', // NOTE: requests at /app2/ are proxied to localhost:3002
+        ws: true,
+      }
+    ],
   },
 
   devtool: 'source-map',
   entry: "./src/index",
   output: {
-    publicPath: "/app1/",
+    publicPath: "/assets/app1/",
   },
   resolve: {
     extensions: [".ts", ".tsx", ".js"],
@@ -55,7 +55,7 @@ module.exports = {
     new ModuleFederationPlugin({
       name: "app1",
       remotes: {
-        app2: "app2@/app2/remoteEntry.js", // NOTE: find app2 at /app2/ instead of localhost:3002
+        app2: "app2@/assets/app2/remoteEntry.js", // NOTE: find app2 at /assets/app2/ instead of localhost:3002
       },
       shared: ["react", "react-dom"],
     }),

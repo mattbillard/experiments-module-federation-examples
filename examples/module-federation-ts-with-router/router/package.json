@@ -7,9 +7,9 @@
     "serve": "serve dist -p 3001",
     "clean": "rm -rf dist",
     "postinstall": "npm run clean && npm run link",
-    "link": "mkdir -p dist && npm run _link:app1 && npm run _link:app2",
-    "_link:app1": "cd dist && ln -sf ../../app1/dist app1",
-    "_link:app2": "cd dist && ln -sf ../../app2/dist app2"
+    "link": "mkdir -p dist/assets && npm run _link:app1 && npm run _link:app2",
+    "_link:app1": "cd dist/assets && ln -sf ../../../app1/dist app1",
+    "_link:app2": "cd dist/assets && ln -sf ../../../app2/dist app2"
   },
   "dependencies": {},
   "devDependencies": {

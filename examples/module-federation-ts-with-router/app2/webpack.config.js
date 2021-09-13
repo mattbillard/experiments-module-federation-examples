@@ -20,7 +20,7 @@ module.exports = {
   devtool: 'source-map',
   entry: "./src/index",
   output: {
-    publicPath: "/app2/",
+    publicPath: "/assets/app2/",
   },
   resolve: {
     extensions: [".ts", ".tsx", ".js"],
