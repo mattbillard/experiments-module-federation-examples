@@ -1,3 +1,5 @@
 {
-  "foo": "public/test.json"
+  "nav":  {
+    "App1": "/site/app1/test"
+  }
 }
