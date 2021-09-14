@@ -9,8 +9,8 @@
   },
   "dependencies": {},
   "devDependencies": {
+    "@module-federation-ts-with-router/shared-tools": "file:../shared-tools",
     "@webpack-cli/serve": "^1.5.2",
-    "copy-webpack-plugin": "^9.0.1",
     "serve": "12.0.0",
     "webpack": "5.52.0",
     "webpack-cli": "4.8.0",

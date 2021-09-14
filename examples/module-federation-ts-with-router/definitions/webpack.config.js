@@ -1,28 +1,18 @@
-const CopyPlugin = require("copy-webpack-plugin");
-const path = require("path");
+const path = require('path');
+const getConfig = require('./node_modules/@module-federation-ts-with-router/shared-tools/src/webpack.config.js');
 
-module.exports = (env = {}) => {
-  return {
-    entry: "./src/index",
-    mode: "development",
-    output: {
-      path: path.resolve(__dirname, 'dist/assets/definitions'),
-      publicPath: '/assets/definitions',
-    },
-    plugins: [
-      new CopyPlugin({
-        patterns: [
-          { from: "public", to: "" },
-        ],
-      }),
-    ],
-    devServer: {
-      hot: false,
-      liveReload: false,
-      port: 1100,
-      static: {
-        directory: path.join(__dirname, "public"),
-      },
-    },
-  };
+const webpackConfigMixin = {
+  devServer: {
+    port: 1100,
+  },
+  output: {
+    path: path.resolve(__dirname, 'dist/assets/definitions'),
+    publicPath: '/assets/definitions/',
+  },
 };
+
+const moduleFederationConfig = {};
+
+const config = getConfig(webpackConfigMixin, moduleFederationConfig);
+
+module.exports = config;
