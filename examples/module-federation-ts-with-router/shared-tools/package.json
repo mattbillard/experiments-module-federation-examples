@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "bin": {
-    "foo": "./foo.js"
+    "finpack-serve": "./finpack-serve.js"
   },
   "scripts": {
     "start": "webpack-cli serve",

@@ -67,7 +67,7 @@ const pathToConfig = path.join(__dirname, "src/webpack.config2");
 const definitions = require(pathToDefinitions);
 const getWebpackConfig = require(pathToConfig);
 const webpackConfig = getWebpackConfig(definitions.webpackConfigMixin, definitions.moduleFederationConfig);
-const devServerOptions = { ...webpackConfig.devServer, open: true };
+const devServerOptions = { ...webpackConfig.devServer };
 
 console.log(`
 
