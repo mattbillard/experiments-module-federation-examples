@@ -3,7 +3,7 @@ const getConfig = require('./node_modules/@module-federation-ts-with-router/shar
 
 const webpackConfigMixin = {
   devServer: {
-    port: 1001,
+    port: 1101,
   },
   output: {
     path: path.resolve(__dirname, 'dist/assets/app1'),
