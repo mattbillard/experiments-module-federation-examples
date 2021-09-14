@@ -53,18 +53,6 @@ const App = () => {
     return null;
   }
 
-  // const app1System = {
-  //   module: "./button",
-  //   scope: "app1",
-  //   url: "/assets/app1/remoteEntry.js",
-  // };
-
-  // const app2System = {
-  //   module: "./button",
-  //   scope: "app2",
-  //   url: "/assets/app2/remoteEntry.js",
-  // };
-
   return (
     <BrowserRouter>
       <div>
@@ -81,14 +69,9 @@ const App = () => {
         <br />
         <br />
 
-        <pre>
-          {JSON.stringify(definitions, null, 2)}
-        </pre>
-
         <div>
           {definitions.nav.map((definition: any) => {
             const { text, url } = definition;
-            console.log('....definition', definition);
 
             return ( 
               <React.Fragment key={url}>
@@ -100,8 +83,7 @@ const App = () => {
 
         <Switch>
           {definitions.nav.map((definition: any) => {
-            const { appId, text, url } = definition;
-            // debugger;
+            const { appId, url } = definition;
             const appDefintion = definitions.apps[appId];
 
             return (
@@ -113,53 +95,6 @@ const App = () => {
             );
           })}
         </Switch>
-        
-        {/* 
-        <React.Suspense fallback="Loading...">
-          <Switch>
-            <Route
-              path='/site/app1'
-              render={(routeProps: RouteProps) => <RemoteButton1 />}
-            />
-            <Route
-              path='/site/app2'
-              render={(routeProps: RouteProps) => <RemoteButton2 />}
-            />
-          </Switch>
-        </React.Suspense> 
-
-
-        <React.Suspense fallback="Loading...">
-          <Switch>
-            <Route
-              path='/site/app1'
-              render={(routeProps: RouteProps) => {
-                const RemoteButton1 = React.lazy(() => import("app1/button"));
-                // const RemoteButton1 = React.lazy(() => import(definitions.nav[0].remoteImport));
-                return <RemoteButton1 />
-              }}
-              />
-            <Route
-              path='/site/app2'
-              render={(routeProps: RouteProps) => {
-                const RemoteButton2 = React.lazy(() => import("app2/button"));
-                // const RemoteButton2 = React.lazy(() => import(definitions.nav[1].remoteImport));
-                return <RemoteButton2 />
-              }}
-            />
-          </Switch>
-        </React.Suspense> 
-        */}
-
-        {/* 
-        <h3>app1System</h3>
-        <System {...app1System} />
-
-        <h3>app2System</h3>
-        <System {...app2System} />
-         */}
-
-
       </div>
     </BrowserRouter>
   );
