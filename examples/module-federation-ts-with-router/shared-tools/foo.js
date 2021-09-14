@@ -67,18 +67,21 @@ const pathToConfig = path.join(__dirname, "src/webpack.config2");
 const definitions = require(pathToDefinitions);
 const getWebpackConfig = require(pathToConfig);
 const webpackConfig = getWebpackConfig(definitions.webpackConfigMixin, definitions.moduleFederationConfig);
+const devServerOptions = { ...webpackConfig.devServer, open: true };
+
 console.log(`
 
   pathToDefinitions: ${pathToDefinitions}
   pathToConfig: ${pathToConfig}
-  typeof getWebpackConfig: ${getWebpackConfig}
   webpackConfig: ${JSON.stringify(webpackConfig, null, 2)}
+  
+  devServerOptions: ${JSON.stringify(devServerOptions, null, 2)}
   
 `)
   
 const compiler = Webpack(webpackConfig);
-const server = new WebpackDevServer(webpackConfig.devServer, compiler);
+const server = new WebpackDevServer(devServerOptions, compiler);
 
 server.startCallback(() => {
-  console.log("Starting server on http://localhost:8080");
+  // console.log("Starting server on http://localhost:8080");
 });
