@@ -1,4 +1,5 @@
 const _ = require('lodash');
+const CopyPlugin = require("copy-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { ModuleFederationPlugin } = require("webpack").container;
 const path = require("path");
@@ -36,8 +37,13 @@ module.exports = (configMixin, moduleFederationConfig) => {
     //   publicPath,
     // },
     plugins: [
+      new CopyPlugin({
+        patterns: [
+          { from: "public", to: "" },
+        ],
+      }),
       new HtmlWebpackPlugin({
-        template: "./public/index.html",
+        template: "./src/index.html",
       }),
       new ModuleFederationPlugin(
         moduleFederationConfig
