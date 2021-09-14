@@ -15,6 +15,10 @@ import { Test } from '@module-federation-ts-with-router/shared-tools';
 
 console.log('....Test', Test);
 
+declare const window: any;
+window.React = React;
+window.react = React;
+
 // TODO: move the JSON file
 const teamDefinitions = require("./team-definitions.json");
 
@@ -87,6 +91,8 @@ const App = () => {
           })}
         </div>
 
+        {/* 
+        */}
         <Switch>
           {definitions.nav.map((definition: any) => {
             const { appId, url } = definition;
