@@ -1,5 +1,9 @@
 import * as React from 'react';
 
+/**
+ * CODE MODIFIED FROM: https://github.com/module-federation/module-federation-examples/blob/master/dynamic-system-host/app1/src/App.js
+ */
+
 // TODO: types
 
 function loadComponent(scope: any, module: any) {
@@ -64,23 +68,23 @@ const useDynamicScript = (args: any) => {
 // TODO: types
 export const System = (props: any) => {
   const { ready, failed } = useDynamicScript({
-    url: props.system && props.system.url,
+    url: props && props.url,
   });
 
-  if (!props.system) {
+  if (!props) {
     return <h2>Not system specified</h2>;
   }
 
   if (!ready) {
-    return <h2>Loading dynamic script: {props.system.url}</h2>;
+    return <h2>Loading dynamic script: {props.url}</h2>;
   }
 
   if (failed) {
-    return <h2>Failed to load dynamic script: {props.system.url}</h2>;
+    return <h2>Failed to load dynamic script: {props.url}</h2>;
   }
 
   const Component = React.lazy(
-    loadComponent(props.system.scope, props.system.module)
+    loadComponent(props.scope, props.module)
   );
 
   return (

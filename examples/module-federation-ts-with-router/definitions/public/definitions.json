@@ -1,15 +1,27 @@
 {
   "teamId": "team1",
-  "nav":  [
-    { 
+  "nav": [
+    {
       "text": "App1",
       "url": "/site/app1",
-      "remoteImport": "app1/button"
+      "appId": "app1Id"
     },
-    { 
+    {
       "text": "App2",
       "url": "/site/app2",
-      "remoteImport": "app2/button"
+      "appId": "app2Id"
     }
-  ]
+  ],
+  "apps": {
+    "app1Id": {
+      "module": "./button",
+      "scope": "app1",
+      "url": "/assets/app1/remoteEntry.js"
+    },
+    "app2Id": {
+      "module": "./button",
+      "scope": "app2",
+      "url": "/assets/app2/remoteEntry.js"
+    }
+  }
 }

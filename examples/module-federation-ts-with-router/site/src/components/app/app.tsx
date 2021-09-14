@@ -30,13 +30,16 @@ const App = () => {
         const res = fetch(teamDefinitionUrl).then(res => {
           return res.json();
         }).then(data => {
-          const newDefinitions = {
-            nav: [
-              ...definitions.nav,
-              ...data.nav
-            ]
-          };
-          setDefinitions(newDefinitions);
+          // TODO: fix
+          // const newDefinitions = {
+          //   nav: [
+          //     ...definitions.nav,
+          //     ...data.nav
+          //   ]
+          // };
+          // setDefinitions(newDefinitions);
+
+          setDefinitions(data);
 
           setIsLoading(false); // TODO: use Promise.all() instead
         })
@@ -50,17 +53,17 @@ const App = () => {
     return null;
   }
 
-  const app1System = {
-    module: "./button",
-    scope: "app1",
-    url: "/assets/app1/remoteEntry.js",
-  };
+  // const app1System = {
+  //   module: "./button",
+  //   scope: "app1",
+  //   url: "/assets/app1/remoteEntry.js",
+  // };
 
-  const app2System = {
-    module: "./button",
-    scope: "app2",
-    url: "/assets/app2/remoteEntry.js",
-  };
+  // const app2System = {
+  //   module: "./button",
+  //   scope: "app2",
+  //   url: "/assets/app2/remoteEntry.js",
+  // };
 
   return (
     <BrowserRouter>
@@ -95,6 +98,22 @@ const App = () => {
           })}
         </div>
 
+        <Switch>
+          {definitions.nav.map((definition: any) => {
+            const { appId, text, url } = definition;
+            // debugger;
+            const appDefintion = definitions.apps[appId];
+
+            return (
+              <Route
+                key={url}
+                path={url}
+                render={(routeProps: RouteProps) => <System {...appDefintion} />}
+              />
+            );
+          })}
+        </Switch>
+        
         {/* 
         <React.Suspense fallback="Loading...">
           <Switch>
@@ -132,11 +151,13 @@ const App = () => {
         </React.Suspense> 
         */}
 
+        {/* 
         <h3>app1System</h3>
-        <System system={app1System} />
+        <System {...app1System} />
 
         <h3>app2System</h3>
-        <System system={app2System} />
+        <System {...app2System} />
+         */}
 
 
       </div>
