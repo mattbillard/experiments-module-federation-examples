@@ -3,7 +3,6 @@
     "declaration": true,
     "jsx": "react",
     "module": "esnext",
-    "outDir": "./dist/",
     "skipLibCheck": true,
     "sourceMap": true,
     "strict": true,
