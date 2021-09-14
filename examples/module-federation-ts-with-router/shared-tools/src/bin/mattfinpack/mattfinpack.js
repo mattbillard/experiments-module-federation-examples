@@ -30,7 +30,7 @@ const WebpackDevServer = require('webpack-dev-server/lib/Server');
 // Paths
 const cwd = process.cwd();
 const appDefinitionsPath = path.join(cwd, 'webpack.config');
-const webpackConfigPath = path.join(__dirname, 'webpack.config');
+const webpackConfigPath = path.join(__dirname, 'webpack.config.base');
 
 // Get configs
 const { moduleFederationPluginConfig, webpackConfigMixin } = require(appDefinitionsPath);
@@ -43,7 +43,7 @@ switch(command) {
     // Run WebpackDev build
     compiler.run((err, stats) => {
       if (err || stats.hasErrors()) {
-        console.error(err, stats);
+        console.error(err, stats.compilation.errors);
       }
     });
     break;
