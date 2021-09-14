@@ -3,10 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "webpack-cli serve",
+    "start": "foo",
     "build": "webpack --mode production",
-    "clean": "rm -rf dist",
-    "foo": "foo"
+    "clean": "rm -rf dist"
   },
   "dependencies": {
     "@module-federation-ts-with-router/shared-tools": "file:../shared-tools",
