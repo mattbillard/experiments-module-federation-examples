@@ -3,11 +3,13 @@
   "nav":  [
     { 
       "text": "App1",
-      "url": "/site/app1"
+      "url": "/site/app1",
+      "remoteImport": "app1/button"
     },
     { 
       "text": "App2",
-      "url": "/site/app2"
+      "url": "/site/app2",
+      "remoteImport": "app2/button"
     }
   ]
 }

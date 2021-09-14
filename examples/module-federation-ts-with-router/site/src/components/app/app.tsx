@@ -13,8 +13,8 @@ import LocalButton from "../button/button";
 const teamDefinitions = require("./team-definitions.json");
 
 // TODO: fix types
-const RemoteButton1 = React.lazy(() => import("app1/button"));
-const RemoteButton2 = React.lazy(() => import("app2/button"));
+// const RemoteButton1 = React.lazy(() => import("app1/button"));
+// const RemoteButton2 = React.lazy(() => import("app2/button"));
 
 const App = () => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
@@ -56,10 +56,12 @@ const App = () => {
         <h2>Site</h2>
 
         <LocalButton />
+        {/* 
         <React.Suspense fallback="Loading...">
           <RemoteButton1 />
           <RemoteButton2 />
         </React.Suspense>
+         */}
         <br />
         <br />
 
@@ -84,16 +86,56 @@ const App = () => {
         <React.Suspense fallback="Loading...">
           <Switch>
             <Route
-              path={definitions.nav.App1}
+              path='/site/app1'
               render={(routeProps: RouteProps) => <RemoteButton1 />}
             />
             <Route
-              path={definitions.nav.App2}
+              path='/site/app2'
               render={(routeProps: RouteProps) => <RemoteButton2 />}
             />
           </Switch>
         </React.Suspense> 
+
+        <React.Suspense fallback="Loading...">
+          <Switch>
+            <Route
+              path='/site/app1'
+              render={(routeProps: RouteProps) => {
+                const RemoteButton1 = React.lazy(() => import("app1/button"));
+                return <RemoteButton1 />
+              }}
+              />
+            <Route
+              path='/site/app2'
+              render={(routeProps: RouteProps) => {
+                const RemoteButton2 = React.lazy(() => import("app2/button"));
+                return <RemoteButton2 />
+              }}
+            />
+          </Switch>
+        </React.Suspense> 
         */}
+
+        <React.Suspense fallback="Loading...">
+          <Switch>
+            <Route
+              path='/site/app1'
+              render={(routeProps: RouteProps) => {
+                const RemoteButton1 = React.lazy(() => import("app1/button"));
+                // const RemoteButton1 = React.lazy(() => import(definitions.nav[0].remoteImport));
+                return <RemoteButton1 />
+              }}
+              />
+            <Route
+              path='/site/app2'
+              render={(routeProps: RouteProps) => {
+                const RemoteButton2 = React.lazy(() => import("app2/button"));
+                // const RemoteButton2 = React.lazy(() => import(definitions.nav[1].remoteImport));
+                return <RemoteButton2 />
+              }}
+            />
+          </Switch>
+        </React.Suspense> 
       </div>
     </BrowserRouter>
   );
