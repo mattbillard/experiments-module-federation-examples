@@ -20,9 +20,9 @@ const appDefinitionsPath = path.join(cwd, 'webpack.config');
 const webpackConfigPath = path.join(__dirname, 'webpack.config');
 
 // Get configs
-const { moduleFederationConfig, webpackConfigMixin } = require(appDefinitionsPath);
+const { moduleFederationPluginConfig, webpackConfigMixin } = require(appDefinitionsPath);
 const getWebpackConfig = require(webpackConfigPath);
-const webpackConfig = getWebpackConfig(webpackConfigMixin, moduleFederationConfig);
+const webpackConfig = getWebpackConfig(cwd, webpackConfigMixin, moduleFederationPluginConfig);
   
 // Start WebpackDevServer
 const compiler = Webpack(webpackConfig);

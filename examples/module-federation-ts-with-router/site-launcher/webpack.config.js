@@ -38,9 +38,9 @@ const webpackConfigMixin = {
   mode: "development",
 };
 
-const moduleFederationConfig = {};
+const moduleFederationPluginConfig = {};
 
 module.exports = {
-  moduleFederationConfig,
+  moduleFederationPluginConfig,
   webpackConfigMixin,
 };

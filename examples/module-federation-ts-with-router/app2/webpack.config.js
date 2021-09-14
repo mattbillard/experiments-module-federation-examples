@@ -10,7 +10,7 @@ const webpackConfigMixin = {
   },
 };
 
-const moduleFederationConfig = {
+const moduleFederationPluginConfig = {
   name: "app2",
   filename: "remoteEntry.js",
   exposes: {
@@ -20,6 +20,6 @@ const moduleFederationConfig = {
 };
 
 module.exports = {
-  moduleFederationConfig,
+  moduleFederationPluginConfig,
   webpackConfigMixin,
 };

@@ -1,10 +1,11 @@
 const _ = require('lodash');
-const CopyPlugin = require("copy-webpack-plugin");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const { ModuleFederationPlugin } = require("webpack").container;
-const path = require("path");
+const fs = require('fs');
+const CopyPlugin = require('copy-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { ModuleFederationPlugin } = require('webpack').container;
+const path = require('path');
 
-module.exports = (configMixin, moduleFederationConfig) => {
+module.exports = (appDir, appWebpackConfig, moduleFederationPluginConfig) => {
   const defaultConfig = {
     devServer: {
       // devMiddleware: {
@@ -14,21 +15,21 @@ module.exports = (configMixin, moduleFederationConfig) => {
       hot: false,
       liveReload: false,
       static: {
-        directory: path.join(__dirname, "dist"),
+        directory: path.join(__dirname, 'dist'),
       },
     },
-    devtool: "source-map",
-    entry: "./src/index",
-    mode: "development",
+    devtool: 'source-map',
+    entry: './src/index',
+    mode: 'development',
     module: {
       rules: [
         {
           test: /\.css$/,
-          use: ["style-loader", "css-loader"],
+          use: ['style-loader', 'css-loader'],
         },
         {
           test: /\.tsx?$/,
-          loader: "ts-loader",
+          loader: 'ts-loader',
           exclude: /node_modules/,
         },
       ],
@@ -37,53 +38,40 @@ module.exports = (configMixin, moduleFederationConfig) => {
     //   publicPath,
     // },
     plugins: [
-      new CopyPlugin({
-        patterns: [
-          { from: "public", to: "" },
-        ],
-      }),
-      new HtmlWebpackPlugin({
-        template: "./src/index.html",
-      }),
-      new ModuleFederationPlugin(
-        moduleFederationConfig
-      ),
+      // See below
     ],
     resolve: {
-      extensions: [".ts", ".tsx", ".js"],
+      extensions: ['.ts', '.tsx', '.js'],
     },
   };
 
-  return _.merge({}, defaultConfig, configMixin);
+  // Merge configs
+  const mergedConfig = _.merge({}, defaultConfig, appWebpackConfig);
+
+  // CopyPlugin
+  if (fs.existsSync(path.join(appDir, 'public'))) {
+    const copyPlugin = new CopyPlugin({
+      patterns: [
+        { from: 'public', to: '' },
+      ],
+    });
+    mergedConfig.plugins.push(copyPlugin);
+  }
+
+  // HtmlWebpackPlugin
+  if (fs.existsSync(path.join(appDir, 'src/index.html'))) {
+    const htmlWebpackPlugin = new HtmlWebpackPlugin({
+      template: './src/index.html',
+    });
+    mergedConfig.plugins.push(htmlWebpackPlugin);
+  }
+
+  // ModuleFederationPlugin
+  if (moduleFederationPluginConfig) {
+    const moduleFederationPlugin = new ModuleFederationPlugin(moduleFederationPluginConfig);
+    mergedConfig.plugins.push(moduleFederationPlugin);
+  }
+
+
+  return mergedConfig;
 };
-
-// module.exports = (cwd) => {
-//   const defaultConfig = {
-//     devServer: {
-//       port: 1101,
-//       hot: false,
-//       liveReload: false,
-//       static: {
-//         directory: path.join(cwd, "dist"),
-//       },
-//     },
-//     entry: path.resolve(cwd, 'src/index.js'),
-//     mode: "development",
-//     module: {
-//       rules: [
-//         {
-//           test: /\.css$/,
-//           use: ["style-loader", "css-loader"],
-//         },
-//         {
-//           test: /\.tsx?$/,
-//           loader: "ts-loader",
-//           exclude: /node_modules/,
-//         },
-//       ],
-//     },
-//   };
-
-//   return defaultConfig;
-// };
-  

@@ -32,7 +32,7 @@ const webpackConfigMixin = {
   },
 };
 
-const moduleFederationConfig = {
+const moduleFederationPluginConfig = {
   name: "site",
   remotes: {
     app1: "app1@/assets/app1/remoteEntry.js",
@@ -42,6 +42,6 @@ const moduleFederationConfig = {
 };
 
 module.exports = {
-  moduleFederationConfig,
+  moduleFederationPluginConfig,
   webpackConfigMixin,
 };
