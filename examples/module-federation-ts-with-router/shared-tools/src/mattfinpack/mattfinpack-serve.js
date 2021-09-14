@@ -17,7 +17,7 @@ const WebpackDevServer = require('webpack-dev-server/lib/Server');
 // Paths
 const cwd = process.cwd();
 const appDefinitionsPath = path.join(cwd, 'webpack.config');
-const webpackConfigPath = path.join(__dirname, 'src/webpack.config');
+const webpackConfigPath = path.join(__dirname, 'webpack.config');
 
 // Get configs
 const { moduleFederationConfig, webpackConfigMixin } = require(appDefinitionsPath);

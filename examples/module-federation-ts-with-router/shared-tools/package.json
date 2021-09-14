@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "bin": {
-    "mattfinpack-serve": "./mattfinpack-serve.js"
+    "mattfinpack-serve": "./src/mattfinpack/mattfinpack-serve.js"
   },
   "dependencies": {
     "copy-webpack-plugin": "^9.0.1",

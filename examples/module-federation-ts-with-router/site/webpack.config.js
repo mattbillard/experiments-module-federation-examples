@@ -42,6 +42,7 @@ const moduleFederationConfig = {
   shared: ["react", "react-dom"],
 };
 
-const config = getConfig(webpackConfigMixin, moduleFederationConfig);
-
-module.exports = config;
+module.exports = {
+  moduleFederationConfig,
+  webpackConfigMixin,
+};
