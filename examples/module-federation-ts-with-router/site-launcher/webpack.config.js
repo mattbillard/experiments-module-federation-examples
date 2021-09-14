@@ -36,5 +36,6 @@ module.exports = (env = {}) => {
         directory: path.join(__dirname, "public"),
       },
     },
+    mode: "development",
   };
 };
