@@ -34,11 +34,12 @@ module.exports = (appDir, mode = 'development', appWebpackConfig = {}, moduleFed
         },
       ],
     },
-    // output: {
+    output: {
+      libraryTarget: 'umd',
     //   filename: '[name].js',
     //   // filename: 'index.js',
     //   // publicPath,
-    // },
+    },
     plugins: [
       // See below
     ],

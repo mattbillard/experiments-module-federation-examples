@@ -11,6 +11,9 @@ import {
 import LocalButton from "../button/button";
 // import { DynamicComponentLoader } from '@module-federation-ts-with-router/shared-tools';
 import { DynamicComponentLoader } from '../dynamic-component-loader/dynamic-component-loader';
+import { Test } from '@module-federation-ts-with-router/shared-tools';
+
+console.log('....Test', Test);
 
 // TODO: move the JSON file
 const teamDefinitions = require("./team-definitions.json");
@@ -60,6 +63,7 @@ const App = () => {
       <div>
         <h1>module-federation-ts-with-router</h1>
         <h2>Site</h2>
+        <Test text="Hello React" />
 
         <LocalButton />
         {/* 
