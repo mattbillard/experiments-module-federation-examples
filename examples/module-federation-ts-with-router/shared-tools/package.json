@@ -2,8 +2,14 @@
   "name": "@module-federation-ts-with-router/shared-tools",
   "version": "0.0.0",
   "private": true,
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "bin": {
-    "mattfinpack": "./src/mattfinpack/mattfinpack.js"
+    "mattfinpack": "./src/bin/mattfinpack/mattfinpack.js"
+  },
+  "scripts": {
+    "build": "node ./src/bin/mattfinpack/mattfinpack.js build --mode production",
+    "clean": "rm -rf dist"
   },
   "dependencies": {
     "copy-webpack-plugin": "^9.0.1",

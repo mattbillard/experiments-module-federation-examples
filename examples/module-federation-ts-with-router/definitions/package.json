@@ -2,6 +2,8 @@
   "name": "@module-federation-ts-with-router/definitions",
   "version": "0.0.0",
   "private": true,
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "start": "mattfinpack serve",
     "build": "mattfinpack build --mode production",

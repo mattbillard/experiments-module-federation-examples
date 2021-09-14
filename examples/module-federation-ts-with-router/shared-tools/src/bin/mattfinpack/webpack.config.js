@@ -35,7 +35,9 @@ module.exports = (appDir, mode = 'development', appWebpackConfig = {}, moduleFed
       ],
     },
     // output: {
-    //   publicPath,
+    //   filename: '[name].js',
+    //   // filename: 'index.js',
+    //   // publicPath,
     // },
     plugins: [
       // See below
