@@ -5,7 +5,7 @@
   "scripts": {
     "start": "webpack-cli serve",
     "clean": "rm -rf dist",
-    "deploy": "npm run clean && mkdir -p dist/assets && run-p _deploy:*",
+    "deploy": "mkdir -p dist/assets && run-p _deploy:*",
     "_deploy:definitions": "  rm -rf dist/assets/definitions      && cp -r ../definitions/dist/assets   dist",
     "_deploy:app1": "         rm -rf dist/assets/app1             && cp -r ../app1/dist/assets          dist",
     "_deploy:app2": "         rm -rf dist/assets/app2             && cp -r ../app2/dist/assets          dist",

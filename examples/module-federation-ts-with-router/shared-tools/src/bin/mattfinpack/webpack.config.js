@@ -43,6 +43,9 @@ module.exports = (appDir, mode = 'development', appWebpackConfig = {}, moduleFed
       // See below
     ],
     resolve: {
+      // alias: {
+      //   'react': path.resolve(__dirname, './node_modules/react'),
+      // },
       extensions: ['.ts', '.tsx', '.js'],
     },
   };

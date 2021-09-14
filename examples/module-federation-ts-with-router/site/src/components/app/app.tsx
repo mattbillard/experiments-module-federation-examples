@@ -9,6 +9,7 @@ import {
   RouteProps,
 } from "react-router-dom";
 import LocalButton from "../button/button";
+// import { DynamicComponentLoader } from '@module-federation-ts-with-router/shared-tools';
 import { DynamicComponentLoader } from '../dynamic-component-loader/dynamic-component-loader';
 
 // TODO: move the JSON file
