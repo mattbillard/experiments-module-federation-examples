@@ -86,6 +86,19 @@ module.exports = (cwd) => {
     },
     entry: path.resolve(cwd, 'src/index.js'),
     mode: "development",
+    module: {
+      rules: [
+        {
+          test: /\.css$/,
+          use: ["style-loader", "css-loader"],
+        },
+        {
+          test: /\.tsx?$/,
+          loader: "ts-loader",
+          exclude: /node_modules/,
+        },
+      ],
+    },
   };
 
   return defaultConfig;
