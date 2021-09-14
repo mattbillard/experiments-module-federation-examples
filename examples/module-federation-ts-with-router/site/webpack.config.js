@@ -34,10 +34,10 @@ const webpackConfigMixin = {
 
 const moduleFederationPluginConfig = {
   name: "site",
-  remotes: {
-    app1: "app1@/assets/app1/remoteEntry.js",
-    app2: "app2@/assets/app2/remoteEntry.js",
-  },
+  // remotes: {
+  //   app1: "app1@/assets/app1/remoteEntry.js",
+  //   app2: "app2@/assets/app2/remoteEntry.js",
+  // },
   shared: ["react", "react-dom"],
 };
 

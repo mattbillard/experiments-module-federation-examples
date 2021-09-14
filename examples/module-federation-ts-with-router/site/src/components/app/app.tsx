@@ -9,6 +9,7 @@ import {
   RouteProps,
 } from "react-router-dom";
 import LocalButton from "../button/button";
+import { System } from '../system/system';
 
 const teamDefinitions = require("./team-definitions.json");
 
@@ -48,6 +49,18 @@ const App = () => {
   if (isLoading) {
     return null;
   }
+
+  const app1System = {
+    module: "./button",
+    scope: "app1",
+    url: "/assets/app1/remoteEntry.js",
+  };
+
+  const app2System = {
+    module: "./button",
+    scope: "app2",
+    url: "/assets/app2/remoteEntry.js",
+  };
 
   return (
     <BrowserRouter>
@@ -96,25 +109,6 @@ const App = () => {
           </Switch>
         </React.Suspense> 
 
-        <React.Suspense fallback="Loading...">
-          <Switch>
-            <Route
-              path='/site/app1'
-              render={(routeProps: RouteProps) => {
-                const RemoteButton1 = React.lazy(() => import("app1/button"));
-                return <RemoteButton1 />
-              }}
-              />
-            <Route
-              path='/site/app2'
-              render={(routeProps: RouteProps) => {
-                const RemoteButton2 = React.lazy(() => import("app2/button"));
-                return <RemoteButton2 />
-              }}
-            />
-          </Switch>
-        </React.Suspense> 
-        */}
 
         <React.Suspense fallback="Loading...">
           <Switch>
@@ -136,6 +130,15 @@ const App = () => {
             />
           </Switch>
         </React.Suspense> 
+        */}
+
+        <h3>app1System</h3>
+        <System system={app1System} />
+
+        <h3>app2System</h3>
+        <System system={app2System} />
+
+
       </div>
     </BrowserRouter>
   );
