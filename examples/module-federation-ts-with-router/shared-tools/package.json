@@ -3,13 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "bin": {
-    "finpack-serve": "./finpack-serve.js"
-  },
-  "scripts": {
-    "start": "webpack-cli serve",
-    "build": "webpack --mode production",
-    "clean": "rm -rf dist",
-    "foo": "node foo.js"
+    "mattfinpack-serve": "./mattfinpack-serve.js"
   },
   "dependencies": {
     "copy-webpack-plugin": "^9.0.1",
