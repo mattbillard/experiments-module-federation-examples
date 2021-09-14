@@ -6,10 +6,10 @@
     "start": "webpack-cli serve",
     "clean": "rm -rf dist",
     "deploy": "npm run clean && mkdir -p dist/assets && run-p _deploy:*",
-    "_deploy:definitions": "  rm -rf dist/assets/definitions      && cp -r ../definitions/dist/assets   dist    && rm -rf ../definitions/dist",
-    "_deploy:app1": "         rm -rf dist/assets/app1             && cp -r ../app1/dist/assets          dist    && rm -rf ../app1/dist",
-    "_deploy:app2": "         rm -rf dist/assets/app2             && cp -r ../app2/dist/assets          dist    && rm -rf ../app2/dist",
-    "_deploy:site": "         rm -rf dist/assets/site             && cp -r ../site/dist/assets          dist    && rm -rf ../site/dist"
+    "_deploy:definitions": "  rm -rf dist/assets/definitions      && cp -r ../definitions/dist/assets   dist",
+    "_deploy:app1": "         rm -rf dist/assets/app1             && cp -r ../app1/dist/assets          dist",
+    "_deploy:app2": "         rm -rf dist/assets/app2             && cp -r ../app2/dist/assets          dist",
+    "_deploy:site": "         rm -rf dist/assets/site             && cp -r ../site/dist/assets          dist"
   },
   "dependencies": {},
   "devDependencies": {

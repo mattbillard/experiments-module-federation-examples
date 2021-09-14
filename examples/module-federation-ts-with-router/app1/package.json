@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "mattfinpack-serve",
-    "build": "webpack --mode production",
+    "build": "mattfinpack-build --mode production",
     "clean": "rm -rf dist"
   },
   "dependencies": {
