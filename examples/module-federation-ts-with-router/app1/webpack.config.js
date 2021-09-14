@@ -1,5 +1,5 @@
 const path = require('path');
-const getConfig = require('./node_modules/@module-federation-ts-with-router/shared-tools/src/webpack.config.js');
+// const getConfig = require('./node_modules/@module-federation-ts-with-router/shared-tools/src/webpack.config.js');
 
 const webpackConfigMixin = {
   devServer: {
@@ -20,6 +20,10 @@ const moduleFederationConfig = {
   shared: ["react", "react-dom"],
 };
 
-const config = getConfig(webpackConfigMixin, moduleFederationConfig);
+// const config = getConfig(webpackConfigMixin, moduleFederationConfig);
 
-module.exports = config;
+// module.exports = config;
+module.exports = {
+  moduleFederationConfig,
+  webpackConfigMixin,
+};

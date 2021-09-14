@@ -52,17 +52,29 @@ const WebpackDevServer = require("webpack-dev-server/lib/Server");
 // const getWebpackConfig = require(pathToConfig);
 // const webpackConfig = getWebpackConfig(cwd);
 
-const pathToConfig = path.join(__dirname, "src/webpack.config");
+const pathToConfig = path.join(__dirname, "src/webpack.config1");
 const getWebpackConfig = require(pathToConfig);
 const webpackConfig = getWebpackConfig(cwd);
-
-console.log(`
-
+console.log(`\n\n
   pathToConfig: ${pathToConfig}
   typeof getWebpackConfig: ${getWebpackConfig}
   webpackConfig: ${JSON.stringify(webpackConfig, null, 2)}
+\n\n`)
+
+
+// const pathToDefinitions = path.join(cwd, "webpack.config");
+// const pathToConfig = path.join(__dirname, "src/webpack.config");
+// const definitions = require(pathToDefinitions);
+// const getWebpackConfig = require(pathToConfig);
+// const webpackConfig = getWebpackConfig(definitions.webpackConfigMixin, definitions.moduleFederationConfig);
+// console.log(`
+
+//   pathToDefinitions: ${pathToDefinitions}
+//   pathToConfig: ${pathToConfig}
+//   typeof getWebpackConfig: ${getWebpackConfig}
+//   webpackConfig: ${JSON.stringify(webpackConfig, null, 2)}
   
-`)
+// `)
   
 const compiler = Webpack(webpackConfig);
 const server = new WebpackDevServer(webpackConfig.devServer, compiler);
