@@ -34,3 +34,16 @@ FOO
 
 
 `);
+
+// CODE MODIFIED FROM: https://github.com/webpack/webpack-dev-server/tree/master/examples/api/simple
+
+const Webpack = require("webpack");
+const WebpackDevServer = require("webpack-dev-server/lib/Server");
+const webpackConfig = require(path.join(process.cwd(), "./webpack.config"));
+
+const compiler = Webpack(webpackConfig);
+const server = new WebpackDevServer(webpackConfig.devServer, compiler);
+
+server.startCallback(() => {
+  console.log("Starting server on http://localhost:8080");
+});

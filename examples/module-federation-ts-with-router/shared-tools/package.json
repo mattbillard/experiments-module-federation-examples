@@ -6,12 +6,18 @@
     "foo": "./foo.js"
   },
   "scripts": {
+    "start": "webpack-cli serve",
+    "build": "webpack --mode production",
+    "clean": "rm -rf dist",
     "foo": "node foo.js"
   },
   "dependencies": {},
   "devDependencies": {
     "copy-webpack-plugin": "^9.0.1",
     "html-webpack-plugin": "^5.3.2",
-    "lodash": "^4.17.21"
+    "lodash": "^4.17.21",
+    "webpack": "5.52.0",
+    "webpack-cli": "4.8.0",
+    "webpack-dev-server": "4.1.0"
   }
 }
