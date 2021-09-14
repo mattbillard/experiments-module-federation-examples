@@ -14,7 +14,7 @@ module.exports = (env = {}) => {
     devServer: {
       port: 3000,
       // host: '0.0.0.0',
-      host: 'dev.localhost',  // TODO: you need to add the following to 
+      host: 'dev.localhost', // TODO: https://github.com/chimurai/http-proxy-middleware#example
       hot: false,
       historyApiFallback: {
         index: '/assets/site/index.html',

@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "webpack-cli serve",
+    "start": "mattfinpack-serve",
     "build": "webpack --mode production",
     "clean": "rm -rf dist"
   },

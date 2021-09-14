@@ -24,18 +24,23 @@ const proxy = Object.entries(proxiesHashMap).map(([key, value]) => {
   }
 });
 
-module.exports = (env = {}) => {
-  return {
-    devServer: {
-      host: '0.0.0.0',
-      hot: false,
-      liveReload: false,
-      port: 2000,
-      proxy,
-      static: {
-        directory: path.join(__dirname, "public"),
-      },
+const webpackConfigMixin = {
+  devServer: {
+    host: '0.0.0.0',
+    hot: false,
+    liveReload: false,
+    port: 2000,
+    proxy,
+    static: {
+      directory: path.join(__dirname, "public"),
     },
-    mode: "development",
-  };
+  },
+  mode: "development",
+};
+
+const moduleFederationConfig = {};
+
+module.exports = {
+  moduleFederationConfig,
+  webpackConfigMixin,
 };

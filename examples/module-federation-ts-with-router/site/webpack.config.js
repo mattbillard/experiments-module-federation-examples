@@ -1,5 +1,4 @@
 const path = require('path');
-const getConfig = require('./node_modules/@module-federation-ts-with-router/shared-tools/src/webpack.config.js');
 
 const webpackConfigMixin = {
   devServer: {
