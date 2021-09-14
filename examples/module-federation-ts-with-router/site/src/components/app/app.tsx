@@ -9,8 +9,9 @@ import {
   RouteProps,
 } from "react-router-dom";
 import LocalButton from "../button/button";
-import { System } from '../system/system';
+import { DynamicComponentLoader } from '../dynamic-component-loader/dynamic-component-loader';
 
+// TODO: move the JSON file
 const teamDefinitions = require("./team-definitions.json");
 
 // TODO: fix types
@@ -84,13 +85,18 @@ const App = () => {
         <Switch>
           {definitions.nav.map((definition: any) => {
             const { appId, url } = definition;
-            const appDefintion = definitions.apps[appId];
+            const { module, remoteEntryUrl, scope } = definitions.apps[appId];
 
             return (
               <Route
                 key={url}
                 path={url}
-                render={(routeProps: RouteProps) => <System {...appDefintion} />}
+                render={(routeProps: RouteProps) => 
+                  <DynamicComponentLoader
+                    module={module}
+                    remoteEntryUrl={remoteEntryUrl}
+                    scope={scope}
+                />}
               />
             );
           })}

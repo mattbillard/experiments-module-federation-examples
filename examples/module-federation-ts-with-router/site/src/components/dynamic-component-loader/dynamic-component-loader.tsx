@@ -65,19 +65,19 @@ const useDynamicScript = (url: string) => {
   };
 };
 
-export interface ISystem {
+export interface IDynamicComponentLoader {
   module: string;
+  remoteEntryUrl: string;
   scope: string;
-  url: string;
 }
 
-export const System = (props: ISystem) => {
-  const { module, scope, url } = props;
-  const { ready, failed } = useDynamicScript(url);
+export const DynamicComponentLoader = (props: IDynamicComponentLoader) => {
+  const { module, scope, remoteEntryUrl } = props;
+  const { ready, failed } = useDynamicScript(remoteEntryUrl);
 
   if (!props) return <span>Error: no system specified</span>;
   if (!ready) return <span>Loading...</span>;
-  if (failed) return <span>Error: failed to load dynamic script: {url}</span>;
+  if (failed) return <span>Error: failed to load dynamic script: {remoteEntryUrl}</span>;
 
   const Component = React.lazy(loadComponent(scope, module));
 

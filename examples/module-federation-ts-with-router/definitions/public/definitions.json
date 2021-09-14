@@ -16,12 +16,12 @@
     "app1Id": {
       "module": "./button",
       "scope": "app1",
-      "url": "/assets/app1/remoteEntry.js"
+      "remoteEntryUrl": "/assets/app1/remoteEntry.js"
     },
     "app2Id": {
       "module": "./button",
       "scope": "app2",
-      "url": "/assets/app2/remoteEntry.js"
+      "remoteEntryUrl": "/assets/app2/remoteEntry.js"
     }
   }
 }
