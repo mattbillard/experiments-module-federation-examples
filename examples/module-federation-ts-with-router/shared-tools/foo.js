@@ -16,6 +16,7 @@ const [...args] = process.argv;
 // const config = fs.readFileSync(pathToConfig);
 // const config = JSON.stringify( require(pathToConfig), null, 2);
 
+const cwd = process.cwd();
 
 console.log(`
 
@@ -26,7 +27,7 @@ FOO
 
   __dirname:     ${__dirname}
   __filename:    ${__filename}
-  process.cwd(): ${process.cwd()}
+  process.cwd(): ${cwd}
 
   
   
@@ -46,16 +47,23 @@ const Webpack = require("webpack");
 const WebpackDevServer = require("webpack-dev-server/lib/Server");
 
 // const pathToConfig = path.join(__dirname, "webpack.config");
-const pathToConfig = path.join(process.cwd(), "webpack.config");
-const webpackConfig = require(pathToConfig);
+// const webpackConfig = require(pathToConfig);
+// const pathToConfig = path.join(cwd, "webpack.config");
+// const getWebpackConfig = require(pathToConfig);
+// const webpackConfig = getWebpackConfig(cwd);
+
+const pathToConfig = path.join(__dirname, "src/webpack.config");
+const getWebpackConfig = require(pathToConfig);
+const webpackConfig = getWebpackConfig(cwd);
 
 console.log(`
 
   pathToConfig: ${pathToConfig}
+  typeof getWebpackConfig: ${getWebpackConfig}
   webpackConfig: ${JSON.stringify(webpackConfig, null, 2)}
   
 `)
-
+  
 const compiler = Webpack(webpackConfig);
 const server = new WebpackDevServer(webpackConfig.devServer, compiler);
 
