@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "mattfinpack-serve",
-    "build": "webpack --mode production",
+    "start": "mattfinpack serve",
+    "build": "mattfinpack build --mode production",
     "clean": "rm -rf dist"
   },
   "dependencies": {},

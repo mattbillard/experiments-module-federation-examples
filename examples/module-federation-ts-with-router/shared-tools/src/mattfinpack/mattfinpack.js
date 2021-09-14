@@ -10,45 +10,61 @@
  * - https://github.com/webpack/webpack-dev-server/tree/master/examples/api/simple
  */
 
+/**
+ * TODO: Could probably improve this bin script a lot with a help menu, etc
+ * https://github.com/sindresorhus/meow
+ */
+
 const args = process.argv;
 const yargs = require('yargs/yargs');
 const { hideBin } = require('yargs/helpers');
-const argv = yargs(hideBin(process.argv)).argv
+const argv = yargs(hideBin(args)).argv
 
 const command = argv._[0];
 const mode = argv.mode || 'development';
 
-console.log(`
+const path = require('path');
+const Webpack = require('webpack');
+const WebpackDevServer = require('webpack-dev-server/lib/Server');
 
-args:
-  ${JSON.stringify(args, null, 2)}
+// Paths
+const cwd = process.cwd();
+const appDefinitionsPath = path.join(cwd, 'webpack.config');
+const webpackConfigPath = path.join(__dirname, 'webpack.config');
 
-argv:
-  ${JSON.stringify(argv, null, 2)}
+// Get configs
+const { moduleFederationPluginConfig, webpackConfigMixin } = require(appDefinitionsPath);
+const getWebpackConfig = require(webpackConfigPath);
+const webpackConfig = getWebpackConfig(cwd, mode, webpackConfigMixin, moduleFederationPluginConfig);
+const compiler = Webpack(webpackConfig);
 
-command: ${command}
-mode: ${mode}
+switch(command) {
+  case 'build': {
+    // Run WebpackDev build
+    compiler.run((err, stats) => {
+      if (err || stats.hasErrors()) {
+        console.error(err, stats);
+      }
+    });
+    break;
+  }
 
-`)
+  case 'serve': {
+    // Start WebpackDevServer
+    const server = new WebpackDevServer(webpackConfig.devServer, compiler);
 
-// const path = require('path');
-// const Webpack = require('webpack');
-// const WebpackDevServer = require('webpack-dev-server/lib/Server');
+    server.startCallback(() => {
+      const port = webpackConfig.devServer.port || 8080;
+      const protocol = webpackConfig.devServer.secure ? 'https' : 'http';
+      const pathname = webpackConfig.output.publicPath;
+      
+      console.log(`Starting server on ${protocol}://localhost:${port}${pathname}`);
+    });
+    break;
+  }
 
-// // Paths
-// const cwd = process.cwd();
-// const appDefinitionsPath = path.join(cwd, 'webpack.config');
-// const webpackConfigPath = path.join(__dirname, 'webpack.config');
-
-// // Get configs
-// const { moduleFederationPluginConfig, webpackConfigMixin } = require(appDefinitionsPath);
-// const getWebpackConfig = require(webpackConfigPath);
-// const webpackConfig = getWebpackConfig(cwd, webpackConfigMixin, moduleFederationPluginConfig);
+  default: 
+    console.error(`Unrecognized mattfinpack command: ${command}`);
+}
   
-// // Run WebpackDev
-// const compiler = Webpack(webpackConfig);
-// compiler.run((err, stats) => {
-//   if (err || stats.hasErrors()) {
-//     console.error(err, stats);
-//   }
-// });
+

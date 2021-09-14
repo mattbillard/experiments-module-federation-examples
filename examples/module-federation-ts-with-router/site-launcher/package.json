@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "mattfinpack-serve"
+    "start": "mattfinpack serve"
   },
   "dependencies": {},
   "devDependencies": {

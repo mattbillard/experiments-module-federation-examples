@@ -5,7 +5,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { ModuleFederationPlugin } = require('webpack').container;
 const path = require('path');
 
-module.exports = (appDir, appWebpackConfig, moduleFederationPluginConfig) => {
+module.exports = (appDir, mode = 'development', appWebpackConfig = {}, moduleFederationPluginConfig = undefined) => {
   const defaultConfig = {
     devServer: {
       // devMiddleware: {
@@ -20,7 +20,7 @@ module.exports = (appDir, appWebpackConfig, moduleFederationPluginConfig) => {
     },
     devtool: 'source-map',
     entry: './src/index',
-    mode: 'development',
+    mode,
     module: {
       rules: [
         {
@@ -71,7 +71,6 @@ module.exports = (appDir, appWebpackConfig, moduleFederationPluginConfig) => {
     const moduleFederationPlugin = new ModuleFederationPlugin(moduleFederationPluginConfig);
     mergedConfig.plugins.push(moduleFederationPlugin);
   }
-
 
   return mergedConfig;
 };
