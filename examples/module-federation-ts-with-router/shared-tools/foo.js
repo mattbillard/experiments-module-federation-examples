@@ -12,9 +12,9 @@ const [...args] = process.argv;
 
 
 
-const pathToConfig = path.join(process.cwd(), 'webpack.config.js');
+// const pathToConfig = path.join(process.cwd(), 'webpack.config.js');
 // const config = fs.readFileSync(pathToConfig);
-const config = JSON.stringify( require(pathToConfig), null, 2);
+// const config = JSON.stringify( require(pathToConfig), null, 2);
 
 
 console.log(`
@@ -28,18 +28,33 @@ FOO
   __filename:    ${__filename}
   process.cwd(): ${process.cwd()}
 
-  pathToConfig: ${pathToConfig}
   
-  config: ${config}
+  
+  `);
+// pathToConfig: ${pathToConfig}  
+// config: ${config}
 
 
-`);
+
+
+
+
 
 // CODE MODIFIED FROM: https://github.com/webpack/webpack-dev-server/tree/master/examples/api/simple
 
 const Webpack = require("webpack");
 const WebpackDevServer = require("webpack-dev-server/lib/Server");
-const webpackConfig = require(path.join(process.cwd(), "./webpack.config"));
+
+const pathToConfig = path.join(__dirname, "webpack.config");
+// const webpackConfig = require(path.join(process.cwd(), "./webpack.config"));
+const webpackConfig = require(pathToConfig);
+
+console.log(`
+
+  pathToConfig: ${pathToConfig}
+  webpackConfig: ${JSON.stringify(webpackConfig, null, 2)}
+
+`)
 
 const compiler = Webpack(webpackConfig);
 const server = new WebpackDevServer(webpackConfig.devServer, compiler);
