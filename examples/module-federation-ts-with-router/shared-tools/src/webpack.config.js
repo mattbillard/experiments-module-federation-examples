@@ -4,8 +4,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { ModuleFederationPlugin } = require("webpack").container;
 const path = require("path");
 
-// module.exports = (configMixin, moduleFederationConfig) => {
-module.exports = (cwd) => {
+module.exports = (configMixin, moduleFederationConfig) => {
   const defaultConfig = {
     devServer: {
       // devMiddleware: {
@@ -18,61 +17,59 @@ module.exports = (cwd) => {
       hot: false,
       liveReload: false,
       static: {
-        directory: path.join(cwd, "dist"),
+        directory: path.join(__dirname, "dist"),
       },
     },
-    // devtool: "source-map",
-    entry: path.resolve(cwd, 'src/index'),
+    devtool: "source-map",
+    entry: "./src/index",
     mode: "development",
-    // module: {
-    //   rules: [
-    //     {
-    //       test: /\.css$/,
-    //       use: ["style-loader", "css-loader"],
-    //     },
-    //     {
-    //       test: /\.tsx?$/,
-    //       loader: "ts-loader",
-    //       exclude: /node_modules/,
-    //     },
-    //   ],
-    // },
-    // // output: {
-    // //   publicPath,
-    // // },
-
+    module: {
+      rules: [
+        {
+          test: /\.css$/,
+          use: ["style-loader", "css-loader"],
+        },
+        {
+          test: /\.tsx?$/,
+          loader: "ts-loader",
+          exclude: /node_modules/,
+        },
+      ],
+    },
     // output: {
-    //   path: path.resolve(cwd, 'dist/assets/app1'),
-    //   publicPath: '/assets/app1/',
+    //   publicPath,
     // },
+
+    output: {
+      path: path.resolve(__dirname, 'dist/assets/app1'),
+      publicPath: '/assets/app1/',
+    },
   
-    // plugins: [
-    //   new CopyPlugin({
-    //     patterns: [
-    //       { from: "public", to: "" },
-    //     ],
-    //   }),
-    //   new HtmlWebpackPlugin({
-    //     template: "./src/index.html",
-    //   }),
-    //   // new ModuleFederationPlugin(
-    //   //   moduleFederationConfig
-    //   // ),
-    //   new ModuleFederationPlugin({
-    //     name: "app1",
-    //     filename: "remoteEntry.js",
-    //     exposes: {
-    //       "./button": "./src/components/button/button",
-    //     },
-    //     shared: ["react", "react-dom"],
-    //   }),
-    // ],
-    // resolve: {
-    //   extensions: [".ts", ".tsx", ".js"],
-    // },
+    plugins: [
+      new CopyPlugin({
+        patterns: [
+          { from: "public", to: "" },
+        ],
+      }),
+      new HtmlWebpackPlugin({
+        template: "./src/index.html",
+      }),
+      // new ModuleFederationPlugin(
+      //   moduleFederationConfig
+      // ),
+      new ModuleFederationPlugin({
+        name: "app1",
+        filename: "remoteEntry.js",
+        exposes: {
+          "./button": "./src/components/button/button",
+        },
+        shared: ["react", "react-dom"],
+      }),
+    ],
+    resolve: {
+      extensions: [".ts", ".tsx", ".js"],
+    },
   };
 
-  // return _.merge({}, defaultConfig, configMixin);
-  // return _.merge({}, defaultConfig);
-  return defaultConfig;
+  return _.merge({}, defaultConfig, configMixin);
 };

@@ -45,15 +45,15 @@ FOO
 const Webpack = require("webpack");
 const WebpackDevServer = require("webpack-dev-server/lib/Server");
 
-const pathToConfig = path.join(__dirname, "webpack.config");
-// const webpackConfig = require(path.join(process.cwd(), "./webpack.config"));
+// const pathToConfig = path.join(__dirname, "webpack.config");
+const pathToConfig = path.join(process.cwd(), "webpack.config");
 const webpackConfig = require(pathToConfig);
 
 console.log(`
 
   pathToConfig: ${pathToConfig}
   webpackConfig: ${JSON.stringify(webpackConfig, null, 2)}
-
+  
 `)
 
 const compiler = Webpack(webpackConfig);
