@@ -14,7 +14,8 @@ module.exports = (cwd) => {
         directory: path.join(cwd, "dist"),
       },
     },
-    entry: path.resolve(cwd, 'src/index.js'),
+    // entry: path.resolve(cwd, 'src/index.js'),
+    entry: path.resolve(cwd, 'src/index.tsx'),
     mode: "development",
     module: {
       rules: [
