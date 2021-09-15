@@ -4,7 +4,7 @@ const proxiesHashMap = {
   '/site':                                'http://localhost:1002',
 
   // Anything not local will be proxied from dev-mock
-  '/':                                   'http://localhost:3000',
+  '/':                                   'http://localhost:2000',
 };
 
 const webpackConfigMixin = {

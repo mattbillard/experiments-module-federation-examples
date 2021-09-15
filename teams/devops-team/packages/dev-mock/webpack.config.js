@@ -12,9 +12,9 @@ module.exports = (env = {}) => {
   return {
     mode: 'development',
     devServer: {
-      port: 3000,
-      // host: '0.0.0.0',
-      host: 'dev.localhost', // TODO: https://github.com/chimurai/http-proxy-middleware#example
+      port: 2000,
+      host: '0.0.0.0',
+      // host: 'dev.localhost', // TODO: https://github.com/chimurai/http-proxy-middleware#example
       hot: false,
       historyApiFallback: {
         index: '/assets/core-team__site/index.html',
