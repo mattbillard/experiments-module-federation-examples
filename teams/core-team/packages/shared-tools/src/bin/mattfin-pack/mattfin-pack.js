@@ -16,26 +16,25 @@
  */
 
 const args = process.argv;
+const path = require('path');
 const yargs = require('yargs/yargs');
 const { hideBin } = require('yargs/helpers');
-const argv = yargs(hideBin(args)).argv
-
-const command = argv._[0];
-const mode = argv.mode || 'development';
-
-const path = require('path');
 const Webpack = require('webpack');
 const WebpackDevServer = require('webpack-dev-server/lib/Server');
 
+const argv = yargs(hideBin(args)).argv
+const command = argv._[0];
+const mode = argv.mode || 'development';
+
 // Paths
 const cwd = process.cwd();
-const appDefinitionsPath = path.join(cwd, 'webpack.config');
-const webpackConfigPath = path.join(__dirname, '../../webpack.config.base');
+const mattfinConfigsPath = path.join(cwd, 'webpack.config');
+const webpackConfigPath = path.join(__dirname, 'webpack.config.mattfin-pack');
 
 // Get configs
-const webpackConfigs = require(appDefinitionsPath);
+const mattfinConfigs = require(mattfinConfigsPath);
 const getWebpackConfig = require(webpackConfigPath);
-const webpackConfig = getWebpackConfig(cwd, mode, webpackConfigs);
+const webpackConfig = getWebpackConfig(cwd, mode, mattfinConfigs);
 const compiler = Webpack(webpackConfig);
 
 switch(command) {

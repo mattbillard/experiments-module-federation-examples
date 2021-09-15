@@ -48,7 +48,6 @@ const moduleFederationPluginConfig = {
 };
 
 module.exports = {
-  isApp: true,
   moduleFederationPluginConfig,
   webpackConfigMixin,
 };

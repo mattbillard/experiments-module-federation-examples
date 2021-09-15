@@ -5,8 +5,8 @@
   "main": "dist/assets/example-team1__app2/main.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "start": "mattfinpack serve",
-    "build": "mattfinpack build --mode production",
+    "start": "mattfin-pack serve",
+    "build": "mattfin-pack build --mode production",
     "clean": "rm -rf dist"
   },
   "dependencies": {

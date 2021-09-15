@@ -6,7 +6,7 @@ const { ModuleFederationPlugin } = require('webpack').container;
 const path = require('path');
 
 module.exports = (appDir, mode = 'development', webpackConfigs) => {
-  const isApp = webpackConfigs.isApp || false;  // TODO: clean up all instances
+  // Defaults
   const moduleFederationPluginConfig = webpackConfigs.moduleFederationPluginConfig || undefined;
   const webpackConfigMixin = webpackConfigs.webpackConfigMixin || {};
 
@@ -23,23 +23,6 @@ module.exports = (appDir, mode = 'development', webpackConfigs) => {
     },
     devtool: 'source-map',
     entry: './src/index',
-    // externals: isApp ? 
-    //   {} : 
-    //   {
-    //     // IMPORTANT: don't bundle react or react-dom or you will get errors about having multiple versions of React and violating the rule of hooks
-    //     react: {
-    //       commonjs: 'react',
-    //       commonjs2: 'react',
-    //       amd: 'React',
-    //       root: 'React'
-    //     },
-    //     'react-dom': {
-    //       commonjs: 'react-dom',
-    //       commonjs2: 'react-dom',
-    //       amd: 'ReactDOM',
-    //       root: 'ReactDOM'
-    //     },
-    //   },
     mode,
     module: {
       rules: [
@@ -57,16 +40,11 @@ module.exports = (appDir, mode = 'development', webpackConfigs) => {
     output: {
       libraryTarget: 'umd',
       // filename: '[name].js',
-      // filename: 'index.js',
     },
     plugins: [
       // See below
     ],
     resolve: {
-      // alias: isApp ? {
-      //     'react': path.resolve(appDir, './node_modules/react'),
-      //   } : 
-      //   {},
       extensions: ['.ts', '.tsx', '.js'],
     },
   };

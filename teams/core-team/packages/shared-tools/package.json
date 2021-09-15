@@ -5,10 +5,11 @@
   "main": "dist/main.js",
   "types": "dist/index.d.ts",
   "bin": {
-    "mattfinpack": "./src/bin/mattfinpack/mattfinpack.js"
+    "mattfin-local-router": "./src/bin/mattfin-local-router/mattfin-local-router.js",
+    "mattfin-pack": "./src/bin/mattfin-pack/mattfin-pack.js"
   },
   "scripts": {
-    "build": "node ./src/bin/mattfinpack/mattfinpack.js build --mode production",
+    "build": "node ./src/bin/mattfin-pack/mattfin-pack.js build --mode production",
     "clean": "rm -rf dist"
   },
   "dependencies": {
