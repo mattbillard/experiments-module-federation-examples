@@ -11,6 +11,8 @@ import {
 import LocalButton from "../button/button";
 
 import { Test } from '@module-federation-ts-with-router/shared-tools';
+// import { Test } from '@module-federation-ts-with-router/shared-tools/src';
+
 // import { DynamicComponentLoader } from '../dynamic-component-loader/dynamic-component-loader';
 // import { DynamicComponentLoader } from '@module-federation-ts-with-router/shared-tools';
 import { DynamicComponentLoader } from '@module-federation-ts-with-router/shared-tools/src';
