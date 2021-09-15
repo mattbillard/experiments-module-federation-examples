@@ -11,7 +11,7 @@ import {
 import LocalButton from "../button/button";
 
 // Example importing component with hooks from dist 
-// import { Test } from '@module-federation-ts-with-router/shared-tools';
+import { Test } from '@module-federation-ts-with-router/shared-tools';
 
 // TODO: need to import this from src
 // import { DynamicModuleFederationLoader } from '@module-federation-ts-with-router/shared-tools/src';
@@ -70,7 +70,7 @@ const App = () => {
       <div>
         <h1>module-federation-ts-with-router</h1>
         <h2>Site</h2>
-        {/* <Test text="Hello React" /> */}
+        <Test text="Hello React" />
 
         <LocalButton />
         <br />
