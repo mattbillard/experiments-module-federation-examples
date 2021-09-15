@@ -88,8 +88,8 @@ const App = () => {
 
         <Switch>
           {definitions.nav.map((definition: any) => {
-            const { appId, url } = definition;
-            const { module, remoteEntryUrl, scope } = definitions.apps[appId];
+            const { moduleFederationComponentId, url } = definition;
+            const { module, remoteEntryUrl, scope } = definitions.apps[moduleFederationComponentId];
 
             return (
               <Route

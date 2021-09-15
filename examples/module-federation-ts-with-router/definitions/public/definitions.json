@@ -2,25 +2,35 @@
   "teamId": "team1",
   "nav": [
     {
-      "text": "App1",
-      "url": "/site/app1",
-      "appId": "app1Id"
+      "text": "App1 App",
+      "url": "/site/app1app",
+      "moduleFederationComponentId": "app1/app"
     },
     {
-      "text": "App2",
-      "url": "/site/app2",
-      "appId": "app2Id"
+      "text": "App1 Button",
+      "url": "/site/app1button",
+      "moduleFederationComponentId": "app1/button"
+    },
+    {
+      "text": "App2 Button",
+      "url": "/site/app2button",
+      "moduleFederationComponentId": "app2/button"
     }
   ],
   "apps": {
-    "app1Id": {
-      "module": "./button",
+    "app1/app": {
       "scope": "app1",
+      "module": "./app",
       "remoteEntryUrl": "/assets/app1/remoteEntry.js"
     },
-    "app2Id": {
+    "app1/button": {
+      "scope": "app1",
       "module": "./button",
+      "remoteEntryUrl": "/assets/app1/remoteEntry.js"
+    },
+    "app2/button": {
       "scope": "app2",
+      "module": "./button",
       "remoteEntryUrl": "/assets/app2/remoteEntry.js"
     }
   }
