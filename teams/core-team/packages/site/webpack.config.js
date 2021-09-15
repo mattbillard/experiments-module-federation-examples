@@ -5,7 +5,7 @@ const webpackConfigMixin = {
     historyApiFallback: {
       index: '/assets/core-team__site/index.html'  // TODO. I think site is the only one that should have a fallback 
     },
-    port: 1000,
+    port: 1002,
     // // TODO: probably comment out
     // proxy: [
     //   {

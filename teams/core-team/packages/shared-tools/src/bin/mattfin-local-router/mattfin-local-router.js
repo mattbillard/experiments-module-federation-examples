@@ -6,7 +6,7 @@ const WebpackDevServer = require('webpack-dev-server/lib/Server');
 
 // Paths
 const cwd = process.cwd();
-const mattfinConfigsPath = path.join(cwd, 'config.mattfin-router');
+const mattfinConfigsPath = path.join(cwd, 'config.mattfin-local-router');
 const webpackConfigPath = path.join(__dirname, 'webpack.config.mattfin-local-router');
 
 // Get configs

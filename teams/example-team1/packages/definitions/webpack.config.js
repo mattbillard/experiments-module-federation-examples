@@ -2,7 +2,7 @@ const path = require('path');
 
 const webpackConfigMixin = {
   devServer: {
-    port: 1100,
+    port: 1103,
   },
   output: {
     path: path.resolve(__dirname, 'dist/assets/example-team1__definitions'),
