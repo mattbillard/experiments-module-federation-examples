@@ -30,6 +30,7 @@ const webpackConfigMixin = {
     path: path.resolve(__dirname, 'dist/assets/site'),
     publicPath: '/assets/site/',
   },
+  // NOTE: not necessary if you have ModuleFederationPlugin
   // resolve: {
   //   alias: {
   //     // IMPORTANT: this provides React to the component

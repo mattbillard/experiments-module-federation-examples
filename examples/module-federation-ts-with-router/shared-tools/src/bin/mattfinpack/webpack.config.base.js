@@ -6,7 +6,7 @@ const { ModuleFederationPlugin } = require('webpack').container;
 const path = require('path');
 
 module.exports = (appDir, mode = 'development', webpackConfigs) => {
-  const isApp = webpackConfigs.isApp || false;
+  const isApp = webpackConfigs.isApp || false;  // TODO: clean up all instances
   const moduleFederationPluginConfig = webpackConfigs.moduleFederationPluginConfig || undefined;
   const webpackConfigMixin = webpackConfigs.webpackConfigMixin || {};
 
