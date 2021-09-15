@@ -6,14 +6,29 @@ import * as React from 'react';
 
 declare const window: any;
 
+// function loadComponent(scope: string, module: string) {
+//   return async () => {
+//     // Initializes the share scope. This fills it with known provided modules from this build and all remotes
+//     // @ts-ignore
+//     await __webpack_init_sharing__("default");
+//     const container = window[scope]; // or get the container somewhere else
+//     // Initialize the container, it may provide shared modules
+//     // @ts-ignore
+//     await container.init(__webpack_share_scopes__.default);
+//     // @ts-ignore
+//     const factory = await window[scope].get(module);
+//     const Module = factory();
+//     return Module;
+//   };
+// }
 function loadComponent(scope: string, module: string) {
   return async () => {
+    const { __webpack_init_sharing__, __webpack_share_scopes__ } = window;
+    
     // Initializes the share scope. This fills it with known provided modules from this build and all remotes
-    // @ts-ignore
     await __webpack_init_sharing__("default");
     const container = window[scope]; // or get the container somewhere else
     // Initialize the container, it may provide shared modules
-    // @ts-ignore
     await container.init(__webpack_share_scopes__.default);
     // @ts-ignore
     const factory = await window[scope].get(module);

@@ -11,11 +11,16 @@ import {
 import LocalButton from "../button/button";
 
 // Example importing component with hooks from dist 
-import { Test } from '@module-federation-ts-with-router/shared-tools';
+// import { Test } from '@module-federation-ts-with-router/shared-tools';
 
 // TODO: need to import this from src
-import { DynamicModuleFederationLoader } from '@module-federation-ts-with-router/shared-tools/src';
-// import { DynamicModuleFederationLoader } from '@module-federation-ts-with-router/shared-tools';
+// import { DynamicModuleFederationLoader } from '@module-federation-ts-with-router/shared-tools/src';
+import { DynamicModuleFederationLoader } from '@module-federation-ts-with-router/shared-tools';
+
+// @ts-ignore
+window.__webpack_init_sharing__ = __webpack_init_sharing__;
+// @ts-ignore
+window.__webpack_share_scopes__ = __webpack_share_scopes__;
 
 // TODO: move the JSON file
 const teamDefinitions = require("./team-definitions.json");
@@ -65,7 +70,7 @@ const App = () => {
       <div>
         <h1>module-federation-ts-with-router</h1>
         <h2>Site</h2>
-        <Test text="Hello React" />
+        {/* <Test text="Hello React" /> */}
 
         <LocalButton />
         <br />
