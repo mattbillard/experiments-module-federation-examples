@@ -5,8 +5,8 @@ const webpackConfigMixin = {
     port: 1101,
   },
   output: {
-    path: path.resolve(__dirname, 'dist/assets/app1'),
-    publicPath: '/assets/app1/',
+    path: path.resolve(__dirname, 'dist/assets/example-team1__app1'),
+    publicPath: '/assets/example-team1__app1/',
   },
 };
 

@@ -3,14 +3,14 @@ const path = require('path');
 const webpackConfigMixin = {
   devServer: {
     historyApiFallback: {
-      index: '/assets/site/index.html'  // TODO. I think site is the only one that should have a fallback 
+      index: '/assets/core-team__site/index.html'  // TODO. I think site is the only one that should have a fallback 
     },
     port: 1000,
     // // TODO: probably comment out
     // proxy: [
     //   {
     //     changeOrigin: true,
-    //     context: ['/assets/app1'],
+    //     context: ['/assets/example-team1__app1'],
     //     cookieDomainRewrite: 'localhost',
     //     secure: false,
     //     target: 'http://localhost:1001',
@@ -18,7 +18,7 @@ const webpackConfigMixin = {
     //   },
     //   {
     //     changeOrigin: true,
-    //     context: ['/assets/app2'],
+    //     context: ['/assets/example-team1__app2'],
     //     cookieDomainRewrite: 'localhost',
     //     secure: false,
     //     target: 'http://localhost:1002',
@@ -27,8 +27,8 @@ const webpackConfigMixin = {
     // ],
   },
   output: {
-    path: path.resolve(__dirname, 'dist/assets/site'),
-    publicPath: '/assets/site/',
+    path: path.resolve(__dirname, 'dist/assets/core-team__site'),
+    publicPath: '/assets/core-team__site/',
   },
   // NOTE: not necessary if you have ModuleFederationPlugin
   // resolve: {

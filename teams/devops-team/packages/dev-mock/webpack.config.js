@@ -17,7 +17,7 @@ module.exports = (env = {}) => {
       host: 'dev.localhost', // TODO: https://github.com/chimurai/http-proxy-middleware#example
       hot: false,
       historyApiFallback: {
-        index: '/assets/site/index.html',
+        index: '/assets/core-team__site/index.html',
       },
       liveReload: false,
       static: {

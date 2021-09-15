@@ -2,7 +2,7 @@
   "teams": [
     {
       "teamId": "team1",
-      "teamDefinitionUrl": "/assets/definitions/definitions.json"
+      "teamDefinitionUrl": "/assets/example-team1__definitions/definitions.json"
     }
   ]
 }

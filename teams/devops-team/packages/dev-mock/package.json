@@ -6,10 +6,10 @@
     "start": "webpack-cli serve",
     "clean": "rm -rf dist",
     "deploy": "mkdir -p dist/assets && run-p _deploy:*",
-    "_deploy:definitions": "  rm -rf dist/assets/definitions      && cp -r ../../../../node_modules/@company/example-team1__definitions/dist/assets   dist",
-    "_deploy:app1": "         rm -rf dist/assets/app1             && cp -r ../../../../node_modules/@company/example-team1__app1/dist/assets          dist",
-    "_deploy:app2": "         rm -rf dist/assets/app2             && cp -r ../../../../node_modules/@company/example-team1__app2/dist/assets          dist",
-    "_deploy:site": "         rm -rf dist/assets/site             && cp -r ../../../../node_modules/@company/core-team__site/dist/assets              dist"
+    "_deploy:core-team__site": "            rm -rf dist/assets/core-team__site             && cp -r ../../../../node_modules/@company/core-team__site/dist/assets              dist",
+    "_deploy:example-team1__definitions": " rm -rf dist/assets/example-team1__definitions  && cp -r ../../../../node_modules/@company/example-team1__definitions/dist/assets   dist",
+    "_deploy:example-team1__app1": "        rm -rf dist/assets/example-team1__app1         && cp -r ../../../../node_modules/@company/example-team1__app1/dist/assets          dist",
+    "_deploy:example-team1__app2": "        rm -rf dist/assets/example-team1__app2         && cp -r ../../../../node_modules/@company/example-team1__app2/dist/assets          dist"
   },
   "dependencies": {
     "@company/core-team__site": "0.0.0",
