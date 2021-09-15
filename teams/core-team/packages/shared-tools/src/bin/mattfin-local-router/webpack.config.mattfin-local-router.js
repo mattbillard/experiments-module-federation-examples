@@ -1,8 +1,4 @@
 const _ = require('lodash');
-const fs = require('fs');
-const CopyPlugin = require('copy-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { ModuleFederationPlugin } = require('webpack').container;
 const path = require('path');
 
 module.exports = (appDir, webpackConfigs) => {

@@ -28,7 +28,7 @@ const mode = argv.mode || 'development';
 
 // Paths
 const cwd = process.cwd();
-const mattfinConfigsPath = path.join(cwd, 'webpack.config');
+const mattfinConfigsPath = path.join(cwd, 'config.mattfin-pack');
 const webpackConfigPath = path.join(__dirname, 'webpack.config.mattfin-pack');
 
 // Get configs
