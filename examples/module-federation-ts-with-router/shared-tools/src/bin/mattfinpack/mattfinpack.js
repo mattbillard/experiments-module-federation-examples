@@ -30,7 +30,7 @@ const WebpackDevServer = require('webpack-dev-server/lib/Server');
 // Paths
 const cwd = process.cwd();
 const appDefinitionsPath = path.join(cwd, 'webpack.config');
-const webpackConfigPath = path.join(__dirname, 'webpack.config.base');
+const webpackConfigPath = path.join(__dirname, '../../webpack.config.base');
 
 // Get configs
 const webpackConfigs = require(appDefinitionsPath);

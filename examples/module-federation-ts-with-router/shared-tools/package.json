@@ -2,7 +2,7 @@
   "name": "@module-federation-ts-with-router/shared-tools",
   "version": "0.0.0",
   "private": true,
-  "main": "dist/index.js",
+  "main": "dist/main.js",
   "types": "dist/index.d.ts",
   "bin": {
     "mattfinpack": "./src/bin/mattfinpack/mattfinpack.js"

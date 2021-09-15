@@ -2,7 +2,7 @@
   "name": "@module-federation-ts-with-router/site",
   "version": "0.0.0",
   "private": true,
-  "main": "dist/index.js",
+  "main": "dist/assets/site/main.js",
   "types": "dist/index.d.ts",
   "scripts": {
     "start": "mattfinpack serve",
