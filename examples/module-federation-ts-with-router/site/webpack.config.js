@@ -41,7 +41,7 @@ const webpackConfigMixin = {
 const moduleFederationPluginConfig = {
   name: "site",
   remotes: {
-    // This will be done with 
+    // Remotes loaded via DynamicModuleFederationLoader
   },
   shared: ["react", "react-dom"],
 };

@@ -15,6 +15,7 @@ import { Test } from '@module-federation-ts-with-router/shared-tools';
 
 // TODO: need to import this from src
 import { DynamicModuleFederationLoader } from '@module-federation-ts-with-router/shared-tools/src';
+// import { DynamicModuleFederationLoader } from '@module-federation-ts-with-router/shared-tools';
 
 // TODO: move the JSON file
 const teamDefinitions = require("./team-definitions.json");
