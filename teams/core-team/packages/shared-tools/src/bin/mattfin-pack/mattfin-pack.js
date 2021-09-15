@@ -5,7 +5,7 @@
  * Creating node bin scripts:
  * - https://medium.com/netscape/a-guide-to-create-a-nodejs-command-line-package-c2166ad0452e
  * - https://github.com/yargs/yargs
- * 
+ *
  * Starting webpack dev server from node:
  * - https://github.com/webpack/webpack-dev-server/tree/master/examples/api/simple
  */
@@ -22,7 +22,7 @@ const { hideBin } = require('yargs/helpers');
 const Webpack = require('webpack');
 const WebpackDevServer = require('webpack-dev-server/lib/Server');
 
-const argv = yargs(hideBin(args)).argv
+const argv = yargs(hideBin(args)).argv;
 const command = argv._[0];
 const mode = argv.mode || 'development';
 
@@ -37,7 +37,7 @@ const getWebpackConfig = require(webpackConfigPath);
 const webpackConfig = getWebpackConfig(cwd, mode, mattfinConfigs);
 const compiler = Webpack(webpackConfig);
 
-switch(command) {
+switch (command) {
   case 'build': {
     // Run WebpackDev build
     compiler.run((err, stats) => {
@@ -56,14 +56,12 @@ switch(command) {
       const port = webpackConfig.devServer.port || 8080;
       const protocol = webpackConfig.devServer.secure ? 'https' : 'http';
       const pathname = webpackConfig.output.publicPath || '';
-      
+
       console.log(`\n\n\nStarting server on ${protocol}://localhost:${port}${pathname}\n\n\n`);
     });
     break;
   }
 
-  default: 
+  default:
     console.error(`Unrecognized mattfinpack command: ${command}`);
 }
-  
-

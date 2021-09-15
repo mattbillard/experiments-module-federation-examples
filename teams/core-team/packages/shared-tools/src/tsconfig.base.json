@@ -6,8 +6,8 @@
     "skipLibCheck": true,
     "sourceMap": true,
     "strict": true,
-    
+
     "moduleResolution": "node",
-    "resolveJsonModule": true,
-  },
+    "resolveJsonModule": true
+  }
 }

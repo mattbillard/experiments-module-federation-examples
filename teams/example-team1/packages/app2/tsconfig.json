@@ -1,7 +1,7 @@
 {
   "extends": "../../../../node_modules/@company/core-team__shared-tools/src/tsconfig.base.json",
   "compilerOptions": {
-    "outDir": "./dist/",
+    "outDir": "./dist/"
   },
   "include": ["src/**/*", "types/**/*"]
 }

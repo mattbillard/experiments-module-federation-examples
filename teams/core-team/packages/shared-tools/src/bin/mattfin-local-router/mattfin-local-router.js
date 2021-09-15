@@ -22,6 +22,6 @@ server.startCallback(() => {
   const port = webpackConfig.devServer.port || 8080;
   const protocol = webpackConfig.devServer.secure ? 'https' : 'http';
   const pathname = webpackConfig.output.publicPath || '';
-  
+
   console.log(`\n\n\nStarting server on ${protocol}://localhost:${port}${pathname}\n\n\n`);
-});  
+});

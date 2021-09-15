@@ -15,9 +15,9 @@ module.exports = (appDir, webpackConfigs) => {
       secure: false,
       target: value,
       ws: true,
-    }
+    };
   });
-  
+
   const defaultConfig = {
     devServer: {
       host: '0.0.0.0',
@@ -25,11 +25,11 @@ module.exports = (appDir, webpackConfigs) => {
       liveReload: false,
       proxy,
       static: {
-        directory: path.join(appDir, "dist"),
+        directory: path.join(appDir, 'dist'),
       },
     },
     entry: './package.json', // We don't want it to actually compile anything so just give it the package.json that ran the script
-    mode: "development",
+    mode: 'development',
   };
 
   // Merge configs
@@ -37,6 +37,3 @@ module.exports = (appDir, webpackConfigs) => {
 
   return mergedConfig;
 };
-
-
-

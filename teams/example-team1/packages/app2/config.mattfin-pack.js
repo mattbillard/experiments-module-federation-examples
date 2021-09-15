@@ -11,12 +11,12 @@ const webpackConfigMixin = {
 };
 
 const moduleFederationPluginConfig = {
-  name: "app2",
-  filename: "remoteEntry.js",
+  name: 'app2',
+  filename: 'remoteEntry.js',
   exposes: {
-    "./button": "./src/components/button/button",
+    './button': './src/components/button/button',
   },
-  shared: ["react", "react-dom"],
+  shared: ['react', 'react-dom'],
 };
 
 module.exports = {

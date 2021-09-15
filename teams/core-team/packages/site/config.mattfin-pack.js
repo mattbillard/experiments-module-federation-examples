@@ -3,7 +3,7 @@ const path = require('path');
 const webpackConfigMixin = {
   devServer: {
     historyApiFallback: {
-      index: '/assets/core-team__site/index.html'  // TODO. I think site is the only one that should have a fallback 
+      index: '/assets/core-team__site/index.html', // TODO. I think site is the only one that should have a fallback
     },
     port: 1002,
     // // TODO: probably comment out
@@ -40,11 +40,11 @@ const webpackConfigMixin = {
 };
 
 const moduleFederationPluginConfig = {
-  name: "site",
+  name: 'site',
   remotes: {
     // Remotes loaded via DynamicModuleFederationLoader
   },
-  shared: ["react", "react-dom"],
+  shared: ['react', 'react-dom'],
 };
 
 module.exports = {

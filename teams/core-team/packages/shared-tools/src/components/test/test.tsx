@@ -4,8 +4,8 @@ import { useEffect } from 'react';
 
 export const Test = (props: any) => {
   useEffect(() => {
-    console.log('....useEffect: test')
-  }, [])
+    console.log('....useEffect: test');
+  }, []);
 
-  return <h1>Test basic component with hooks: {props.text}</h1>
-}
+  return <h1>Test basic component with hooks: {props.text}</h1>;
+};

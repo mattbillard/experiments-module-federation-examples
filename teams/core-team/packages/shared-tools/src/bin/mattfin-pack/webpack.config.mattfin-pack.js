@@ -52,9 +52,7 @@ module.exports = (appDir, mode = 'development', webpackConfigs) => {
   // CopyPlugin
   if (fs.existsSync(path.join(appDir, 'public'))) {
     const copyPlugin = new CopyPlugin({
-      patterns: [
-        { from: 'public', to: '' },
-      ],
+      patterns: [{ from: 'public', to: '' }],
     });
     mergedConfig.plugins.push(copyPlugin);
   }

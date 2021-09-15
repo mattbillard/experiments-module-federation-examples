@@ -1,12 +1,6 @@
-import * as React from "react";
-import {
-  BrowserRouter,
-  Link,
-  Route,
-  Switch,
-  RouteProps,
-} from "react-router-dom";
-import LocalButton from "../button/button";
+import * as React from 'react';
+import { BrowserRouter, Link, Route, Switch, RouteProps } from 'react-router-dom';
+import LocalButton from '../button/button';
 
 const App = () => (
   <div>
@@ -16,8 +10,7 @@ const App = () => (
 
     <BrowserRouter>
       <div>
-        <Link to="/site/app1app/test1">Test 1</Link> | 
-        <Link to="/site/app1app/test2">Test 2</Link> | 
+        <Link to="/site/app1app/test1">Test 1</Link> |<Link to="/site/app1app/test2">Test 2</Link> |
       </div>
 
       <Switch>

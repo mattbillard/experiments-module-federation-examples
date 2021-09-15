@@ -1,8 +1,8 @@
-const path = require("path");
+const path = require('path');
 
 /**
- * INSTRUCTIONS 
- * To run webpack devServer on dev.localhost, you need to do run the following 
+ * INSTRUCTIONS
+ * To run webpack devServer on dev.localhost, you need to do run the following
  *   sudo nano /etc/hosts
  * And add the following
  *   127.0.0.1       dev.localhost
@@ -10,7 +10,7 @@ const path = require("path");
 
 module.exports = (env = {}) => {
   return {
-    mode: "development",
+    mode: 'development',
     devServer: {
       port: 3000,
       // host: '0.0.0.0',
@@ -21,7 +21,7 @@ module.exports = (env = {}) => {
       },
       liveReload: false,
       static: {
-        directory: path.join(__dirname, "dist"),
+        directory: path.join(__dirname, 'dist'),
       },
     },
   };
