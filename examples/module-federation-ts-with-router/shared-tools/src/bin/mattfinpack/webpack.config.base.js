@@ -30,7 +30,7 @@ module.exports = (appDir, mode = 'development', appWebpackConfig = {}, moduleFed
         {
           test: /\.tsx?$/,
           loader: 'ts-loader',
-          exclude: /node_modules/,
+          // exclude: /node_modules/,
         },
       ],
     },

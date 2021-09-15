@@ -83,7 +83,22 @@ export const DynamicComponentLoader = (props: IDynamicComponentLoader) => {
 
   return (
     <React.Suspense fallback="Loading...">
+      <pre>{JSON.stringify(props, null, 2)}</pre>
       <Component />
     </React.Suspense>
   );
 }
+
+// import { useEffect } from 'react';
+
+// export const DynamicComponentLoader = (props: IDynamicComponentLoader) => {
+//   const [ready, setReady] = React.useState('ready');
+//   const [failed, setFailed] = React.useState('failed');
+//   useEffect(() => {
+//     console.log('....useEffect: DynamicComponentLoader')
+//   }, [])
+
+//   return (
+//     <h1>DynamicComponentLoader {ready} {failed}</h1>
+//   );
+// }

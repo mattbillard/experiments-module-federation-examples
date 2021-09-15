@@ -21,7 +21,11 @@ const webpackConfigMixin = {
     path: path.resolve(__dirname, 'dist'),
   },
 };
-const moduleFederationPluginConfig = undefined;
+// const moduleFederationPluginConfig = undefined;
+const moduleFederationPluginConfig = {
+  name: "shared-tools",
+  shared: ["react", "react-dom"],
+};
 
 module.exports = {
   moduleFederationPluginConfig,
