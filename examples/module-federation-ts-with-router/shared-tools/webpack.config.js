@@ -24,7 +24,12 @@ const webpackConfigMixin = {
 // const moduleFederationPluginConfig = undefined;
 const moduleFederationPluginConfig = {
   name: "shared-tools",
-  shared: ["react", "react-dom"],
+  // shared: ["react", "react-dom"],
+
+  shared: {
+    react: { singleton: true, eager: true, requiredVersion: '16.13.0' },
+    "react-dom": { singleton: true, eager: true, requiredVersion: '16.13.0' }
+  },
 };
 
 module.exports = {

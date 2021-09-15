@@ -17,11 +17,11 @@ import { Test } from '@module-federation-ts-with-router/shared-tools';
 // import { DynamicComponentLoader } from '@module-federation-ts-with-router/shared-tools';
 import { DynamicComponentLoader } from '@module-federation-ts-with-router/shared-tools/src';
 
-console.log('....Test', Test);
+// console.log('....Test', Test);
 
-declare const window: any;
-window.React = React;
-window.react = React;
+// declare const window: any;
+// window.React = React;
+// window.react = React;
 
 // TODO: move the JSON file
 const teamDefinitions = require("./team-definitions.json");
