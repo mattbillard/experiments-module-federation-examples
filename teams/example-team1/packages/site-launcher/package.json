@@ -1,5 +1,5 @@
 {
-  "name": "@module-federation-ts-with-router/site-launcher",
+  "name": "@company/example-team1__site-launcher",
   "version": "0.0.0",
   "private": true,
   "scripts": {
@@ -7,6 +7,6 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "@module-federation-ts-with-router/shared-tools": "file:../shared-tools"
+    "@company/core-team__shared-tools": "0.0.0"
   }
 }

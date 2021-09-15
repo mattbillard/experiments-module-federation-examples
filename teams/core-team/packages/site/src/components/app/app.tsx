@@ -11,9 +11,9 @@ import {
 import LocalButton from "../button/button";
 
 // Example importing component with hooks from dist 
-import { Test } from '@module-federation-ts-with-router/shared-tools';
+import { Test } from '@company/core-team__shared-tools';
 
-import { DynamicModuleFederationLoader } from '@module-federation-ts-with-router/shared-tools';
+import { DynamicModuleFederationLoader } from '@company/core-team__shared-tools';
 // NOTE: necessary if you want to import DynamicModuleFederationLoader from dist 
 // @ts-ignore
 window.__webpack_init_sharing__ = __webpack_init_sharing__;
