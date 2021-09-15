@@ -10,18 +10,11 @@ import {
 } from "react-router-dom";
 import LocalButton from "../button/button";
 
+// Example importing component with hooks from dist 
 import { Test } from '@module-federation-ts-with-router/shared-tools';
-// import { Test } from '@module-federation-ts-with-router/shared-tools/src';
 
-// import { DynamicComponentLoader } from '../dynamic-component-loader/dynamic-component-loader';
-// import { DynamicComponentLoader } from '@module-federation-ts-with-router/shared-tools';
-import { DynamicComponentLoader } from '@module-federation-ts-with-router/shared-tools/src';
-
-// console.log('....Test', Test);
-
-// declare const window: any;
-// window.React = React;
-// window.react = React;
+// TODO: need to import this from src
+import { DynamicModuleFederationLoader } from '@module-federation-ts-with-router/shared-tools/src';
 
 // TODO: move the JSON file
 const teamDefinitions = require("./team-definitions.json");
@@ -74,12 +67,6 @@ const App = () => {
         <Test text="Hello React" />
 
         <LocalButton />
-        {/* 
-        <React.Suspense fallback="Loading...">
-          <RemoteButton1 />
-          <RemoteButton2 />
-        </React.Suspense>
-         */}
         <br />
         <br />
 
@@ -95,8 +82,6 @@ const App = () => {
           })}
         </div>
 
-        {/* 
-        */}
         <Switch>
           {definitions.nav.map((definition: any) => {
             const { appId, url } = definition;
@@ -107,7 +92,7 @@ const App = () => {
                 key={url}
                 path={url}
                 render={(routeProps: RouteProps) => 
-                  <DynamicComponentLoader
+                  <DynamicModuleFederationLoader
                     module={module}
                     remoteEntryUrl={remoteEntryUrl}
                     scope={scope}

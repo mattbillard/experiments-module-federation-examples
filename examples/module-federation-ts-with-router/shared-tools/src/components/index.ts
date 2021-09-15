@@ -1,2 +1,2 @@
-export * from './dynamic-component-loader/dynamic-component-loader';
+export * from './dynamic-module-federation-loader/dynamic-module-federation-loader';
 export * from './test/test';

@@ -11,7 +11,6 @@ module.exports = (appDir, mode = 'development', appWebpackConfig = {}, moduleFed
       // devMiddleware: {
       //   writeToDisk: true,
       // },
-      // port,
       hot: false,
       liveReload: false,
       static: {
@@ -30,15 +29,14 @@ module.exports = (appDir, mode = 'development', appWebpackConfig = {}, moduleFed
         {
           test: /\.tsx?$/,
           loader: 'ts-loader',
-          // exclude: /node_modules/,
+          // exclude: /node_modules/, // NOTE: commenting this out allows us to import from a node_module's src
         },
       ],
     },
     output: {
       libraryTarget: 'umd',
-    //   filename: '[name].js',
-    //   // filename: 'index.js',
-    //   // publicPath,
+      // filename: '[name].js',
+      // filename: 'index.js',
     },
     plugins: [
       // See below

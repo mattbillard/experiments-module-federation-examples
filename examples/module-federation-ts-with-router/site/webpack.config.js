@@ -40,16 +40,10 @@ const webpackConfigMixin = {
 
 const moduleFederationPluginConfig = {
   name: "site",
-  // remotes: {
-  //   app1: "app1@/assets/app1/remoteEntry.js",
-  //   app2: "app2@/assets/app2/remoteEntry.js",
-  // },
-  // shared: ["react", "react-dom"],
-
-  shared: {
-    react: { singleton: true, eager: true, requiredVersion: '16.13.0' },
-    "react-dom": { singleton: true, eager: true, requiredVersion: '16.13.0' }
+  remotes: {
+    // This will be done with 
   },
+  shared: ["react", "react-dom"],
 };
 
 module.exports = {
