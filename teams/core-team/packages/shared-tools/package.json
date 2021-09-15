@@ -10,7 +10,8 @@
   },
   "scripts": {
     "build": "node ./src/bin/mattfin-pack/mattfin-pack.js build --mode production",
-    "clean": "rm -rf dist"
+    "clean": "rm -rf dist",
+    "start": "node ./src/bin/mattfin-pack/mattfin-pack.js serve"
   },
   "dependencies": {
     "copy-webpack-plugin": "^9.0.1",

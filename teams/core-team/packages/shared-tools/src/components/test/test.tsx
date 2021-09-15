@@ -7,5 +7,5 @@ export const Test = (props: any) => {
     console.log('....useEffect: test')
   }, [])
 
-  return <h1>Test: {props.text}</h1>
+  return <h1>Test basic component with hooks: {props.text}</h1>
 }

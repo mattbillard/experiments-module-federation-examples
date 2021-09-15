@@ -12,9 +12,6 @@ module.exports = (appDir, mode = 'development', webpackConfigs) => {
 
   const defaultConfig = {
     devServer: {
-      // devMiddleware: {
-      //   writeToDisk: true,
-      // },
       hot: false,
       liveReload: false,
       static: {
