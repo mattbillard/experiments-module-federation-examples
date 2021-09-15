@@ -2,37 +2,25 @@
   "name": "experiments-module-federation-examples",
   "version": "0.0.0",
   "description": "",
-  "repository": "https://github.com/mattbillard/experiments-module-federation-examples",
   "author": "Matt Billard",
   "license": "MIT",
   "private": true,
-  "workspaces": {
-    "packages": [
-      "./examples/module-federation-ts/*",
-      "./examples/module-federation-ts-with-router/*",
-      "./examples/remote-components/*"
-    ],
-    "nohoist": [
-      "**/svelte",
-      "**/svelte/**",
-      "**/svelte-loader",
-      "**/svelte-loader/**"
-    ]
+  "repository": "https://github.com/mattbillard/experiments-module-federation-examples",
+  "scripts": {
+    "bootstrap": "lerna bootstrap --ignore-scripts",
+    "build": "lerna run --parallel build",
+    "prettier": "prettier --write \"**/*.{js,json,md,ts,tsx}\"",
+    "prettier:changed": "pretty-quick",
+    "prettier:check": "prettier --list-different \"**/*.{js,json,md,ts,tsx}\""
   },
   "devDependencies": {
-    "concurrently": "6.2.1",
-    "cross-spawn": "7.0.3",
-    "jest": "26.6.3",
     "lerna": "3.22.1",
     "prettier": "2.3.2",
     "pretty-quick": "3.1.1"
   },
-  "scripts": {
-    "bootstrap": "lerna bootstrap --ignore-scripts",
-    "build": "lerna run --parallel build",
-    "submodules": "git pull --recurse-submodules",
-    "prettier": "prettier --write \"**/*.{js,json,md,ts,tsx}\"",
-    "prettier:check": "prettier --list-different \"**/*.{js,json,md,ts,tsx}\"",
-    "test": "jest test/index.spec.js --maxWorkers=2"
+  "workspaces": {
+    "packages": [
+      "./teams/*/packages/*"
+    ]
   }
 }
