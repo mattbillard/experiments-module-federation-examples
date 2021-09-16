@@ -6,7 +6,7 @@ const proxiesHashMap = {
   
   // TODO: comment out
   '/assets/core-team__site/':             'http://localhost:1002',
-  '/site':                                'http://localhost:1002',
+  '/site-url':                            'http://localhost:1002',
 
   // Anything not local will be proxied from dev-mock
   '/':                                   'http://localhost:2000',

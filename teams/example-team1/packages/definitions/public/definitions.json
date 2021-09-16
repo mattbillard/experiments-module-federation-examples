@@ -3,12 +3,12 @@
   "nav": [
     {
       "text": "App1",
-      "url": "/site/example-team1-url/app1-url",
+      "url": "/site-url/example-team1-url/app1-url",
       "moduleFederationComponentId": "example-team1__app1__app"
     },
     {
       "text": "App2",
-      "url": "/site/example-team1-url/app2-url",
+      "url": "/site-url/example-team1-url/app2-url",
       "moduleFederationComponentId": "example-team1__app2__app"
     }
   ],
