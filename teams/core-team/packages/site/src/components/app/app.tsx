@@ -3,7 +3,7 @@ import * as React from 'react';
 import { useEffect, useState } from 'react';
 import { BrowserRouter, Link, Route, Switch, RouteProps } from 'react-router-dom';
 
-import { ButtonSharedTools } from '@company/core-team__shared-tools'; // Example importing component with hooks from dist
+import { ButtonSharedTools } from '@company/core-team__shared-tools';
 import { ButtonSite } from '../button/button';
 import './app.css';
 

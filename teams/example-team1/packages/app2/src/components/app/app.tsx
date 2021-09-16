@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { BrowserRouter, Link, Route, Switch, RouteProps, Redirect } from 'react-router-dom';
+import { BrowserRouter, Link, Route, Switch, Redirect } from 'react-router-dom';
+import { ButtonSharedTools } from '@company/core-team__shared-tools';
 import { ButtonApp2 } from '../button/button';
 
 export const App2 = () => {
@@ -17,11 +18,13 @@ export const App2 = () => {
         <Switch>
           <Route path="/site/example-team1/app2/nested-page3">
             <h3>Nested Page 3</h3>
-            <ButtonApp2 />
+            <ButtonApp2 /> <br />
+            <ButtonSharedTools /> <br />
           </Route>
           <Route path="/site/example-team1/app2/nested-page4">
             <h3>Nested Page 4</h3>
-            <ButtonApp2 />
+            <ButtonApp2 /> <br />
+            <ButtonSharedTools /> <br />
           </Route>
           <Redirect to="/site/example-team1/app2/nested-page3" />
         </Switch>
