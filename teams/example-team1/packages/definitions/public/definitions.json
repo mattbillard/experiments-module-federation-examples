@@ -1,15 +1,10 @@
 {
-  "teamId": "team1",
+  "teamId": "exampleTeam1",
   "nav": [
     {
       "text": "App1 App",
-      "url": "/site/app1app",
+      "url": "/site/example-team1/app1",
       "moduleFederationComponentId": "app1/app"
-    },
-    {
-      "text": "App1 Button",
-      "url": "/site/app1button",
-      "moduleFederationComponentId": "app1/button"
     },
     {
       "text": "App2 Button",
@@ -21,11 +16,6 @@
     "app1/app": {
       "scope": "app1",
       "module": "./app",
-      "remoteEntryUrl": "/assets/example-team1__app1/remoteEntry.js"
-    },
-    "app1/button": {
-      "scope": "app1",
-      "module": "./button",
       "remoteEntryUrl": "/assets/example-team1__app1/remoteEntry.js"
     },
     "app2/button": {

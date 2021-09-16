@@ -2,7 +2,9 @@ import * as _ from 'lodash';
 import * as React from 'react';
 import { useEffect, useState } from 'react';
 import { BrowserRouter, Link, Route, Switch, RouteProps } from 'react-router-dom';
+
 import LocalButton from '../button/button';
+import './app.css';
 
 // Example importing component with hooks from dist
 import { Button } from '@company/core-team__shared-tools';
@@ -62,7 +64,7 @@ const App = () => {
   return (
     <BrowserRouter>
       <div>
-        <h1>module-federation-ts-with-router</h1>
+        <h1>Module Federation - Full Example</h1>
         <h2>Site</h2>
 
         <LocalButton />
@@ -82,26 +84,28 @@ const App = () => {
           })}
         </div>
 
-        <Switch>
-          {definitions.nav.map((definition: any) => {
-            const { moduleFederationComponentId, url } = definition;
-            const { module, remoteEntryUrl, scope } = definitions.apps[moduleFederationComponentId];
+        <div className="box">
+          <Switch>
+            {definitions.nav.map((definition: any) => {
+              const { moduleFederationComponentId, url } = definition;
+              const { module, remoteEntryUrl, scope } = definitions.apps[moduleFederationComponentId];
 
-            return (
-              <Route
-                key={url}
-                path={url}
-                render={(routeProps: RouteProps) => (
-                  <DynamicModuleFederationLoader
-                    module={module}
-                    remoteEntryUrl={remoteEntryUrl}
-                    scope={scope}
-                  />
-                )}
-              />
-            );
-          })}
-        </Switch>
+              return (
+                <Route
+                  key={url}
+                  path={url}
+                  render={(routeProps: RouteProps) => (
+                    <DynamicModuleFederationLoader
+                      module={module}
+                      remoteEntryUrl={remoteEntryUrl}
+                      scope={scope}
+                    />
+                  )}
+                />
+              );
+            })}
+          </Switch>
+        </div>
       </div>
     </BrowserRouter>
   );
