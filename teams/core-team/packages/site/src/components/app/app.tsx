@@ -18,8 +18,10 @@ window.__webpack_share_scopes__ = __webpack_share_scopes__;
 const teamDefinitions = require('./team-definitions.json');
 
 // TODO: fix types
-// const RemoteButton1 = React.lazy(() => import("app1/button"));
-// const RemoteButton2 = React.lazy(() => import("app2/button"));
+// @ts-ignore
+const RemoteButton1 = React.lazy(() => import("exampleTeam1__app1/button"));
+// @ts-ignore
+const RemoteButton2 = React.lazy(() => import("exampleTeam1__app2/button"));
 
 export const AppSite = () => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
@@ -69,8 +71,10 @@ export const AppSite = () => {
         
         <ButtonSite /> <br />
         <ButtonSharedTools /> <br /> 
-        {/* <RemoteButton1 />
-        <RemoteButton2 /> */}
+        <React.Suspense fallback="Loading...">
+          <RemoteButton1 /><br />
+          <RemoteButton2 /><br />
+        </React.Suspense>
         <br />
         <br />
        

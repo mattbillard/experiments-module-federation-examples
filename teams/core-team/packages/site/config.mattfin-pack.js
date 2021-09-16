@@ -1,5 +1,7 @@
 const path = require('path');
 
+// TODO: clean up
+
 const webpackConfigMixin = {
   devServer: {
     historyApiFallback: {
@@ -40,10 +42,11 @@ const webpackConfigMixin = {
 };
 
 const moduleFederationPluginConfig = {
-  name: 'site',
+  name: 'coreTeam__site',
   remotes: {
-    exampleTeam1__app1: "button@/app2/remoteEntry.js", // NOTE: find app2 at /app2/ instead of localhost:3002
-    // More remotes loaded via DynamicModuleFederationLoader
+    exampleTeam1__app1: "exampleTeam1__app1@/assets/example-team1__app1/remoteEntry.js",
+    exampleTeam1__app2: "exampleTeam1__app2@/assets/example-team1__app2/remoteEntry.js",
+    // More remote components are loaded via DynamicModuleFederationLoader
   },
   shared: ['react', 'react-dom'],
 };

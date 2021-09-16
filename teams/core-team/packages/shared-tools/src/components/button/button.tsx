@@ -4,8 +4,8 @@ import './button.css';
 
 export const ButtonSharedTools = () => {
   useEffect(() => {
-    console.log('....Hooks are working, proving React is shared between micro apps: shared-tools/button');
+    console.log('....Hooks are working, proving React is shared between micro apps: ButtonSharedTools');
   }, []);
 
-  return <button className="button-shared-tools">Shared Tools Button</button>;
+  return <button className="button-shared-tools">Button - Shared Tools</button>;
 };
