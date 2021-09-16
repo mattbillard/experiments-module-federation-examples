@@ -7,7 +7,7 @@ const Button = () => {
     console.log('....Hooks are working, proving React is shared between micro apps: app1/button');
   }, []);
 
-  return <button className="app1-button">App 1 Button 6666</button>;
+  return <button className="app1-button">App 1 Button</button>;
 };
 
 export default Button;

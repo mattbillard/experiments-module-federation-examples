@@ -5,7 +5,7 @@ import { BrowserRouter, Link, Route, Switch, RouteProps } from 'react-router-dom
 import LocalButton from '../button/button';
 
 // Example importing component with hooks from dist
-import { Test } from '@company/core-team__shared-tools';
+import { Button } from '@company/core-team__shared-tools';
 
 import { DynamicModuleFederationLoader } from '@company/core-team__shared-tools';
 // NOTE: necessary if you want to import DynamicModuleFederationLoader from dist
@@ -64,9 +64,9 @@ const App = () => {
       <div>
         <h1>module-federation-ts-with-router</h1>
         <h2>Site</h2>
-        <Test text="Hello React" />
 
         <LocalButton />
+        <Button />
         <br />
         <br />
 
