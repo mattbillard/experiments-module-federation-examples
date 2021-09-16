@@ -3,13 +3,13 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "webpack-cli serve",
-    "clean": "rm -rf dist",
-    "deploy": "mkdir -p dist/assets && run-p _deploy:*",
     "_deploy:core-team__site": "            rm -rf dist/assets/core-team__site             && cp -r ../../../../node_modules/@company/core-team__site/dist/assets              dist",
     "_deploy:example-team1__definitions": " rm -rf dist/assets/example-team1__definitions  && cp -r ../../../../node_modules/@company/example-team1__definitions/dist/assets   dist",
     "_deploy:example-team1__app1": "        rm -rf dist/assets/example-team1__app1         && cp -r ../../../../node_modules/@company/example-team1__app1/dist/assets          dist",
-    "_deploy:example-team1__app2": "        rm -rf dist/assets/example-team1__app2         && cp -r ../../../../node_modules/@company/example-team1__app2/dist/assets          dist"
+    "_deploy:example-team1__app2": "        rm -rf dist/assets/example-team1__app2         && cp -r ../../../../node_modules/@company/example-team1__app2/dist/assets          dist",
+    "build": "mkdir -p dist/assets && run-p _deploy:*",
+    "clean": "rm -rf dist",
+    "start": "webpack-cli serve"
   },
   "dependencies": {
     "@company/core-team__site": "0.0.0",
