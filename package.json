@@ -7,18 +7,20 @@
   "private": true,
   "repository": "https://github.com/mattbillard/experiments-module-federation-examples",
   "scripts": {
+    "_prettier": "prettier --write '**/*.{js,json,md,ts,tsx}'",
+    "_stylelint": "stylelint --fix '**/src/**/*.{css,less,scss}'",
     "bootstrap": "lerna bootstrap --ignore-scripts",
     "build": "lerna run build",
     "clean": "lerna run --parallel clean",
-    "prettier:changed": "pretty-quick",
-    "prettier:check": "prettier --list-different \"**/*.{js,json,md,ts,tsx}\"",
-    "prettier:format": "prettier --write \"**/*.{js,json,md,ts,tsx}\"",
+    "format": "yarn run _prettier & yarn run _stylelint",
     "start": "lerna run --parallel start"
   },
   "devDependencies": {
     "lerna": "3.22.1",
     "prettier": "2.3.2",
-    "pretty-quick": "3.1.1"
+    "pretty-quick": "3.1.1",
+    "stylelint": "^13.12.0",
+    "stylelint-config-standard": "^21.0.0"
   },
   "workspaces": {
     "packages": [

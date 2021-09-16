@@ -10,16 +10,17 @@ body {
 
 .navigation {
   margin: 20px 0;
-  
+
   a {
-    color: #0099ff;
+    color: #09f;
     display: inline-block;
     padding: 5px 10px;
     border-right: solid 1px #ddd;
     text-decoration: none;
-  }
-  a:last-child {
-    border-right: 0px;
+
+    &:last-child {
+      border-right: 0;
+    }
   }
 }
 
