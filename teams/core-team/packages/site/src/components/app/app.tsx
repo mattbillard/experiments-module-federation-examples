@@ -3,11 +3,9 @@ import * as React from 'react';
 import { useEffect, useState } from 'react';
 import { BrowserRouter, Link, Route, Switch, RouteProps } from 'react-router-dom';
 
-import LocalButton from '../button/button';
+import { ButtonSharedTools } from '@company/core-team__shared-tools'; // Example importing component with hooks from dist
+import { ButtonSite } from '../button/button';
 import './app.css';
-
-// Example importing component with hooks from dist
-import { Button } from '@company/core-team__shared-tools';
 
 import { DynamicModuleFederationLoader } from '@company/core-team__shared-tools';
 // NOTE: necessary if you want to import DynamicModuleFederationLoader from dist
@@ -23,7 +21,7 @@ const teamDefinitions = require('./team-definitions.json');
 // const RemoteButton1 = React.lazy(() => import("app1/button"));
 // const RemoteButton2 = React.lazy(() => import("app2/button"));
 
-const App = () => {
+export const AppSite = () => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [definitions, setDefinitions] = useState<any>({ nav: [] });
 
@@ -67,8 +65,8 @@ const App = () => {
         <h1>Module Federation - Full Example</h1>
         <h2>Site</h2>
 
-        <LocalButton />
-        <Button />
+        <ButtonSite />
+        <ButtonSharedTools />
         <br />
         <br />
 
@@ -110,5 +108,3 @@ const App = () => {
     </BrowserRouter>
   );
 };
-
-export default App;

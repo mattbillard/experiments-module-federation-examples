@@ -1,13 +1,13 @@
 import * as React from 'react';
 import { BrowserRouter, Link, Route, Switch, RouteProps, Redirect } from 'react-router-dom';
-import LocalButton from '../button/button';
+import { ButtonApp1 } from '../button/button';
 
-const App = () => {
+export const App1 = () => {
   // prettier-ignore
   return (
     <BrowserRouter>
       <h2>App 1</h2>
-      <LocalButton />
+      <ButtonApp1 />
       <br />
       <br />
   
@@ -27,4 +27,4 @@ const App = () => {
   )
 };
 
-export default App;
+export default App1;

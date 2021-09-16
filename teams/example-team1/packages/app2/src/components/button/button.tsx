@@ -2,12 +2,12 @@ import * as React from 'react';
 import { useEffect } from 'react';
 import './button.css';
 
-const Button = () => {
+export const ButtonApp2 = () => {
   useEffect(() => {
     console.log('....Hooks are working, proving React is shared between micro apps: app2/button');
   }, []);
 
-  return <button className="app2-button">App 2 Button 6666</button>;
+  return <button className="button-app2">App 2 Button 6666</button>;
 };
 
-export default Button;
+export default ButtonApp2;
