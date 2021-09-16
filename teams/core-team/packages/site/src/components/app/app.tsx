@@ -72,13 +72,13 @@ const App = () => {
         <br />
         <br />
 
-        <div>
+        <div className="navigation">
           {definitions.nav.map((definition: any) => {
             const { text, url } = definition;
 
             return (
               <React.Fragment key={url}>
-                <Link to={url}>{text}</Link> |
+                <Link to={url}>{text}</Link>
               </React.Fragment>
             );
           })}

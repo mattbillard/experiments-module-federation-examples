@@ -5,15 +5,14 @@ import LocalButton from '../button/button';
 const App = () => {
   // prettier-ignore
   return (
-    <div>
+    <BrowserRouter>
       <h2>App 1</h2>
       <LocalButton />
       <br />
       <br />
   
-      <BrowserRouter>
-        <div>
-          <Link to="/site/example-team1/app1/nested-page1">Nested Page 1</Link> |
+        <div className="navigation">
+          <Link to="/site/example-team1/app1/nested-page1">Nested Page 1</Link>
           <Link to="/site/example-team1/app1/nested-page2">Nested Page 2</Link>
         </div>
   
@@ -24,8 +23,7 @@ const App = () => {
             <Redirect to="/site/example-team1/app1/nested-page1" />
           </Switch>
         </div>
-      </BrowserRouter>
-    </div>
+    </BrowserRouter>
   )
 };
 

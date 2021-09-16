@@ -7,3 +7,14 @@ body {
   margin: 10px;
   padding: 10px;
 }
+
+.navigation a {
+  color: #0099ff;
+  display: inline-block;
+  padding: 5px 10px;
+  border-right: solid 1px #ddd;
+  text-decoration: none;
+}
+.navigation a:last-child {
+  border-right: 0px;
+}
