@@ -8,6 +8,9 @@ body {
   padding: 10px;
 }
 
+.navigation {
+  margin: 20px 0;
+}
 .navigation a {
   color: #0099ff;
   display: inline-block;

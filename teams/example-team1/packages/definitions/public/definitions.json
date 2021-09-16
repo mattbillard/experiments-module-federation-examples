@@ -2,13 +2,13 @@
   "teamId": "exampleTeam1",
   "nav": [
     {
-      "text": "App1 App",
+      "text": "App1",
       "url": "/site/example-team1/app1",
       "moduleFederationComponentId": "app1/app"
     },
     {
-      "text": "App2 Button",
-      "url": "/site/app2button",
+      "text": "App2",
+      "url": "/site/example-team1/app2",
       "moduleFederationComponentId": "app2/button"
     }
   ],

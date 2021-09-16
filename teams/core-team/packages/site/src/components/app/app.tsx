@@ -61,14 +61,17 @@ export const AppSite = () => {
 
   return (
     <BrowserRouter>
-      <div>
-        <h1>Module Federation - Full Example</h1>
+      <h1>Module Federation - Full Example</h1>
+
+      <div className="box">
         <h2>Site</h2>
 
+        {/* 
         <ButtonSite />
         <ButtonSharedTools />
         <br />
-        <br />
+        <br /> 
+        */}
 
         <div className="navigation">
           {definitions.nav.map((definition: any) => {
