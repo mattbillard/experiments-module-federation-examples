@@ -15,6 +15,7 @@ const moduleFederationPluginConfig = {
   name: 'exampleTeam1__app2',
   filename: 'remoteEntry.js',
   exposes: {
+    './app': './src/components/app/app',
     './button': './src/components/button/button',
   },
   shared: ['react', 'react-dom'],

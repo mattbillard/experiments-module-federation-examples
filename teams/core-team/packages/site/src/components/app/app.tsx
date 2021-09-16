@@ -69,11 +69,11 @@ export const AppSite = () => {
         <h2>Site</h2>
 
         
-        <ButtonSite /> <br />
-        <ButtonSharedTools /> <br /> 
+        <ButtonSite /> - regular import<br />
+        <ButtonSharedTools /> - imported from shared-tools/dist<br /> 
         <React.Suspense fallback="Loading...">
-          <RemoteButton1 /><br />
-          <RemoteButton2 /><br />
+          <RemoteButton1 /> - imported from app1 via module federation hardcoded in webpack config<br />
+          <RemoteButton2 /> - imported from app2 via module federation hardcoded in webpack config<br />
         </React.Suspense>
         <br />
         <br />
@@ -91,6 +91,7 @@ export const AppSite = () => {
           })}
         </div>
 
+        Imported dynamically via module federation...
         <div className="box">
           <Switch>
             {definitions.nav.map((definition: any) => {

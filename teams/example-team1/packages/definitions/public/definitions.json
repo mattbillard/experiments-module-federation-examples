@@ -20,7 +20,7 @@
     },
     "example-team1__app2__app": {
       "scope": "exampleTeam1__app2",
-      "module": "./button",
+      "module": "./app",
       "remoteEntryUrl": "/assets/example-team1__app2/remoteEntry.js"
     }
   }
