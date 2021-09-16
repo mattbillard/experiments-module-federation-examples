@@ -23,5 +23,5 @@ server.startCallback(() => {
   const protocol = webpackConfig.devServer.secure ? 'https' : 'http';
   const pathname = webpackConfig.output.publicPath || '';
 
-  console.log(`\n\n\nStarting server on ${protocol}://localhost:${port}${pathname}\n\n\n`);
+  console.log(`\n\n\nStarting server on \n${protocol}://localhost:${port}${pathname}\n\n\n`);
 });

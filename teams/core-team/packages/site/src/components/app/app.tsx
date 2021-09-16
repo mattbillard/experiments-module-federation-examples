@@ -4,8 +4,10 @@ import { useEffect, useState } from 'react';
 import { BrowserRouter, Link, Route, Switch, RouteProps } from 'react-router-dom';
 
 import { ButtonSharedTools } from '@company/core-team__shared-tools';
+import '@company/core-team__shared-tools/dist/main.css';
+
 import { ButtonSite } from '../button/button';
-import './app.css';
+import './app.scss';
 
 import { DynamicModuleFederationLoader } from '@company/core-team__shared-tools';
 // NOTE: necessary if you want to import DynamicModuleFederationLoader from dist

@@ -2,6 +2,7 @@ const _ = require('lodash');
 const fs = require('fs');
 const CopyPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { ModuleFederationPlugin } = require('webpack').container;
 const path = require('path');
 
@@ -23,10 +24,42 @@ module.exports = (appDir, mode = 'development', webpackConfigs) => {
     mode,
     module: {
       rules: [
+        // Traditional/untyped CSS
         {
-          test: /\.css$/,
-          use: ['style-loader', 'css-loader'],
+          test: /\.(css|scss)$/,
+          exclude: /\.module\.(css|scss)$/,
+          use: [
+            MiniCssExtractPlugin.loader,
+            'css-loader',
+            'sass-loader'
+          ],
         },
+        
+        // Typed CSS
+        {
+          test: /\.(css|scss)$/,
+          include: /\.module\.(css|scss)$/,
+          use: [
+            MiniCssExtractPlugin.loader,
+            {
+              loader: 'dts-css-modules-loader',                       // Create types for CSS 
+              options: { namedExport: true },                         // Makes more legible .css.d.ts files 
+            },
+            {
+              loader: 'css-loader',
+              options: {
+                modules: {
+                  mode: 'pure',                                       // Prevents global CSS. Options: local|global|pure
+                  exportLocalsConvention: 'camelCaseOnly',
+                  localIdentName: "[name]__[local]__[hash:base64:5]", // Uglify CSS classes' names
+                },
+              }
+            },
+            'sass-loader'
+          ],
+        },
+
+        // TypeScript
         {
           test: /\.tsx?$/,
           loader: 'ts-loader',
@@ -39,6 +72,7 @@ module.exports = (appDir, mode = 'development', webpackConfigs) => {
       // filename: '[name].js',
     },
     plugins: [
+      new MiniCssExtractPlugin(),
       // See below
     ],
     resolve: {
@@ -49,7 +83,7 @@ module.exports = (appDir, mode = 'development', webpackConfigs) => {
   // Merge configs
   const mergedConfig = _.merge({}, defaultConfig, webpackConfigMixin);
 
-  // CopyPlugin
+  // CopyPlugin - if /public exists
   if (fs.existsSync(path.join(appDir, 'public'))) {
     const copyPlugin = new CopyPlugin({
       patterns: [{ from: 'public', to: '' }],
@@ -57,7 +91,7 @@ module.exports = (appDir, mode = 'development', webpackConfigs) => {
     mergedConfig.plugins.push(copyPlugin);
   }
 
-  // HtmlWebpackPlugin
+  // HtmlWebpackPlugin - if src/index.html exists
   if (fs.existsSync(path.join(appDir, 'src/index.html'))) {
     const htmlWebpackPlugin = new HtmlWebpackPlugin({
       template: './src/index.html',
@@ -65,7 +99,7 @@ module.exports = (appDir, mode = 'development', webpackConfigs) => {
     mergedConfig.plugins.push(htmlWebpackPlugin);
   }
 
-  // ModuleFederationPlugin
+  // ModuleFederationPlugin - if moduleFederationPluginConfig
   if (moduleFederationPluginConfig) {
     const moduleFederationPlugin = new ModuleFederationPlugin(moduleFederationPluginConfig);
     mergedConfig.plugins.push(moduleFederationPlugin);
