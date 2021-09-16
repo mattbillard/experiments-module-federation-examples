@@ -9,6 +9,8 @@ import '@company/core-team__shared-tools/dist/main.css';
 import { ButtonSite } from '../button/button';
 import './app.scss';
 
+import logo1 from '../../../public/logo.svg';
+
 import { DynamicModuleFederationLoader } from '@company/core-team__shared-tools';
 // NOTE: necessary if you want to import DynamicModuleFederationLoader from dist
 // @ts-ignore
@@ -77,6 +79,11 @@ export const AppSite = () => {
           <RemoteButton1 /> - imported from app1 via module federation hardcoded in webpack config<br />
           <RemoteButton2 /> - imported from app2 via module federation hardcoded in webpack config<br />
         </React.Suspense>
+        <br />
+        <br />
+
+        <img src={logo1} className="logo-svg" /> - Example SVG <br />
+        <img src="/assets/core-team__site/logo.png" className="logo-png" /> - Example PNG
         <br />
         <br />
        
