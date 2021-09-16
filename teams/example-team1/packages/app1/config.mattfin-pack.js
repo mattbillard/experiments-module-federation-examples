@@ -11,10 +11,11 @@ const webpackConfigMixin = {
 };
 
 const moduleFederationPluginConfig = {
-  name: 'app1',
+  name: 'exampleTeam1__app1',
   filename: 'remoteEntry.js',
   exposes: {
     './app': './src/components/app/app',
+    './button': './src/components/button/button',
   },
   shared: ['react', 'react-dom'],
 };

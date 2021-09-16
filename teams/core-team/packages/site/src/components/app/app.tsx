@@ -66,12 +66,14 @@ export const AppSite = () => {
       <div className="box">
         <h2>Site</h2>
 
-        {/* 
-        <ButtonSite />
-        <ButtonSharedTools />
+        
+        <ButtonSite /> <br />
+        <ButtonSharedTools /> <br /> 
+        {/* <RemoteButton1 />
+        <RemoteButton2 /> */}
         <br />
-        <br /> 
-        */}
+        <br />
+       
 
         <div className="navigation">
           {definitions.nav.map((definition: any) => {

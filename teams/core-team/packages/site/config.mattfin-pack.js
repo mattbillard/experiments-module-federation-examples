@@ -42,7 +42,8 @@ const webpackConfigMixin = {
 const moduleFederationPluginConfig = {
   name: 'site',
   remotes: {
-    // Remotes loaded via DynamicModuleFederationLoader
+    exampleTeam1__app1: "button@/app2/remoteEntry.js", // NOTE: find app2 at /app2/ instead of localhost:3002
+    // More remotes loaded via DynamicModuleFederationLoader
   },
   shared: ['react', 'react-dom'],
 };

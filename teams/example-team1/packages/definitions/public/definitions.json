@@ -4,22 +4,22 @@
     {
       "text": "App1",
       "url": "/site/example-team1/app1",
-      "moduleFederationComponentId": "app1/app"
+      "moduleFederationComponentId": "example-team1__app1__app"
     },
     {
       "text": "App2",
       "url": "/site/example-team1/app2",
-      "moduleFederationComponentId": "app2/button"
+      "moduleFederationComponentId": "example-team1__app2__app"
     }
   ],
   "apps": {
-    "app1/app": {
-      "scope": "app1",
+    "example-team1__app1__app": {
+      "scope": "exampleTeam1__app1",
       "module": "./app",
       "remoteEntryUrl": "/assets/example-team1__app1/remoteEntry.js"
     },
-    "app2/button": {
-      "scope": "app2",
+    "example-team1__app2__app": {
+      "scope": "exampleTeam1__app2",
       "module": "./button",
       "remoteEntryUrl": "/assets/example-team1__app2/remoteEntry.js"
     }

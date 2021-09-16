@@ -11,7 +11,7 @@ const webpackConfigMixin = {
 };
 
 const moduleFederationPluginConfig = {
-  name: 'app2',
+  name: 'exampleTeam1__app2',
   filename: 'remoteEntry.js',
   exposes: {
     './button': './src/components/button/button',
