@@ -23,9 +23,9 @@ const teamDefinitions = require('../../../public/team-definitions.json');
 
 // TODO: fix types
 // @ts-ignore
-const RemoteButton1 = React.lazy(() => import("exampleTeam1__app1/button"));
+const RemoteButton1 = React.lazy(() => import('exampleTeam1__app1/button'));
 // @ts-ignore
-const RemoteButton2 = React.lazy(() => import("exampleTeam1__app2/button"));
+const RemoteButton2 = React.lazy(() => import('exampleTeam1__app2/button'));
 
 export const AppSite = () => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
@@ -65,13 +65,13 @@ export const AppSite = () => {
     return null;
   }
 
+  // prettier-ignore
   return (
     <BrowserRouter>
       <h1>Module Federation - Full Example</h1>
 
       <div className="box">
         <h2>Site</h2>
-
         
         <ButtonSite /> - regular import<br />
         <ButtonSharedTools /> - imported from shared-tools/dist<br /> 

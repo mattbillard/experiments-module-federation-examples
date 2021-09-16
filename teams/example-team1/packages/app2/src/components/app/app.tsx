@@ -34,6 +34,7 @@ import { ButtonApp2 } from '../button/button';
 // };
 
 export const App2 = () => {
+  // prettier-ignore
   return (
     <div>
       <h2>App 2</h2>

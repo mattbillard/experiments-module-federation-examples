@@ -10,9 +10,9 @@
     "bootstrap": "lerna bootstrap --ignore-scripts",
     "build": "lerna run build",
     "clean": "lerna run --parallel clean",
-    "prettier": "prettier --write \"**/*.{js,json,md,ts,tsx}\"",
     "prettier:changed": "pretty-quick",
     "prettier:check": "prettier --list-different \"**/*.{js,json,md,ts,tsx}\"",
+    "prettier:format": "prettier --write \"**/*.{js,json,md,ts,tsx}\"",
     "start": "lerna run --parallel start"
   },
   "devDependencies": {

@@ -11,6 +11,7 @@ module.exports = (appDir, mode = 'development', webpackConfigs) => {
   const moduleFederationPluginConfig = webpackConfigs.moduleFederationPluginConfig || undefined;
   const webpackConfigMixin = webpackConfigs.webpackConfigMixin || {};
 
+  // prettier-ignore
   const defaultConfig = {
     devServer: {
       hot: false,

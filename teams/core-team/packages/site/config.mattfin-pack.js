@@ -44,8 +44,8 @@ const webpackConfigMixin = {
 const moduleFederationPluginConfig = {
   name: 'coreTeam__site',
   remotes: {
-    exampleTeam1__app1: "exampleTeam1__app1@/assets/example-team1__app1/remoteEntry.js",
-    exampleTeam1__app2: "exampleTeam1__app2@/assets/example-team1__app2/remoteEntry.js",
+    exampleTeam1__app1: 'exampleTeam1__app1@/assets/example-team1__app1/remoteEntry.js',
+    exampleTeam1__app2: 'exampleTeam1__app2@/assets/example-team1__app2/remoteEntry.js',
     // More remote components are loaded via DynamicModuleFederationLoader
   },
   shared: ['react', 'react-dom'],
