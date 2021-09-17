@@ -14,11 +14,11 @@ const proxiesHashMap = {
   '/assets/example-team1__app2/':         'http://localhost:1102',
   '/assets/example-team1__definitions/':  'http://localhost:1103',
   
-  // NOTE: this team can run other teams' code as well to simultaneously make changes in more than one repo
-  '/assets/core-team__site/':             'http://localhost:1002',
-  '/site-url':                            'http://localhost:1002',
+  // // NOTE: this team can run other teams' code as well to simultaneously make changes in more than one repo
+  // '/assets/core-team__site/':             'http://localhost:1002',
+  // '/site-url':                            'http://localhost:1002',
 
-  '/':                                   'http://localhost:2000',  // dev-mock
+  '/':                                    'http://localhost:2000',  // dev-mock
 };
 
 const webpackConfigMixin = {
