@@ -10,9 +10,9 @@ const webpackConfigMixin = {
   },
 };
 
-const moduleFederationPluginConfig = {};
+const modFedPluginConfig = {};
 
 module.exports = {
-  moduleFederationPluginConfig,
+  modFedPluginConfig,
   webpackConfigMixin,
 };

@@ -1,20 +1,16 @@
 const path = require('path');
-const { config } = require('./package.json');
 
 const webpackConfigMixin = {
   devServer: {
     port: 1101,
   },
   output: {
-    // TODO
-    // path: path.resolve(__dirname, 'dist/assets/example-team1__app1'),
-    // publicPath: '/assets/example-team1__app1/',
-    path: path.resolve(__dirname, `dist${config.assetPath}`),
-    publicPath: config.assetPath,
+    path: path.resolve(__dirname, 'dist/assets/example-team1__app1'),
+    publicPath: '/assets/example-team1__app1/',
   },
 };
 
-const moduleFederationPluginConfig = {
+const modFedPluginConfig = {
   name: 'exampleTeam1__app1',
   filename: 'remoteEntry.js',
   exposes: {
@@ -25,6 +21,6 @@ const moduleFederationPluginConfig = {
 };
 
 module.exports = {
-  moduleFederationPluginConfig,
+  modFedPluginConfig,
   webpackConfigMixin,
 };

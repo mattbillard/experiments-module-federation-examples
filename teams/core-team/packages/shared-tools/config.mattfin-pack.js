@@ -29,13 +29,13 @@ const webpackConfigMixin = {
 };
 
 // TOOD: doesn't seem to make a difference to whether importing DynamicModuleFederationLoader from dist works or not
-const moduleFederationPluginConfig = undefined;
-// const moduleFederationPluginConfig = {
+const modFedPluginConfig = undefined;
+// const modFedPluginConfig = {
 //   name: 'core-team__shared-tools',
 //   shared: ['react', 'react-dom'],
 // };
 
 module.exports = {
-  moduleFederationPluginConfig,
+  modFedPluginConfig,
   webpackConfigMixin,
 };

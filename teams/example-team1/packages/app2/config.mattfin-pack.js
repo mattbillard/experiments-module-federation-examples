@@ -10,7 +10,7 @@ const webpackConfigMixin = {
   },
 };
 
-const moduleFederationPluginConfig = {
+const modFedPluginConfig = {
   name: 'exampleTeam1__app2',
   filename: 'remoteEntry.js',
   exposes: {
@@ -20,27 +20,7 @@ const moduleFederationPluginConfig = {
   shared: ['react', 'react-dom'],
 };
 
-// const modFedPluginDef = {
-//   moduleFederationId: 'exampleTeam1__app2',
-//   remoteEntryUrl: '/assets/example-team1__app2/remoteEntry.js',
-//   exposes: {
-//     './app': './src/components/app/app',
-//     './button': './src/components/button/button',
-//   },
-//   shared: ['react', 'react-dom'],
-// }
-
-// const appDef = {
-//   "apps": {
-//     "exampleTeam1__app2": {
-//       "moduleFederationId": "exampleTeam1__app2",
-//       "component": "./app",
-//       "remoteEntryUrl": "/assets/example-team1__app1/remoteEntry.js"
-//     }
-//   }
-// };
-
 module.exports = {
-  moduleFederationPluginConfig,
+  modFedPluginConfig,
   webpackConfigMixin,
 };

@@ -8,7 +8,7 @@ const path = require('path');
 
 module.exports = (appDir, mode = 'development', webpackConfigs) => {
   // Defaults
-  const moduleFederationPluginConfig = webpackConfigs.moduleFederationPluginConfig || undefined;
+  const modFedPluginConfig = webpackConfigs.modFedPluginConfig || undefined;
   const webpackConfigMixin = webpackConfigs.webpackConfigMixin || {};
 
   // prettier-ignore
@@ -106,9 +106,9 @@ module.exports = (appDir, mode = 'development', webpackConfigs) => {
     mergedConfig.plugins.push(htmlWebpackPlugin);
   }
 
-  // ModuleFederationPlugin - if moduleFederationPluginConfig
-  if (moduleFederationPluginConfig) {
-    const moduleFederationPlugin = new ModuleFederationPlugin(moduleFederationPluginConfig);
+  // ModuleFederationPlugin - if modFedPluginConfig
+  if (modFedPluginConfig) {
+    const moduleFederationPlugin = new ModuleFederationPlugin(modFedPluginConfig);
     mergedConfig.plugins.push(moduleFederationPlugin);
   }
 

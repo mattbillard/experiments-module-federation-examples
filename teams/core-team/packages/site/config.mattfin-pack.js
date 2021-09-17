@@ -13,7 +13,7 @@ const webpackConfigMixin = {
   },
 };
 
-const moduleFederationPluginConfig = {
+const modFedPluginConfig = {
   name: 'coreTeam__site',
   remotes: {
     exampleTeam1__app1: 'exampleTeam1__app1@/assets/example-team1__app1/remoteEntry.js',
@@ -23,15 +23,7 @@ const moduleFederationPluginConfig = {
   shared: ['react', 'react-dom'],
 };
 
-// const modFedPluginDef = {
-//   moduleFederationId: 'coreTeam__site',
-//   remote: {
-//     [moduleFederationId]: `${moduleFederationId}@${remoteEntryUrl}`,
-//   },
-//   shared: ['react', 'react-dom'],
-// };
-
 module.exports = {
-  moduleFederationPluginConfig,
+  modFedPluginConfig,
   webpackConfigMixin,
 };

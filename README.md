@@ -6,7 +6,9 @@ Features
 - Tools
   - mattfin-pack
   - mattfin-serve
-- Compile
-  - Typed CSS modules
 - After initial set up, teams can update their menu items and feature defintions without asking
   core-team
+- Extras 
+  - Typed CSS modules
+  - SVG, PNG, etc load 
+  
