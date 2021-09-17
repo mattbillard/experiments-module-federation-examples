@@ -22,10 +22,12 @@ window.__webpack_share_scopes__ = __webpack_share_scopes__;
 const teamDefinitions = require('../../../public/team-definitions.json');
 
 // TODO: fix types
+// import { ButtonApp1 as ButtonApp1Def } from '@company/example-team1__app1/dist/components/button/button';
+// const ButtonApp1 = React.lazy<typeof ButtonApp1Def>(() => import('exampleTeam1__app1/button')).then(module => {{ default: module.ButtonApp1 }});
 // @ts-ignore
-const RemoteButton1 = React.lazy(() => import('exampleTeam1__app1/button'));
+const ButtonApp1 = React.lazy(() => import('exampleTeam1__app1/button'));
 // @ts-ignore
-const RemoteButton2 = React.lazy(() => import('exampleTeam1__app2/button'));
+const ButtonApp2 = React.lazy(() => import('exampleTeam1__app2/button'));
 
 export const AppSite = () => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
@@ -76,8 +78,8 @@ export const AppSite = () => {
         <ButtonSite /> - regular import<br />
         <ButtonSharedTools /> - imported from shared-tools/dist<br /> 
         <React.Suspense fallback="Loading...">
-          <RemoteButton1 /> - imported from app1 via module federation hardcoded in webpack config<br />
-          <RemoteButton2 /> - imported from app2 via module federation hardcoded in webpack config<br />
+          <ButtonApp1 /> - imported from app1 via module federation hardcoded in webpack config<br />
+          <ButtonApp2 /> - imported from app2 via module federation hardcoded in webpack config<br />
         </React.Suspense>
         <br />
         <br />

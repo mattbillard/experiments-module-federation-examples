@@ -1,12 +1,16 @@
 const path = require('path');
+const { config } = require('./package.json');
 
 const webpackConfigMixin = {
   devServer: {
     port: 1101,
   },
   output: {
-    path: path.resolve(__dirname, 'dist/assets/example-team1__app1'),
-    publicPath: '/assets/example-team1__app1/',
+    // TODO
+    // path: path.resolve(__dirname, 'dist/assets/example-team1__app1'),
+    // publicPath: '/assets/example-team1__app1/',
+    path: path.resolve(__dirname, `dist${config.assetPath}`),
+    publicPath: config.assetPath,
   },
 };
 
