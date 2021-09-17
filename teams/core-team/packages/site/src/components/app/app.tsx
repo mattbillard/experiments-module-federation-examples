@@ -3,26 +3,23 @@ import * as React from 'react';
 import { useEffect, useState } from 'react';
 import { BrowserRouter, Link, Route, Switch, RouteProps } from 'react-router-dom';
 
+import { DynamicModuleFederationLoader } from '@company/core-team__shared-tools';
 import { ButtonSharedTools } from '@company/core-team__shared-tools';
-import '@company/core-team__shared-tools/dist/main.css';
+import '@company/core-team__shared-tools/dist/main.css'; // Need to import CSS
 
 import { ButtonSite } from '../button/button';
+import logo1 from '../../../public/logo.svg';
+const teamDefinitions = require('../../../public/team-definition-urls.json');
 import './app.scss';
 
-import logo1 from '../../../public/logo.svg';
-
-import { DynamicModuleFederationLoader } from '@company/core-team__shared-tools';
 // NOTE: necessary if you want to import DynamicModuleFederationLoader from dist
 // @ts-ignore
 window.__webpack_init_sharing__ = __webpack_init_sharing__;
 // @ts-ignore
 window.__webpack_share_scopes__ = __webpack_share_scopes__;
 
-const teamDefinitions = require('../../../public/team-definitions.json');
 
 // TODO: fix types
-// import { ButtonApp1 as ButtonApp1Def } from '@company/example-team1__app1/dist/components/button/button';
-// const ButtonApp1 = React.lazy<typeof ButtonApp1Def>(() => import('exampleTeam1__app1/button')).then(module => {{ default: module.ButtonApp1 }});
 // @ts-ignore
 const ButtonApp1 = React.lazy(() => import('exampleTeam1__app1/button'));
 // @ts-ignore
@@ -30,36 +27,10 @@ const ButtonApp2 = React.lazy(() => import('exampleTeam1__app2/button'));
 
 export const AppSite = () => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
-  const [definitions, setDefinitions] = useState<any>({ nav: [] });
+  const [definitions, setDefinitions] = useState<any>({ nav: {} });
 
   useEffect(() => {
-    // Allow overwrite of defaultDefitions with local definitions
-    teamDefinitions.teams.forEach((teamDefinition: any) => {
-      const { teamId, teamDefinitionUrl } = teamDefinition;
-
-      try {
-        const res = fetch(teamDefinitionUrl)
-          .then((res) => {
-            return res.json();
-          })
-          .then((data) => {
-            // TODO: fix
-            // const newDefinitions = {
-            //   nav: [
-            //     ...definitions.nav,
-            //     ...data.nav
-            //   ]
-            // };
-            // setDefinitions(newDefinitions);
-
-            setDefinitions(data);
-
-            setIsLoading(false); // TODO: use Promise.all() instead
-          });
-      } catch (error) {
-        // noop
-      }
-    });
+    getTeamDefinitions(definitions, setDefinitions, setIsLoading);
   }, []);
 
   if (isLoading) {
@@ -127,4 +98,24 @@ export const AppSite = () => {
       </div>
     </BrowserRouter>
   );
+};
+
+const getTeamDefinitions = async (definitions: any, setDefinitions: any, setIsLoading: any) => {
+  await Promise.all(
+    teamDefinitions.map(async (teamDefinitionUrl: string) => {
+      const res = await fetch(teamDefinitionUrl);
+      const teamDefinition = await res.json();
+
+      const newDefinitions = {
+        nav: [...definitions.nav, ...teamDefinition.nav],
+        apps: {
+          ...definitions.apps,
+          ...teamDefinition.apps,
+        },
+      };
+      setDefinitions(newDefinitions);
+    }),
+  );
+ 
+  setIsLoading(false);
 };
