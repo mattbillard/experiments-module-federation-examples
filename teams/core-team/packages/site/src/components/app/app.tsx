@@ -18,7 +18,6 @@ window.__webpack_init_sharing__ = __webpack_init_sharing__;
 // @ts-ignore
 window.__webpack_share_scopes__ = __webpack_share_scopes__;
 
-// TODO: move the JSON file
 const teamDefinitions = require('../../../public/team-definitions.json');
 
 // TODO: fix types
