@@ -27,7 +27,7 @@ module.exports = (appDir, mode = 'development', webpackConfigs) => {
       rules: [
         // Images, fonts, etc
         {
-          test: /\.(svg|png|svg|jpg|jpeg|gif|woff|woff2|eot|ttf|otf)$/i,
+          test: /\.(gif|jpeg|jpg|png|svg|eot|otf|ttf|woff|woff2)$/i,
           type: 'asset/resource',
         },
 
