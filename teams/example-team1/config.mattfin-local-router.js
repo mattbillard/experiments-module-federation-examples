@@ -1,8 +1,8 @@
 /**
- * NOTE: 
+ * NOTE:
  * Enable each team to work on their code but run the entire site
- * 
- * Proxy... 
+ *
+ * Proxy...
  * - this team's localhosts from a single port
  * - other teams' localhosts (optional if you want to make changes in more than one repo at once)
  * - anything not from localhost will be served from dev-mock

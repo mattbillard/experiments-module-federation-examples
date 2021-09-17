@@ -27,7 +27,7 @@ const loadComponent = (scope: string, module: string) => {
     const Module = factory();
     return Module;
   };
-}
+};
 
 const useDynamicScript = (url: string) => {
   const [ready, setReady] = React.useState(false);
