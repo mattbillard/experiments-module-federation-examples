@@ -80,8 +80,25 @@ module.exports = (appDir, mode = 'development', webpackConfigs) => {
     },
     plugins: [
       new MiniCssExtractPlugin(),
-      // See below
-    ],
+
+      // CopyPlugin (if public exists)
+      fs.existsSync(path.join(appDir, 'public')) && 
+        new CopyPlugin({
+          patterns: [{ from: 'public', to: '' }],
+        }),
+
+      // HtmlWebpackPlugin (if index.html exists)
+      fs.existsSync(path.join(appDir, 'src/index.html')) && 
+        new HtmlWebpackPlugin({
+          template: './src/index.html',
+        }),
+
+      // ModuleFederationPlugin (if modFedPluginConfig)
+      modFedPluginConfig && 
+        new ModuleFederationPlugin(modFedPluginConfig),
+    
+      ].filter(plugin => plugin),
+
     resolve: {
       extensions: ['.ts', '.tsx', '.js'],
     },
@@ -89,28 +106,6 @@ module.exports = (appDir, mode = 'development', webpackConfigs) => {
 
   // Merge configs
   const mergedConfig = _.merge({}, defaultConfig, webpackConfigMixin);
-
-  // CopyPlugin - if /public exists
-  if (fs.existsSync(path.join(appDir, 'public'))) {
-    const copyPlugin = new CopyPlugin({
-      patterns: [{ from: 'public', to: '' }],
-    });
-    mergedConfig.plugins.push(copyPlugin);
-  }
-
-  // HtmlWebpackPlugin - if src/index.html exists
-  if (fs.existsSync(path.join(appDir, 'src/index.html'))) {
-    const htmlWebpackPlugin = new HtmlWebpackPlugin({
-      template: './src/index.html',
-    });
-    mergedConfig.plugins.push(htmlWebpackPlugin);
-  }
-
-  // ModuleFederationPlugin - if modFedPluginConfig
-  if (modFedPluginConfig) {
-    const moduleFederationPlugin = new ModuleFederationPlugin(modFedPluginConfig);
-    mergedConfig.plugins.push(moduleFederationPlugin);
-  }
 
   return mergedConfig;
 };

@@ -36,6 +36,7 @@ export const AppSite = () => {
       <div className="box">
         <h2>Site</h2>
         
+        <h3>Loading Components Various Ways</h3>
         <ButtonSite /> - regular import<br />
         <ButtonSharedTools /> - imported from shared-tools/dist<br /> 
         <React.Suspense fallback="Loading...">
@@ -43,14 +44,14 @@ export const AppSite = () => {
           <ButtonApp2 /> - imported from app2 via module federation hardcoded in webpack config<br />
         </React.Suspense>
         <br />
-        <br />
+        <br /> 
 
+        <h3>Proving Webpack Can Handle Various File Types</h3>
         <img src={logo1} className="logo-svg" /> - Example SVG <br />
         <img src="/assets/core-team__site/logo.png" className="logo-png" /> - Example PNG
         <br />
         <br />
        
-
         <div className="navigation">
           {definitions.nav.map((definition: any) => {
             const { text, url } = definition;

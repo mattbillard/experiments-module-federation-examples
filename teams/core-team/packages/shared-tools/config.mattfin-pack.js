@@ -3,13 +3,17 @@ const path = require('path');
 const webpackConfigMixin = {
   devServer: {
     devMiddleware: {
-      writeToDisk: true,
+      writeToDisk: true, // NOTE: need to writeToDisk if we want to consume this package from dist
     },
     port: 1001,
   },
   externals: {
-    // IMPORTANT: don't bundle react or react-dom or you will get errors about having multiple versions of React and violating the rule of hooks
-    // NOTE: does not work if you want to also export code as Module Federation
+    /**
+     * NOTE: 
+     * When building a React component to dist and then importing it into another package, you need to exclude react and react-dom or you will get errors about having multiple versions of React and violating the rule of hooks
+     * 
+     * Also, does not work if you want to also export code as Module Federation
+     */
     react: {
       commonjs: 'react',
       commonjs2: 'react',
@@ -28,14 +32,6 @@ const webpackConfigMixin = {
   },
 };
 
-// TOOD: doesn't seem to make a difference to whether importing DynamicModuleFederationLoader from dist works or not
-const modFedPluginConfig = undefined;
-// const modFedPluginConfig = {
-//   name: 'core-team__shared-tools',
-//   shared: ['react', 'react-dom'],
-// };
-
 module.exports = {
-  modFedPluginConfig,
   webpackConfigMixin,
 };
