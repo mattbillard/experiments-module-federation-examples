@@ -1,7 +1,7 @@
 import * as _ from 'lodash';
 import * as React from 'react';
 import { useEffect, useState } from 'react';
-import { BrowserRouter, Link, Route, Switch, RouteProps } from 'react-router-dom';
+import { BrowserRouter, Link, Route, Switch, RouteProps, Redirect } from 'react-router-dom';
 
 import { ButtonSharedTools, DynamicModFedLoader } from '@company/core-team__shared-tools';
 import '@company/core-team__shared-tools/dist/main.css'; // Need to import CSS
@@ -12,8 +12,8 @@ import teamDefinitions from '../../../public/team-definition-urls.json';
 
 import './app.scss';
 
-// @ts-ignore TODO: fix types
-const ButtonApp1 = React.lazy(() => import('exampleTeam1__app1/button')); // @ts-ignore
+// TODO: the module federation community is still figuring out the best way to do types. For now, these are hand-coded in /core-team/site/types/
+const ButtonApp1 = React.lazy(() => import('exampleTeam1__app1/button'));
 const ButtonApp2 = React.lazy(() => import('exampleTeam1__app2/button'));
 
 export const AppSite = () => {
@@ -85,6 +85,7 @@ export const AppSite = () => {
                 />
               );
             })}
+            <Redirect to="/site-url/example-team1-url/app1-url" />
           </Switch>
         </div>
       </div>
