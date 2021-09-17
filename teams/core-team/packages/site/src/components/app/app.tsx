@@ -3,26 +3,17 @@ import * as React from 'react';
 import { useEffect, useState } from 'react';
 import { BrowserRouter, Link, Route, Switch, RouteProps } from 'react-router-dom';
 
-import { DynamicModuleFederationLoader } from '@company/core-team__shared-tools';
-import { ButtonSharedTools } from '@company/core-team__shared-tools';
+import { ButtonSharedTools, DynamicModuleFederationLoader } from '@company/core-team__shared-tools';
 import '@company/core-team__shared-tools/dist/main.css'; // Need to import CSS
 
 import { ButtonSite } from '../button/button';
 import logo1 from '../../../public/logo.svg';
-const teamDefinitions = require('../../../public/team-definition-urls.json');
+import teamDefinitions from '../../../public/team-definition-urls.json';
+
 import './app.scss';
 
-// NOTE: necessary if you want to import DynamicModuleFederationLoader from dist
-// @ts-ignore
-window.__webpack_init_sharing__ = __webpack_init_sharing__;
-// @ts-ignore
-window.__webpack_share_scopes__ = __webpack_share_scopes__;
-
-
-// TODO: fix types
-// @ts-ignore
-const ButtonApp1 = React.lazy(() => import('exampleTeam1__app1/button'));
-// @ts-ignore
+// @ts-ignore TODO: fix types
+const ButtonApp1 = React.lazy(() => import('exampleTeam1__app1/button')); // @ts-ignore
 const ButtonApp2 = React.lazy(() => import('exampleTeam1__app2/button'));
 
 export const AppSite = () => {
@@ -116,6 +107,26 @@ const getTeamDefinitions = async (definitions: any, setDefinitions: any, setIsLo
       setDefinitions(newDefinitions);
     }),
   );
- 
+
   setIsLoading(false);
 };
+
+declare const __webpack_init_sharing__: any;
+declare const __webpack_share_scopes__: any;
+declare const window: any;
+
+/**
+ * NOTE: necessary if you want to import DynamicModuleFederationLoader from dist
+ *
+ * The sample code Module Federation provides for dynamic imports does not work if you consume it from dist, throwing the error "Invalid hook call...You might be breaking the Rules of Hooks".
+ * However, in a real life project, this probably should be shared code that's distributed as part of a package to multiple teams.
+ * After trying many permutations of marking React as external and aliasing it in or providing it via ModuleFederationPlugin, this was the only solution that worked.
+ * Perhaps they will solve this in the future.
+ *
+ * See dynamic-module-federation-loader.tsx for the corresponding change
+ */
+const setUpDynamicModuleFederationLoader = () => {
+  window.__webpack_init_sharing__ = __webpack_init_sharing__;
+  window.__webpack_share_scopes__ = __webpack_share_scopes__;
+};
+setUpDynamicModuleFederationLoader();

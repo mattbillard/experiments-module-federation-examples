@@ -6,17 +6,23 @@ import * as React from 'react';
 
 declare const window: any;
 
-function loadComponent(scope: string, module: string) {
+const loadComponent = (scope: string, module: string) => {
   return async () => {
-    // NOTE: this is needed if you want to build this and then import from dist
+    /**
+     * NOTE: necessary if you want to import DynamicModuleFederationLoader from dist
+     *
+     * The sample code Module Federation provides for dynamic imports does not work if you consume it from dist, throwing the error "Invalid hook call...You might be breaking the Rules of Hooks".
+     * However, in a real life project, this probably should be shared code that's distributed as part of a package to multiple teams.
+     * After trying many permutations of marking React as external and aliasing it in or providing it via ModuleFederationPlugin, this was the only solution that worked.
+     * Perhaps they will solve this in the future.
+     *
+     * See site-team/~/app.tsx for the corresponding change
+     */
     const { __webpack_init_sharing__, __webpack_share_scopes__ } = window;
 
-    // Initializes the share scope. This fills it with known provided modules from this build and all remotes
-    await __webpack_init_sharing__('default');
+    await __webpack_init_sharing__('default'); // Initializes the share scope. This fills it with known provided modules from this build and all remotes
     const container = window[scope]; // or get the container somewhere else
-    // Initialize the container, it may provide shared modules
-    await container.init(__webpack_share_scopes__.default);
-    // @ts-ignore
+    await container.init(__webpack_share_scopes__.default); // Initialize the container, it may provide shared modules
     const factory = await window[scope].get(module);
     const Module = factory();
     return Module;
