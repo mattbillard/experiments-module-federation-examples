@@ -23,6 +23,14 @@ const moduleFederationPluginConfig = {
   shared: ['react', 'react-dom'],
 };
 
+// const modFedPluginDef = {
+//   moduleFederationId: 'coreTeam__site',
+//   remote: {
+//     [moduleFederationId]: `${moduleFederationId}@${remoteEntryUrl}`,
+//   },
+//   shared: ['react', 'react-dom'],
+// };
+
 module.exports = {
   moduleFederationPluginConfig,
   webpackConfigMixin,

@@ -3,7 +3,7 @@ import * as React from 'react';
 import { useEffect, useState } from 'react';
 import { BrowserRouter, Link, Route, Switch, RouteProps } from 'react-router-dom';
 
-import { ButtonSharedTools, DynamicModuleFederationLoader } from '@company/core-team__shared-tools';
+import { ButtonSharedTools, DynamicModFedLoader } from '@company/core-team__shared-tools';
 import '@company/core-team__shared-tools/dist/main.css'; // Need to import CSS
 
 import { ButtonSite } from '../button/button';
@@ -67,15 +67,15 @@ export const AppSite = () => {
         <div className="box">
           <Switch>
             {definitions.nav.map((definition: any) => {
-              const { moduleFederationComponentId, url } = definition;
-              const { module, remoteEntryUrl, scope } = definitions.apps[moduleFederationComponentId];
+              const { modFedComponentId, url } = definition;
+              const { module, remoteEntryUrl, scope } = definitions.dynamicModFedComponents[modFedComponentId];
 
               return (
                 <Route
                   key={url}
                   path={url}
                   render={(routeProps: RouteProps) => (
-                    <DynamicModuleFederationLoader
+                    <DynamicModFedLoader
                       module={module}
                       remoteEntryUrl={remoteEntryUrl}
                       scope={scope}
@@ -99,9 +99,9 @@ const getTeamDefinitions = async (definitions: any, setDefinitions: any, setIsLo
 
       const newDefinitions = {
         nav: [...definitions.nav, ...teamDefinition.nav],
-        apps: {
-          ...definitions.apps,
-          ...teamDefinition.apps,
+        dynamicModFedComponents: {
+          ...definitions.dynamicModFedComponents,
+          ...teamDefinition.dynamicModFedComponents,
         },
       };
       setDefinitions(newDefinitions);
@@ -116,7 +116,7 @@ declare const __webpack_share_scopes__: any;
 declare const window: any;
 
 /**
- * NOTE: necessary if you want to import DynamicModuleFederationLoader from dist
+ * NOTE: necessary if you want to import DynamicModFedLoader from dist
  *
  * The sample code Module Federation provides for dynamic imports does not work if you consume it from dist, throwing the error "Invalid hook call...You might be breaking the Rules of Hooks".
  * However, in a real life project, this probably should be shared code that's distributed as part of a package to multiple teams.
@@ -125,8 +125,8 @@ declare const window: any;
  *
  * See dynamic-module-federation-loader.tsx for the corresponding change
  */
-const setUpDynamicModuleFederationLoader = () => {
+const setUpDynamicModFedLoader = () => {
   window.__webpack_init_sharing__ = __webpack_init_sharing__;
   window.__webpack_share_scopes__ = __webpack_share_scopes__;
 };
-setUpDynamicModuleFederationLoader();
+setUpDynamicModFedLoader();

@@ -9,7 +9,7 @@ declare const window: any;
 const loadComponent = (scope: string, module: string) => {
   return async () => {
     /**
-     * NOTE: necessary if you want to import DynamicModuleFederationLoader from dist
+     * NOTE: necessary if you want to import DynamicModFedLoader from dist
      *
      * The sample code Module Federation provides for dynamic imports does not work if you consume it from dist, throwing the error "Invalid hook call...You might be breaking the Rules of Hooks".
      * However, in a real life project, this probably should be shared code that's distributed as part of a package to multiple teams.
@@ -72,13 +72,13 @@ const useDynamicScript = (url: string) => {
   };
 };
 
-export interface IDynamicModuleFederationLoader {
+export interface IDynamicModFedLoader {
   module: string;
   remoteEntryUrl: string;
   scope: string;
 }
 
-export const DynamicModuleFederationLoader = (props: IDynamicModuleFederationLoader) => {
+export const DynamicModFedLoader = (props: IDynamicModFedLoader) => {
   const { module, scope, remoteEntryUrl } = props;
   const { ready, failed } = useDynamicScript(remoteEntryUrl);
 
