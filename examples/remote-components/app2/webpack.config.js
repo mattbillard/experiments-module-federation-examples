@@ -1,4 +1,3 @@
-const HtmlWebpackPlugin = require("html-webpack-plugin");
 const path = require("path");
 
 module.exports = {
@@ -11,12 +10,21 @@ module.exports = {
   },
   devtool: 'source-map',
   entry: {
-    'main': './src/index.tsx',
     'button': './src/components/button/button.tsx',
+  },
+  externals: {
+    // NOTE: remote components need this
+    react: {
+      commonjs: "react",
+      commonjs2: "react",
+      amd: "React",
+      root: "React"
+    },
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: '[name].js',
+    libraryTarget: 'umd', // NOTE: remote components need this
   },
   resolve: {
     extensions: [".ts", ".tsx", ".js"],
@@ -37,9 +45,4 @@ module.exports = {
       },
     ],
   },
-  plugins: [
-    new HtmlWebpackPlugin({
-      template: "./public/index.html",
-    }),
-  ],
 };

@@ -17,7 +17,6 @@ Before Module Federation existed, I experimented with many ways of stitching mic
   ```
 - Open the following in your browser
   - **app1:** [localhost:3001](http://localhost:3001/)
-  - **app2:** [localhost:3002](http://localhost:3002/)
 
 ## Details
 
