@@ -8,6 +8,7 @@
   "private": true,
   "workspaces": {
     "packages": [
+      "./examples/hybrid-remote-components/*",
       "./examples/module-federation-ts/*",
       "./examples/module-federation-ts-with-router/*",
       "./examples/remote-components/*"

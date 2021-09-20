@@ -1,5 +1,5 @@
 {
-  "name": "@remote-components/app1",
+  "name": "@hybrid-remote-components/app1",
   "version": "0.0.0",
   "private": true,
   "scripts": {
@@ -9,6 +9,7 @@
     "clean": "rm -rf dist"
   },
   "dependencies": {
+    "@hybrid-remote-components/app2": "0.0.0",
     "react": "^16.13.0",
     "react-dom": "^16.13.0"
   },

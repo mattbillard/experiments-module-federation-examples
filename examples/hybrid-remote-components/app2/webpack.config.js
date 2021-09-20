@@ -7,9 +7,13 @@ module.exports = {
     static: {
       directory: path.join(__dirname, "dist"),
     },
+    devMiddleware: {
+      writeToDisk: true, // NOTE: need to writeToDisk if we want to consume this package from dist
+    },
   },
   devtool: 'source-map',
   entry: {
+    'index': './src/index.ts',
     'button': './src/components/button/button.tsx',
   },
   externals: {

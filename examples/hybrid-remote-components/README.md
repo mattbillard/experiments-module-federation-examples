@@ -1,13 +1,18 @@
-# remote-components Example
+# hybrid-remote-components Example
 
-Before Module Federation existed, I experimented with many ways of stitching micro apps into a micro frontend architecture. This was the most successful one and in some ways works very similarly to Module Federation, loading JS and CSS files at runtime and then mounting the React Component. (Note: this solution could easily be adabpted to use the router like the above solution.)
+Module Federation seems to have 2 drawbacks
+1. Remote apps/components do not provide any TypeScript types for the host app
+2. Configuration seems more complex than it should be. Host apps need to know a remote URL, scope name, module name for each child app they consume.
 
-## Install
+This experiment seeks to fix these problems
+1. The child app exports a regular React component with types
+2. The child app fetches its own remote code so the host app doesn't need to know anything about its internal configuration
 
-- Run the following 
-  ```
-  yarn install
-  ```
+This architecture still has all the main benefits of Module Federation
+- Apps can be built and deployed separately
+- The host app does not grow significantly larger for each new child app and its builds do not slow down
+
+Note, this architecture could also be implemented with module federation
 
 ## Run
 
@@ -17,15 +22,3 @@ Before Module Federation existed, I experimented with many ways of stitching mic
   ```
 - Open the following in your browser
   - **app1:** [localhost:3001](http://localhost:3001/)
-  - **app2:** [localhost:3002](http://localhost:3002/)
-
-## Details
-
-When I created this micro frontend architecture solution, Module Federation didn't yet exist. Now that Module Federation does exist, I would recommend choosing it over remote-components for the following reasons
-
-**Pros of Webpack Module Federation**
-  - It is the official micro frontend architecture solution of the JavaScript ecosystem, so it has documentation, community, will grow over time, and you can google your questions 
-  - Automatically works with React.Lazy and React.Suspense
-  - Code reads easier: <Button /> instead of just generic <RemoteComponent />. (Although I suppose with some work this could be solved.)
-  - Imported components aren't wrapped in an extra span, simplifying HTML / better for flexbox
-  - Gives you choice of singletons for other things like lodash, moment, etc 

@@ -1,7 +1,9 @@
 {
-  "name": "@remote-components/app2",
+  "name": "@hybrid-remote-components/app2",
   "version": "0.0.0",
   "private": true,
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "start": "webpack-cli serve",
     "build": "webpack --mode production",

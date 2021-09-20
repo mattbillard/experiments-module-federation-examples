@@ -12,6 +12,9 @@ This repo has a few examples
 1. **remote-components**  
   Before Module Federation existed, I experimented with many ways of stitching micro apps into a micro frontend architecture. This was the most successful one and in some ways works very similarly to Module Federation, loading JS and CSS files at runtime and then mounting the React Component. (Note: this solution could easily be adabpted to use the router like the above solution.)
 
+1. **hybrid-remote-components**
+  An improvement on remote-components and also solves 2 problems with module-federation: simpler configuration and better TypeScript support. Note, this architecture could also be implemented with module federation
+
 ---
 
 ## Requirements

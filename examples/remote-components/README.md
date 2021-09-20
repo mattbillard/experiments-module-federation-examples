@@ -20,11 +20,4 @@ Before Module Federation existed, I experimented with many ways of stitching mic
 
 ## Details
 
-When I created this micro frontend architecture solution, Module Federation didn't yet exist. Now that Module Federation does exist, I would recommend choosing it over remote-components for the following reasons
-
-**Pros of Webpack Module Federation**
-  - It is the official micro frontend architecture solution of the JavaScript ecosystem, so it has documentation, community, will grow over time, and you can google your questions 
-  - Automatically works with React.Lazy and React.Suspense
-  - Code reads easier: <Button /> instead of just generic <RemoteComponent />. (Although I suppose with some work this could be solved.)
-  - Imported components aren't wrapped in an extra span, simplifying HTML / better for flexbox
-  - Gives you choice of singletons for other things like lodash, moment, etc 
+When I created this micro frontend architecture solution, Module Federation didn't yet exist. This is the solution I created. See hybrid-remote-components for an even better solution.
